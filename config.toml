@@ -1,0 +1,31 @@
+baseURL = "http://localhost:1313/"
+languageCode = "en-uk"
+title = "Lucid"
+theme = "docport"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "taxonomyTerm", "category", "RSS"]
+
+[outputs]
+home = ["HTML", "JSON"]
+
+[params]
+color_main = "gray"
+color_second = "#17a3b8"
+ordersectionsby = "weight"
+
+[markup.goldmark.renderer]
+unsafe= true
+
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineAnchors = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "borland"
+    tabWidth = 4
