@@ -49,6 +49,9 @@ h3 {
     background-color: white !important;
 }
 
+
+/* sidebar */
+
 article > aside {
     flex: 0 0 14em !important;
     border-left: 1px solid rgb(230, 236, 241);
@@ -86,7 +89,33 @@ article > aside .menu .dd-item.active > a {
     }
 }
 
+
+/* ToC */
+
+.right-menu {
+    border-left: 1px solid #f5f7f9;
+}
+
+div.TableOfContents label {
+    display: none !important;
+}
+
+div.TableOfContents {
+    color: #f5f7f9 !important;
+    margin-left: 30px;
+}
+
+div.TableOfContents a {
+    color: rgba(43, 48, 59, .6) !important;
+}
+
+div.Actions {
+    display: none !important;
+}
+
+
 /* code syntax highlighting */
+
 code {
     font-family: 'JetBrains Mono';
     font-size: 90% !important;
@@ -99,4 +128,11 @@ code {
 
 .highlight code {
     background-color: rgba(245, 247, 249) !important;
+}
+
+
+/* tabs */
+
+.tabs > input[type=radio]:checked + label {
+    border-bottom: 2px solid #17a3b8;
 }

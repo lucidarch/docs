@@ -3,7 +3,7 @@ title: "Philosophy"
 date: 2020-10-14T09:29:06Z
 draft: false
 weight: 2
-hide: ["toc"]
+hide: ["toc", "header"]
 
 ---
 

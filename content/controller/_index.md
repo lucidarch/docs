@@ -3,7 +3,7 @@ title: "Controller"
 date: 2020-10-18T13:17:41Z
 draft: false
 weight: 5
-hide: ["toc"]
+hide: ["header"]
 
 ---
 
@@ -23,8 +23,47 @@ What you should do in a controller:
 
 ---
 
-## Generate Controllers
+## Generate Controller Class
 Use `lucid` CLI to generate a controller that extends Lucid's Controller class by default, which allows us to serve features
+features using the built-in `serve` method.
+
+{{% tabs %}}
+
+    {{% tab "Micro" %}}
+**Signature**
+```bash
+ lucid make:controller <controller>
+```
+
+**Example**
+```bash
+ lucid make:controller Article
+```
+Generated class will be at `app/Http/Controllers/ArticleController.php`
+
+    {{% /tab %}}
+
+
+    {{% tab "Monolith" %}}
+**Signature**
+```bash
+ lucid make:controller <controller> <service>
+```
+
+**Example**
+```bash
+ lucid make:controller Article MyService
+```
+Generated class will be at `src/Services/MyService/Http/Controllers/ArticleController.php`
+
+    {{% /tab %}}
+
+{{% /tabs %}}
+
+
+{{% notice info %}}
+{{% icon name="fa-asterisk"%}} For more details on this command see the help manual with `lucid make:controller --help`
+{{% /notice %}}
 
 ## Serve Features
 
@@ -45,7 +84,10 @@ class ArticleController extends Controller
 }
 ```
 
+### Request Input
+
 The served feature will be able to inject `Request` class to access request properties.
+This keeps our controllers clean and allows us to concentrate on what matters to the feature only.
 
 ```php
 class ListArticlesFeature {
@@ -58,7 +100,6 @@ class ListArticlesFeature {
 }
 ```
 
-This keeps our controllers clean and allows us to concentrate on what matters to the feature only with feature parameters.
 
 
 ### Feature Parameters
@@ -79,7 +120,7 @@ class ArticleController extends Controller
 
 The `id` key will be mapped to `$id` constructor param `UpdateArticleFeature::constructor($id)`.
 
-{{% notice %}}
+{{% notice info %}}
 {{% icon name="fa-info-circle" size="16px" %}} Parameter and constructor variable names must match. And they're case sensitive!
 {{% /notice %}}
 

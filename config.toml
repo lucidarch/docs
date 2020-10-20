@@ -1,5 +1,5 @@
 baseURL = "http://localhost:1313/"
-languageCode = "en-uk"
+languageCode = "en-GB"
 title = "Lucid"
 theme = "docport"
 enableRobotsTXT = true
@@ -27,5 +27,5 @@ unsafe= true
     lineNos = false
     lineNumbersInTable = true
     noClasses = true
-    style = "borland"
+    style = "github"
     tabWidth = 4

@@ -3,6 +3,7 @@ title: "Introduction"
 date: 2020-10-14T09:27:24Z
 draft: false
 weight: 1
+hide: ["header"]
 
 ---
 
