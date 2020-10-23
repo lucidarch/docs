@@ -6,7 +6,7 @@ title: Sidebar before
 
 <div style="margin-top: 30px;">
     <a href="/" style="display: flex; justify-content: left; align-items: center;">
-        <img src="/icon/lucid-coloured.png" width="50" height="50" style="margin-left: 25px;"/>
-        <h3 style="margin-left: 10px; margin-top: 10px;">Lucid</h3>
+        <img src="/icon/lucid-icon.svg" width="100" height="100" style="margin-left: 15px;"/>
+        <h2 style="margin-top: -14px;">Lucid</h2>
     </a>
 </div>

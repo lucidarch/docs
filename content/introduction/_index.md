@@ -66,7 +66,7 @@ At a glance...
 
 ### Framework
 
-Provides the “kernel”, request/response lifecycle, dependency injection and the core functionalities for the Foundation to build on. Knows nothing about the application logic. This is [Laravel](https://laravel.com).
+Provides the “kernel”, request/response lifecycle, dependency injection and the core functionalities for the Foundation to build on. Knows nothing about the application logic. All this with the power of [Laravel](https://laravel.com).
 
 ### Foundation
 
