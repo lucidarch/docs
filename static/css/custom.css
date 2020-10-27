@@ -123,11 +123,12 @@ code {
 }
 
 .highlight pre {
-    width: 90%;
+    width: 95%;
+    margin-left: 20px;
 }
 
 .highlight code {
-    background-color: rgba(245, 247, 249) !important;
+    background-color: rgb(245, 247, 249) !important;
 }
 
 

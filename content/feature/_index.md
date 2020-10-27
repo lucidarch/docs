@@ -79,6 +79,8 @@ Use `lucid` CLI to generate a Feature class that extends Lucid's Feature base cl
  lucid make:feature ListProducts
 ```
 Generated class will be at `app/Features/ListProductsFeatures.php`
+
+and its test at `tests/Features/ListProductsFeaturesTest.php`
     {{% /tab %}}
 
 
@@ -94,6 +96,7 @@ Generated class will be at `app/Features/ListProductsFeatures.php`
 ```
 Generated class will be at `src/Services/MyService/Features/ListProductsFeatures.php`
 
+and its test at `src/Services/MyService/Tests/Features/ListProductsFeaturesTest.php`
     {{% /tab %}}
 
 {{% /tabs %}}
@@ -108,7 +111,7 @@ class above will be `ListProductsFeature`.
 
 ## Inside Features
 
-There are two essential focus points in a feature:
+There are two essential highlights in a feature:
 1. Signature (a.k.a constructor parameters): Looking at the signature of the *Feature* should give the idea of what is required for it to be served.
 2. `handle` method: Looking at the class's `handle` method should provide an overview of the steps required to serve the feature to the user (or any consuming party) without having to know too much details about the inner workings of each step. More on this at [below](#the-handle-method).
 
