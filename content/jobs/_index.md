@@ -1,5 +1,5 @@
 ---
-title: "Job"
+title: "Jobs"
 date: 2020-10-19T20:34:41Z
 draft: true
 weight: 7
@@ -123,8 +123,7 @@ Good balance between complexity and functionality is key with jobs, it gets bett
 
 ## Generate Job Class
 
-Use `lucid` CLI to generate a Job class that extends Lucid's Job base class by default, which `handle` method is invoked when run by an Operation or a Feature.
-
+Use `lucid` CLI to generate a Job class that extends Lucid's Job base class by default, which `handle` method is invoked when run by an Operation, Feature or a custom dispatcher.
 
 {{% tabs %}}
 
@@ -182,8 +181,6 @@ which internally relies on a combination of the traits `JobDispatcherTrait`, `Ma
 **Only used when `$job` is the class name and not the instance.**
 - [`$extra`] is for the Laravel dispatcher and is not used by Lucid for any purposes, passed straight to the dispatcher.
 
-
-
 **Dispatching Jobs & Arguments {{% icon name="fa-check-circle" %}}**
 
 Given this sample job that updates a product's info in the database:
@@ -205,7 +202,7 @@ class UpdateProductDetailsJob extends Job
     {
         $product = Product::find($this->id);
 
-        $production->fill([
+        $product->fill([
             'title' => $this->title,
             'price' => $this->price,
             'description' => $this->description,
@@ -339,7 +336,7 @@ public function handle(Request $request)
     ]);
 
     $isStockUpdated = $this->run(UpdateProductStockAvailabilityJob::class, [
-        'id' => $production->id,
+        'id' => $product->id,
         'available_count' => $request->input('available_count'),
     ]);
 
@@ -371,7 +368,7 @@ public function handle(Request $request)
     );
 
     $isStockUpdated = $this->run(new UpdateProductStockAvailabilityJob(
-        $production->id,
+        $product->id,
         $request->input('available_count'));
 }
 ```
@@ -394,7 +391,7 @@ class UploadPhotosJob extends Job implements ShouldQueue
 {
     public function handle()
     {
-        // process photo uploads
+        // photo uploads will be processed in the queue
     }
 }
 ```
@@ -414,12 +411,9 @@ public function __construct()
 }
 ```
 
+## Custom Dispatcher
 
-## Handling Errors with Jobs
-
-You may turn any class in your application into a dispatcher. This is most common with `Exceptions\Handler`,
-where you may want to centralize your error responses in jobs to maintain a consistent structure across your application.
-
+You may turn any class in your application into a dispatcher of jobs.
 To equip a class for running jobs, these traits are required: `JobDispatcherTrait`, `MarshalTrait` and `DispatchesJobs`.
 
 ```php
@@ -430,6 +424,11 @@ class Handler extends ExceptionHandler
     use JobDispatcherTrait;
 }
 ```
+
+## Handling Errors with Jobs
+
+It is common to want to dispatch jobs from `Exceptions\Handler`,
+where you may want to centralize your error responses in jobs to maintain a consistent structure across your application.
 
 Assuming that we are working on an API where all our errors must be returned in JSON format, to avoid the accidental rendering
 of an HTML page leading to unexpected behaviours. We would create a job to be run when encountering an exception that includes

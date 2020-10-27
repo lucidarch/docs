@@ -1,6 +1,6 @@
 ---
 
-title: "Feature"
+title: "Features"
 date: 2020-10-19T08:21:22Z
 draft: false
 weight: 6
