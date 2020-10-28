@@ -32,27 +32,26 @@ features using the built-in `serve` method.
     {{% tab "Micro" %}}
 **Signature**
 ```bash
- lucid make:controller <controller>
+lucid make:controller <controller>
 ```
 
 **Example**
 ```bash
- lucid make:controller Article
+lucid make:controller Article
 ```
 Generated class will be at `app/Http/Controllers/ArticleController.php`
 
     {{% /tab %}}
 
-
     {{% tab "Monolith" %}}
 **Signature**
 ```bash
- lucid make:controller <controller> <service>
+lucid make:controller <controller> <service>
 ```
 
 **Example**
 ```bash
- lucid make:controller Article MyService
+lucid make:controller Article MyService
 ```
 Generated class will be at `src/Services/MyService/Http/Controllers/ArticleController.php`
 
@@ -62,7 +61,8 @@ Generated class will be at `src/Services/MyService/Http/Controllers/ArticleContr
 
 
 {{% notice info %}}
-{{% icon name="fa-asterisk"%}} For more details on this command see the help manual with `lucid make:controller --help`
+{{% icon name="fa-asterisk"%}} For more details on this command see the help manual with `lucid make:controller --help` or
+visit [`make:controller`]({{% ref "/cli/#makecontroller" %}} "Make Controller Command")
 {{% /notice %}}
 
 ## Serve Features

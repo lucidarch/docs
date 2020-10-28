@@ -92,11 +92,11 @@ and its test at `tests/Features/ListProductsFeaturesTest.php`
 
 **Example**
 ```bash
- lucid make:feature ListProducts MyService
+ lucid make:feature ListProducts Commerce
 ```
-Generated class will be at `src/Services/MyService/Features/ListProductsFeatures.php`
+Generated class will be at `src/Services/Commerce/Features/ListProductsFeatures.php`
 
-and its test at `src/Services/MyService/Tests/Features/ListProductsFeaturesTest.php`
+and its test at `src/Services/Commerce/Tests/Features/ListProductsFeaturesTest.php`
     {{% /tab %}}
 
 {{% /tabs %}}
