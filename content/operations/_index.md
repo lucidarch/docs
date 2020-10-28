@@ -2,7 +2,7 @@
 
 title: "Operations"
 date: 2020-10-20T10:42:27Z
-draft: true
+draft: false
 weight: 8
 hide: ["header"]
 
@@ -61,7 +61,7 @@ class NotifySubscribersOperation extends Operation
                 ]);
             }
 
-        } while ($result->next !== null);
+        } while ($result->hasMorePages());
 
         return $result->total;
     }
@@ -244,8 +244,100 @@ Would generate two files:
 
 {{% /tabs %}}
 
-Let's test our operation:
+The purpose of operation testing is to ensure that the integration between the jobs it runs is working as expected,
+but we do not have to test every job's case on its own, for that we rely on jobs being tested for their integrity.
+
+For example, consider the following operation test:
 
 ```php
+<?php
 
+namespace App\Services\Publishing\Tests\Operations;
+
+use Tests\TestCase;
+use App\Data\Models\Author;
+use App\Data\Models\Subscriber;
+use Illuminate\Support\Facades\Queue;
+use App\Services\Operations\NotifySubscribersOperation;
+
+class NotifySubscribersOperationTest extends TestCase
+{
+    public function test_successfully_notifying_subscribers()
+    {
+        // SendNotificationJob will be dispatched to the queue
+        Queue::fake();
+
+        // queue must be empty
+        Queue::assertNothingPushed();
+
+        // n. of subscribers we're testing with
+        $subscribers = 10;
+
+        $author = Author::factory()
+            ->has(Subscriber::factory($subscribers));
+            ->create();
+
+        $op = new NotifySubscribersOperation($author->id);
+        $result = $op->handle();
+
+        // assert all subscribers were paginated
+        $this->assertEquals($subscribers, $result);
+
+        // assert the correct n. of SendNotificationJob were dispatched
+        Queue::assertPushed(SendNotificationJob::class, $subscribers);
+    }
+}
 ```
+
+### Mocking Jobs
+
+When testing, you may occasionally need to skip dispatching a certain job but would still want to make sure that the operation
+actually ran the job as expected, with the correct parameters.
+In such cases we would mock the operation's `run` [partially](http://docs.mockery.io/en/latest/reference/partial_mocks.html "Partial Mocks").
+
+In our case we'd update our test to not dispatch `SendNotificationJob` so that we don't actually send notifications.
+This may seem odd at first because we are mocking the class that we are actually testing,
+but **with partial mocks only the methods that we set expectations on would be mocked and the rest would be dispatched.**
+And in case the operation doesn't call `run(SendNotificationJob::class, $params)` with the expected parameters the test will fail.
+
+```php
+<?php
+
+namespace App\Services\Publishing\Tests\Operations;
+
+use Mockery;
+use App\Data\Models\Author;
+use App\Data\Models\Subscriber;
+use App\Services\Operations\NotifySubscribersOperation;
+
+class NotifySubscribersOperationTest extends TestCase
+{
+    public function test_successfully_notifying_subscribers_with_mock()
+    {
+        // n. of subscribers we're testing with
+        $subscribers = 10;
+
+        $author = Author::factory()
+            ->has(Subscriber::factory($subscribers));
+            ->create();
+
+        // create operation mock instance
+        $mOp = Mockery::mock(NotifySubscribersOperation::class, [$author->id]);
+
+        // set expectations to jobs that need to be skipped
+        $mOp->shouldReceive('run')
+            ->with(SendNotificationJob::class, [
+                'from' => $author,
+                'to' => $author->subscribers,
+                'notification' => 'article.published',
+            ]);
+
+        $result = $mOp->handle();
+
+        // assert all subscribers were paginated
+        $this->assertEquals($subscribers, $result);
+    }
+}
+```
+
+Whether to mock or not is a case-by-case decision, but as a general guideline it is best to always test with what's closest to reality.
