@@ -36,10 +36,13 @@ Informal discussion regarding bugs, new features, and implementation of existing
 
 ## Which Branch?
 
-All repositories follow Laravel's versioning in branching, where installing the branch `5.5` in any of the reposotiries will install Lucid with Laravel v5.5. The main repositories are the following:
+All repositories follow Laravel's versions in branching, where installing the branch `5.5` in any of the repositories will install Lucid with Laravel v5.5.
+What's on the `master` branch is always the latest Laravel version.
 
-- Main: [Laravel (monolith)](https://github.com/lucid-architecture/laravel) and [Microservice](https://github.com/lucid-architecture/laravel-microservice) are the main repos
-- [Foundation](https://github.com/lucid-architecture/foundation-laravel): Has the extendable components of Lucid such as Feature, Job etc.
+The main repositories are the following:
+
+- Main: [Laravel (monolith)](https://github.com/lucid-architecture/laravel) and [Microservice](https://github.com/lucid-architecture/laravel-microservice)
+- [Foundation](https://github.com/lucid-architecture/foundation-laravel): Has Lucid units and other abstract classes such as Validator, Repository etc.
 - [Console](https://github.com/lucid-architecture/console-laravel)**:** contains the Console companion, the CLI and the dashboard
 
 ## Compiled Assets
@@ -48,7 +51,8 @@ If you are submitting a change that will affect a compiled file, such as most of
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Lucid, please send an email to Abed Halawi at halawi.abed[@gmail.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Lucid, please send an email to Abed Halawi at [halawi.abed@gmail.com](mailto:abed.halawi@gmail.com).
+All security vulnerabilities will be promptly addressed.
 
 ## Coding Style
 
