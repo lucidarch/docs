@@ -4,6 +4,8 @@ title = "Lucid"
 theme = "docport"
 enableRobotsTXT = true
 disableKinds = ["taxonomy", "taxonomyTerm", "category", "RSS"]
+pygmentsUseClasses = true
+pygmentsCodefences = true
 
 [outputs]
 home = ["HTML", "JSON"]
@@ -27,5 +29,5 @@ unsafe= true
     lineNos = false
     lineNumbersInTable = true
     noClasses = true
-    style = "github"
+    style = "borland"
     tabWidth = 4
