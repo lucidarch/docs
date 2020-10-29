@@ -19,3 +19,6 @@ jobs:
         with:
           githubToken: ${{ secrets.PERSONAL_TOKEN }}
           branch: public
+          cname: docs.lucidarch.dev
+
+
