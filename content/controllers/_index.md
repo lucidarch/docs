@@ -150,4 +150,4 @@ class UpdateArticleFeature extends Feature
 }
 ```
 
-For more on writing features see the [Feature section](/feature).
+For more on writing features see the [Features section](/features).
