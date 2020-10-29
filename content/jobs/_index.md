@@ -1,7 +1,7 @@
 ---
 title: "Jobs"
 date: 2020-10-19T20:34:41Z
-draft: true
+draft: false
 weight: 7
 hide: ["header"]
 
