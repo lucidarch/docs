@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://localhost:1313/introduction/</loc>
+    <lastmod>2020-10-14T09:27:24+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/philosophy/</loc>
+    <lastmod>2020-10-14T09:29:06+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/routing/</loc>
+    <lastmod>2020-10-18T12:49:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/controllers/</loc>
+    <lastmod>2020-10-18T13:17:41+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/features/</loc>
+    <lastmod>2020-10-19T08:21:22+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/jobs/</loc>
+    <lastmod>2020-10-19T20:34:41+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/operations/</loc>
+    <lastmod>2020-10-20T10:42:27+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/cli/</loc>
+    <lastmod>2020-10-28T17:04:19+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/error-handling/</loc>
+    <lastmod>2020-10-22T06:37:52+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/contribution-guide/</loc>
+    <lastmod>2020-10-28T21:36:30+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2020-10-28T21:36:30+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/_layout/</loc>
+    <lastmod>2020-08-20T11:08:17+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/_layout/footer/</loc>
+    <lastmod>2020-08-20T11:08:17+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/_layout/sidebar-after/</loc>
+    <lastmod>2020-08-20T11:08:17+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/_layout/sidebar-before/</loc>
+    <lastmod>2020-08-20T11:08:17+00:00</lastmod>
+  </url>
+  
+</urlset>
