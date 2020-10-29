@@ -10,6 +10,8 @@
         "trim_trailing_white_space_on_save": true,
         "word_wrap": true,
         "theme": "Lanzhou.sublime-theme",
+        "spell_check": true,
+        "auto_complete": false,
         "rulers":
         [
             130
