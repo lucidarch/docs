@@ -164,7 +164,7 @@ and its test at `src/Domains/Product/Tests/FindProductJobTest.php`
 The generated Job class will automatically be suffixed with `Job`, so there's no need for it to be specified in the command.
 
 {{% notice info %}}
-{{% icon name="fa-asterisk" %}} For more details on this command see the help manual with `lucid make:job --help`
+{{% icon name="fa-asterisk" %}}&nbsp;For more details on this command see the help manual with `lucid make:job --help`
 {{% /notice %}}
 
 ## Calling Jobs
@@ -279,7 +279,7 @@ $this->run(new GetUserByIDJob($userId));
 and it works exactly the same as if we did `run(GetUserByIDJob::class, ['id' => $userId])`.
 
 {{% notice info %}}
-{{% icon name="fa-exclamation-triangle" %}} `$arguments` won't apply when an initialized job is run.
+{{% icon name="fa-exclamation-triangle" %}}&nbsp;`$arguments` won't apply when an initialized job is run.
 {{% /notice %}}
 
 Since the job requires only one argument, and looking at the `run` line is intuitively indicative of the intended functionality

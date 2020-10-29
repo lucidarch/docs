@@ -59,7 +59,7 @@ lucid src:name <namespace>
 ### `make:service`
 
 {{% notice info %}}
-{{% icon name="fa-info-circle" %}} For Monolith projects only.
+{{% icon name="fa-info-circle" %}}&nbsp;For Monolith projects only.
 {{% /notice %}}
 
 Create a new service in a monolith project.
@@ -388,7 +388,7 @@ Generated file will be at `src/Services/<service>/Http/Policies/<policy>`.
 List the services in a monolith project
 
 {{% notice info %}}
-{{% icon name="fa-info-circle" %}} For Monolith projects only.
+{{% icon name="fa-info-circle" %}}&nbsp;For Monolith projects only.
 {{% /notice %}}
 
 ```bash
@@ -432,7 +432,7 @@ lucid list:features
 ### `delete:service`
 
 {{% notice info %}}
-{{% icon name="fa-info-circle" %}} For Monolith projects only.
+{{% icon name="fa-info-circle" %}}&nbsp;For Monolith projects only.
 {{% /notice %}}
 
 

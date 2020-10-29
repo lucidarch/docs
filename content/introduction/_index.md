@@ -41,14 +41,14 @@ If you would like the image above to become something as below...
 {{% caption "Clear and precise composition of objects." %}}
 
 {{% alert info %}}
-{{% icon name="fa-archway" size="16px" %}} You're in the right place!
+{{% icon name="fa-archway" size="16px" %}}&nbsp;You're in the right place!
 {{% /alert %}}
 
 ## Lucid • Laravel
 
 Within controllers and commands, our application is prone to disorder due to the high degree of autonomy in MVC. Lucid fills that gap to complete the chain of Laravel's MVC framework.
 
-The relationship between Laravel and Lucid is that they complete each other. Lucid will be the bond between the application's entry points and the components that do the actual work (classes, interfaces, design patterns etc.) securing code from meandering in drastic directions.
+The relationship between Laravel and Lucid is that they complete each other. Lucid will be the bond between the application's entry points and the units that do the actual work (classes, interfaces, design patterns etc.) securing code from meandering in drastic directions.
 
 ![Laravel & Lucid](/media/images/laravel-lucid.png)
 
@@ -70,7 +70,7 @@ Provides the “kernel”, request/response lifecycle, dependency injection and 
 
 ### Foundation
 
-Provides support to the concrete components of the architecture (services, domains and data) by extending the framework with fundamental (abstract) classes; due to that, and the fact that the concrete components will only deal with the foundation, any change at the framework level will be transparent and have the least effect possible on the application overall and as a result **the Lucid architecture grants a reduced amount of [technical debt](https://en.wikipedia.org/wiki/Technical_debt) in the case of a drastic update/upgrade or even migration to another framework**.
+Provides support to the concrete units of the architecture (services, domains and data) by extending the framework with fundamental (abstract) classes; due to that, and the fact that the concrete units will only deal with the foundation, any change at the framework level will be transparent and have the least effect possible on the application overall and as a result **the Lucid architecture grants a reduced amount of [technical debt](https://en.wikipedia.org/wiki/Technical_debt) in the case of a drastic update/upgrade or even migration to another framework**.
 
 Examples of what the Foundation might include:
 
@@ -92,7 +92,7 @@ The terminology of a service is used in the form of “Our application provides 
 
 **Hierarchy**
 
-The hierarchy of services and their components is as described in the pyramid below, given the example of an HTTP request:
+The hierarchy of services and their units is as described in the pyramid below, given the example of an HTTP request:
 
 ![Lucid Architecture Hierarchy](/media/images/architecture-hierarchy.png)
 

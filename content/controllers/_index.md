@@ -61,7 +61,7 @@ Generated class will be at `src/Services/MyService/Http/Controllers/ArticleContr
 
 
 {{% notice info %}}
-{{% icon name="fa-asterisk"%}} For more details on this command see the help manual with `lucid make:controller --help` or
+{{% icon name="fa-asterisk"%}}&nbsp;For more details on this command see the help manual with `lucid make:controller --help` or
 visit [`make:controller`]({{% ref "/cli/#makecontroller" %}} "Make Controller Command")
 {{% /notice %}}
 
@@ -90,7 +90,8 @@ The served feature will be able to inject `Request` class to access request prop
 This keeps our controllers clean and allows us to concentrate on what matters to the feature only.
 
 ```php
-class ListArticlesFeature {
+class ListArticlesFeature
+{
     public function handle(Request $request)
     {
         $input = $request->input();
@@ -121,7 +122,7 @@ class ArticleController extends Controller
 The `id` key will be mapped to `$id` constructor param `UpdateArticleFeature::constructor($id)`.
 
 {{% notice info %}}
-{{% icon name="fa-info-circle" size="16px" %}} Parameter and constructor variable names must match. And they're case sensitive!
+{{% icon name="fa-info-circle" size="16px" %}}&nbsp;Parameter and constructor variable names must match. And they're case sensitive!
 {{% /notice %}}
 
 

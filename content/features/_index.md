@@ -45,7 +45,7 @@ class UpdateProductFeature extends Feature
 ```
 
 {{% notice info %}}
-{{% icon name="fa-info-circle" %}} Running Lucid Units asynchronously is as simple as having them implement the `Queueable` interface, applies to all of
+{{% icon name="fa-info-circle" %}}&nbsp;Running Lucid Units asynchronously is as simple as having them implement the `Queueable` interface, applies to all of
 units such as *Jobs* and *Operations* and *Features*.
 {{% /notice %}}
 
@@ -106,7 +106,7 @@ The generated Feature class will automatically be suffixed with `Feature`, so th
 class above will be `ListProductsFeature`.
 
 {{% notice info %}}
-{{% icon name="fa-asterisk" %}} For more details on this command see the help manual with `lucid make:feature --help`
+{{% icon name="fa-asterisk" %}}&nbsp;For more details on this command see the help manual with `lucid make:feature --help`
 {{% /notice %}}
 
 ## Inside Features
@@ -165,7 +165,7 @@ public function handle(MyCustomClass $mcc)
 This is the recommended way of using classes to maintain testability by interchanging class instances with their mocks.
 
 {{% notice info %}}
-{{% icon name="fa-info-circle" %}} `handle` is the same for all Lucid units: *Feature, Job* and *Operation* and it behaves the same everywhere.
+{{% icon name="fa-info-circle" %}}&nbsp;`handle` is the same for all Lucid units: *Feature, Job* and *Operation* and it behaves the same everywhere.
 {{% /notice %}}
 
 ## Serving Features
