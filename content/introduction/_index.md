@@ -105,7 +105,7 @@ They implement the business logic and expose them through jobs, they are isolate
 {{% /panel %}}
 
 {{% notice info %}}
-We suffix Job classnames with `Job` for readability and easier navigation, also extending the PSR-2 coding standard of suffixing interfaces with `Interface` and traits with `Trait`.
+We suffix Job classnames with `Job` for readability and easier navigation, also extending the PSR-2 coding standard of suffixing interfaces with `Interface`, Feature with `Feature` and Operation with `Operation`.
 {{% /notice %}}
 
 ### Data

@@ -175,10 +175,10 @@ You may serve features from anywhere in your application! Here are some exapmles
 ### HTTP
 
 If your controller is generated through the `lucid` command, all you need to do is call `serve` within the controller method,
-otherwise, have your controller (or parent controller) extend Lucid's controller `Lucid\Foundation\Http\Controller`.
+otherwise, have your controller (or parent controller) extend Lucid's controller `Lucid\Units\Controller`.
 
 ```php
-use Lucid\Foundation\Http\Controller;
+use Lucid\Units\Controller;
 use App\Features\UpdateProductsFeature;
 
 class ProductController extends Controller
@@ -192,16 +192,16 @@ class ProductController extends Controller
 
 ### Command
 
-To run a feature from the command we just need to equip our Command class with Lucid's methods by simply using `ServesFeaturesTrait`
+To run a feature from the command we just need to equip our Command class with Lucid's methods by simply using `ServesFeatures`
 
 ```php
 use Illuminate\Console\Command;
 use App\Features\CleanStaleCartsFeature;
-use Lucid\Foundation\ServesFeaturesTrait;
+use Lucid\Bus\ServesFeatures;
 
 class CleanStaleCarts extends Command
 {
-    use ServesFeaturesTrait;
+    use ServesFeatures;
 
     protected $signature = 'clean:carts --stale';
 
@@ -217,16 +217,16 @@ class CleanStaleCarts extends Command
 
 ### Other
 
-Just like we did for [Commands](#command) we may do the same in any class we want, by simply using `ServesFeaturesTrait`
+Just like we did for [Commands](#command) we may do the same in any class we want, by simply using `ServesFeatures`
 the `serve` method will be available.
 
 ```php
 use App\Features\DoSomethingFeature;
-use Lucid\Foundation\ServesFeaturesTrait;
+use Lucid\Bus\ServesFeatures;
 
 class ToServeFeaturesHere
 {
-    use ServesFeaturesTrait;
+    use ServesFeatures;
 
     public function give()
     {

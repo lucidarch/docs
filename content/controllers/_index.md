@@ -72,7 +72,7 @@ visit [`make:controller`]({{% ref "/cli/#makecontroller" %}} "Make Controller Co
 To serve a Feature from controllers simply call the `serve` method provided by Lucid's parent controller.
 
 ```php
-use Lucid\Foundation\Http\Controller;
+use Lucid\Units\Controller;
 use App\Features\UpdateArticleFeature;
 
 class ArticleController extends Controller
@@ -107,7 +107,7 @@ class ListArticlesFeature
 To pass parameters to a feature, we use the same syntax as dispatching a Laravel job:
 
 ```php
-use Lucid\Foundation\Http\Controller;
+use Lucid\Units\Controller;
 use App\Features\UpdateArticleFeature;
 
 class ArticleController extends Controller

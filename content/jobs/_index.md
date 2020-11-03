@@ -46,7 +46,7 @@ In a Feature or Operation we can use `$this->run(ValidateProductDetailsJob::clas
 `{app|src}/Domains/Product/ValidateProductDetailsJob`
 
 ```php
-use Lucid\Foundation\Job;
+use Lucid\Units\Job;
 use App\Domains\Product\ProductValidator;
 
 class ValidateProductDetailsJob extends Job
@@ -170,7 +170,7 @@ The generated Job class will automatically be suffixed with `Job`, so there's no
 ## Calling Jobs
 
 Jobs are called using the `run` method that's provided by extending one of Lucid's runner units `Feature` & `Operation` classes,
-which internally relies on a combination of the traits `JobDispatcherTrait`, `MarshalTrait` and `DispatchesJobs`.
+which internally relies on `UnitDispatcher` trait.
 
 **Signature**
 
@@ -413,15 +413,20 @@ public function __construct()
 
 ## Custom Dispatcher
 
-You may turn any class in your application into a dispatcher of jobs.
-To equip a class for running jobs, these traits are required: `JobDispatcherTrait`, `MarshalTrait` and `DispatchesJobs`.
+You may turn any class in your application into a job dispatcher.
+To equip a class for running jobs use `Lucid\Bus\UnitDispatcher` trait.
 
 ```php
+use Lucid\Bus\UnitDispatcher;
+
 class Handler extends ExceptionHandler
 {
-    use MarshalTrait;
-    use DispatchesJobs;
-    use JobDispatcherTrait;
+    use UnitDispatcher;
+
+    public function custom()
+    {
+        return $this->run(TheJob::class);
+    }
 }
 ```
 
@@ -508,12 +513,11 @@ Similar to our `Handler` class, we may have our exceptions render themselves by 
 namespace App\Exceptions;
 
 use Exception;
+use Lucid\Bus\UnitDispatcher;
 
 class RenderException extends Exception
 {
-    use MarshalTrait;
-    use DispatchesJobs;
-    use JobDispatcherTrait;
+    use UnitDispatcher;
 
     /**
      * Render the exception into an HTTP response.
@@ -576,7 +580,7 @@ The example below illustrates a simplified version of testing user input validat
 namespace App\Domains\User\Tests\Jobs;
 
 use Tests\TestCase;
-use Lucid\Foundation\InvalidInputException;
+use Lucid\Exceptions\InvalidInputException;
 use App\Domains\User\Jobs\ValidateUserProfileInputJob;
 
 class ValidateUserProfileInputJobTest extends TestCase
@@ -625,7 +629,7 @@ Our job looks like this:
 ```php
 namespace App\Domains\DevTo\Jobs;
 
-use Lucid\Foundation\Job;
+use Lucid\Units\Job;
 use App\Domains\DevTo\Client;
 use Illuminate\Support\Collection;
 
