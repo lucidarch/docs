@@ -7,7 +7,7 @@ hide: ["header"]
 
 ---
 
-In an effort to minimise the work of controllers, for they are not here to do work for the application but to point the
+In an effort to minimize the work of controllers, for they are not here to do work for the application but to point the
 request in the right direction. In Lucid terms, to serve the intended feature to the user.
 
 Eventually we will end up having one line within each controller method, achieving the thinnest form possible.

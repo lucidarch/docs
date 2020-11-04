@@ -135,7 +135,7 @@ Use `lucid` CLI to generate a Job class that extends Lucid's Job base class by d
 
 **Example**
 ```bash
- lucid make:job FindProduct product
+lucid make:job FindProduct product
 ```
 Generated class will be at `app/Domains/Product/Jobs/FindProductJob.php`
 
@@ -146,7 +146,7 @@ and its test at `tests/Domains/Product/Tests/FindProductJobTest.php`
     {{% tab "Monolith" %}}
 **Signature**
 ```bash
- lucid make:job <job> <domain> {--Q|queue}
+lucid make:job <job> <domain> {--Q|queue}
 ```
 
 **Example**
