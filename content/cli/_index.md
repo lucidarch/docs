@@ -339,19 +339,19 @@ Generated model file will be at `[app|src]/Data/Product.php`.
 
     {{% tab Micro %}}
 ```bash
-lucid make:request <request>
+lucid make:request <request> <domain>
 ```
 
-Generated file will be at `app/Http/Requests/<request>`.
+Generated file will be at `app/Domains/<domain>/Requests/<request>`.
 
     {{% /tab %}}
 
     {{% tab Monolith%}}
 ```bash
-lucid make:request <request> <service>
+lucid make:request <request> <domain>
 ```
 
-Generated file will be at `src/Services/<service>/Http/Requests/<request>`.
+Generated file will be at `src/Domains/<domain>/Requests/<request>`.
     {{% /tab %}}
 
 {{% /tabs %}}
