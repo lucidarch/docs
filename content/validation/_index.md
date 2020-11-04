@@ -14,10 +14,10 @@ by placing them in domains.
 
 ## Domain-Driven Validation
 
-Often times validation is a matter of context, and domains in Lucid are an ideal place encapsulate functionality,
+Often times validation is a matter of context, and domains in Lucid are an ideal place to encapsulate functionality,
 and form requests fit perfectly there! e.g. `Domains/{domain}/Requests/{Request}.php`
 
-Eventually we'd end up with a categorical directory structure that protects our validation files from growing to an unmanageable amount.
+Eventually we'd end up with a categorical directory structure that protects our validation files from becoming unmanageable.
 
 {{<columns>}}
 **Form Requests**
@@ -162,7 +162,7 @@ class UpdatePost extends FormRequest
 
 ### Requests as Unit Dispatchers
 
-One of the most powerful aspects of Lucid is the degree of code reuse that it introduces. Specifically when dealing with
+One of the most powerful aspects of Lucid is the degree of code reuse it introduces. Specifically when dealing with
 Job and Operation classes which can be called from any [custom dispatcher class]({{<ref "/jobs/#custom-dispatcher">}}).
 
 Here, we will be setting up `UpdatePost` Request class to authorize using `AuthorizeUserOperation`, and on [after hook](https://laravel.com/docs/8.x/validation#adding-after-hooks-to-form-requests)
@@ -197,7 +197,8 @@ class UpdatePost extends FormRequest
     public function rules()
     {
         return [
-            'tit' => 'required',
+            'title' => 'required|unique:posts|max:255',
+            'body' => 'required',
         ];
     }
 
@@ -218,7 +219,7 @@ Another approach to validation is to validate using jobs. This is most useful wi
 or if you simply choose not to use Requests.
 
 Our validation jobs would contain [validation logic](https://laravel.com/docs/8.x/validation#quick-writing-the-validation-logic)
-so it can be called whenever validation is required, increasing the degree of code reuse in our application.
+so it can be called whenever validation is required.
 
 Start by creating a job:
 
