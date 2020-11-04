@@ -59,7 +59,7 @@ lucid src:name <namespace>
 ### `make:service`
 
 {{% notice info %}}
-{{% icon name="fa-info-circle" %}}&nbsp;For Monolith projects only.
+{{<icon name="fa-info-circle">}}&nbsp;For Monolith projects only.
 {{% /notice %}}
 
 Create a new service in a monolith project.
@@ -96,9 +96,9 @@ src
 Generate a controller class.
 
 
-{{% tabs %}}
+{{<tabs>}}
 
-    {{% tab "Micro" %}}
+{{<tab Micro>}}
 **Signature**
 ```bash
 lucid make:controller <controller>
@@ -110,9 +110,10 @@ lucid make:controller Article
 ```
 Generated class will be at `app/Http/Controllers/ArticleController.php`
 
-    {{% /tab %}}
+{{</tab>}}
 
-    {{% tab "Monolith" %}}
+
+{{<tab Monolith>}}
 **Signature**
 ```bash
 lucid make:controller <controller> <service>
@@ -124,16 +125,17 @@ lucid make:controller Article Publishing
 ```
 Generated class will be at `src/Services/Publishing/Http/Controllers/ArticleController.php`
 
-    {{% /tab %}}
+{{</tab>}}
 
-{{% /tabs %}}
+
+{{</tabs>}}
 
 **Empty Controller**
 
-By default it will generate a RESTful controller with preset methods. To generate an empty controller use the `--plain` option:
+By default it will generate an empty controller. To generate a resource controller use the `--resource` option:
 
 ```bash
-lucid make:controller <controller> [<service>] --plain
+lucid make:controller <controller> [<service>] --resource
 ```
 
 ---
@@ -142,9 +144,9 @@ lucid make:controller <controller> [<service>] --plain
 
 Generate a Feature class.
 
-{{% tabs %}}
+{{<tabs>}}
 
-    {{% tab "Micro" %}}
+{{<tab Micro>}}
 **Signature**
 ```bash
  lucid make:feature <feature>
@@ -157,10 +159,11 @@ Generate a Feature class.
 Generated class will be at `app/Features/ListProductsFeatures.php`
 
 and its test at `tests/Features/ListProductsFeaturesTest.php`
-    {{% /tab %}}
+{{</tab>}}
 
 
-    {{% tab "Monolith" %}}
+
+{{<tab Monolith>}}
 **Signature**
 ```bash
  lucid make:feature <feature> <service>
@@ -173,9 +176,10 @@ and its test at `tests/Features/ListProductsFeaturesTest.php`
 Generated class will be at `src/Services/Commerce/Features/ListProductsFeatures.php`
 
 and its test at `src/Services/Commerce/Tests/Features/ListProductsFeaturesTest.php`
-    {{% /tab %}}
+{{</tab>}}
 
-{{% /tabs %}}
+
+{{</tabs>}}
 
 The generated Feature class will automatically be suffixed with `Feature`, so there's no need for it to be specified in the command.
 
@@ -185,9 +189,9 @@ The generated Feature class will automatically be suffixed with `Feature`, so th
 
 Generate a Job class.
 
-{{% tabs %}}
+{{<tabs>}}
 
-    {{% tab "Micro" %}}
+{{<tab Micro>}}
 **Signature**
 ```bash
  lucid make:job <job> <domain> {--Q|queue}
@@ -200,10 +204,11 @@ Generate a Job class.
 Generated class will be at `app/Domains/Product/Jobs/FindProductJob.php`
 
 and its test at `tests/Domains/Product/Tests/FindProductJobTest.php`
-    {{% /tab %}}
+{{</tab>}}
 
 
-    {{% tab "Monolith" %}}
+
+{{<tab Monolith>}}
 **Signature**
 ```bash
  lucid make:job <job> <domain> {--Q|queue}
@@ -217,9 +222,10 @@ Generated class will be at `src/Domains/Product/Jobs/FindProductJob.php`
 
 and its test at `src/Domains/Product/Tests/FindProductJobTest.php`
 
-    {{% /tab %}}
+{{</tab>}}
 
-{{% /tabs %}}
+
+{{</tabs>}}
 
 The generated Job class will automatically be suffixed with `Job`, so there's no need for it to be specified in the command.
 
@@ -227,9 +233,9 @@ The generated Job class will automatically be suffixed with `Job`, so there's no
 
 ### `make:operation`
 
-{{% tabs %}}
+{{<tabs>}}
 
-    {{% tab "Micro" %}}
+{{<tab Micro>}}
 **Signature**
 
 ```bash
@@ -243,9 +249,10 @@ lucid make:operation NotifySubscribers
 Generated class will be at `app/Operations/NotifySubscribersOperation.php`
 
 and its test at `tests/Operations/NotifySubscribersOperationTest.php`
-    {{% /tab %}}
+{{</tab>}}
 
-    {{% tab "Monolith" %}}
+
+{{<tab Monolith>}}
 **Signature**
 
 ```bash
@@ -262,9 +269,10 @@ Generated class will be at `src/Services/Publishing/Operations/NotifySubscribers
 
 and its test at `src/Services/Publishing/Tests/Operations/NotifySubscribersOperationTest.php`
 
-    {{% /tab %}}
+{{</tab>}}
 
-{{% /tabs %}}
+
+{{</tabs>}}
 
 The generated Operation class will automatically be suffixed with `Operation`, so there's no need for it to be specified in the command.
 
@@ -272,9 +280,9 @@ The generated Operation class will automatically be suffixed with `Operation`, s
 
 ### `make:migration`
 
-{{% tabs %}}
+{{<tabs>}}
 
-    {{% tab Micro %}}
+    {{<tab Micro>}}
 **Signature**
 
 ```bash
@@ -290,9 +298,10 @@ lucid make:migration create_articles_table
 Generated file will be at `database/migrations/2020_10_28_180253_create_articles_table.php`
 
 
-    {{% /tab %}}
+{{</tab>}}
 
-    {{% tab Monolith %}}
+
+    {{<tab Monolith>}}
 **Signature**
 
 ```bash
@@ -307,9 +316,10 @@ lucid make:migration create_articles_table publishing
 
 Generated file will be at `src/Services/Publishing/database/migrations/2020_10_28_180253_create_articles_table.php`
 
-    {{% /tab %}}
+{{</tab>}}
 
-{{% /tabs %}}
+
+{{</tabs>}}
 
 ---
 
@@ -335,51 +345,55 @@ Generated model file will be at `[app|src]/Data/Product.php`.
 
 ### `make:request`
 
-{{% tabs %}}
+{{<tabs>}}
 
-    {{% tab Micro %}}
+    {{<tab Micro>}}
 ```bash
 lucid make:request <request> <domain>
 ```
 
 Generated file will be at `app/Domains/<domain>/Requests/<request>`.
 
-    {{% /tab %}}
+{{</tab>}}
 
-    {{% tab Monolith%}}
+
+    {{<tab Monolith>}}
 ```bash
 lucid make:request <request> <domain>
 ```
 
 Generated file will be at `src/Domains/<domain>/Requests/<request>`.
-    {{% /tab %}}
+{{</tab>}}
 
-{{% /tabs %}}
+
+{{</tabs>}}
 
 ---
 
 ### `make:policy`
 
-{{% tabs %}}
+{{<tabs>}}
 
-    {{% tab Micro %}}
+    {{<tab Micro>}}
 ```bash
 lucid make:policy <policy>
 ```
 
 Generated file will be at `app/Http/Policies/<policy>`.
 
-    {{% /tab %}}
+{{</tab>}}
 
-    {{% tab Monolith%}}
+
+    {{<tab Monolith>}}
 ```bash
 lucid make:policy <policy> <service>
 ```
 
 Generated file will be at `src/Services/<service>/Http/Policies/<policy>`.
-    {{% /tab %}}
+{{</tab>}}
 
-{{% /tabs %}}
+
+{{</tabs>}}
 
 ---
 
@@ -388,7 +402,7 @@ Generated file will be at `src/Services/<service>/Http/Policies/<policy>`.
 List the services in a monolith project
 
 {{% notice info %}}
-{{% icon name="fa-info-circle" %}}&nbsp;For Monolith projects only.
+{{<icon name="fa-info-circle">}}&nbsp;For Monolith projects only.
 {{% /notice %}}
 
 ```bash
@@ -413,26 +427,12 @@ lucid list:services
 lucid list:features
 ```
 
-```
-+---------------------------------+---------+-----------------------------------------+----------------------------------------------------------------------+
-| Feature                         | Service | File                                    | Path                                                                 |
-+---------------------------------+---------+-----------------------------------------+----------------------------------------------------------------------+
-| Update DevTo Collaborations    | Digest  | UpdateDevToCollaborationsFeature.php    | src/Services/Digest/Features/UpdateDevToCollaborationsFeature.php    |
-| Update DevTo Articles          | Digest  | UpdateDevToArticlesFeature.php          | src/Services/Digest/Features/UpdateDevToArticlesFeature.php          |
-| Add GitHub Repo To Digest      | Digest  | AddGitHubRepoToDigestFeature.php        | src/Services/Digest/Features/AddGitHubRepoToDigestFeature.php        |
-| Lookup GitHub Repo             | Digest  | LookupGitHubRepoFeature.php             | src/Services/Digest/Features/LookupGitHubRepoFeature.php             |
-| Person Feed                    | Digest  | PersonFeedFeature.php                   | src/Services/Digest/Features/PersonFeedFeature.php                   |
-| Update Stack Overflow Questions| Digest  | UpdateStackOverflowQuestionsFeature.php | src/Services/Digest/Features/UpdateStackOverflowQuestionsFeature.php |
-| Update GitHub Data             | Digest  | UpdateGitHubDataFeature.php             | src/Services/Digest/Features/UpdateGitHubDataFeature.php             |
-| Login With GitHub              | Digest  | LoginWithGitHubFeature.php              | src/Services/Digest/Features/LoginWithGitHubFeature.php             |
-+---------------------------------+---------+-----------------------------------------+----------------------------------------------------------------------+
-
-```
+{{<figure src="/media/images/cli/list-features.png">}}
 
 ### `delete:service`
 
 {{% notice info %}}
-{{% icon name="fa-info-circle" %}}&nbsp;For Monolith projects only.
+{{<icon name="fa-info-circle">}}&nbsp;For Monolith projects only.
 {{% /notice %}}
 
 
