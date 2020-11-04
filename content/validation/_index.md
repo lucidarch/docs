@@ -1,7 +1,7 @@
 ---
 title: "Validation"
 date: 2020-11-04T17:39:15Z
-draft: true
+draft: false
 weight: 9
 hide: ["header"]
 
