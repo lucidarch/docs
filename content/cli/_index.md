@@ -3,7 +3,7 @@
 title: "CLI Reference"
 date: 2020-10-28T17:04:19Z
 draft: false
-weight: 10
+weight: 15
 hide: ["header"]
 head: "<hr />"
 

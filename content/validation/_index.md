@@ -2,8 +2,9 @@
 title: "Validation"
 date: 2020-11-04T17:39:15Z
 draft: false
-weight: 9
+weight: 12
 hide: ["header"]
+head: "<hr />"
 
 ---
 
