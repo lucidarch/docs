@@ -10,6 +10,8 @@ Are the differentiating factors of Monolith. Their presence is necessary in mult
 that are set to scale in several areas of functionalities, *a.k.a horizonal growth*.
 They communicate with domains to compose jobs into groups of functionalities in their own features and operations.
 
+![Lucid Services](/media/images/services/services.png)
+
 ## Structure
 
 Services are structured for scale, by adding an encapsulation layer for features, operations, routes, controllers, commands, resources (views)

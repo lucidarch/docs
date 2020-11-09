@@ -7,17 +7,17 @@ hide: ["header"]
 
 ---
 
-Jobs do the actual work. Being the smallest unit in Lucid, a Job should do one thing, and one thing only.
-That is: **perform a single task**.
+Jobs do the actual work by implementing the business logic. Being the smallest unit in Lucid, a Job should do one thing, and one thing only -
+that is: **perform a single task**.
 They are the snippets of code we wish we had sometimes, and are pluggable to use anywhere in our application.
 
 Our objective with Jobs is to limit the scope of a single functionality so that we know where to look when finding it,
 and when we're within its context we don't tangle responsibility with other jobs to achieve the ultimate form of single responsibility principle.
 
-Usually called by a Feature or an Operation, but can be called anywhere by any other class as well;
+Usually called by a Feature or an Operation, but can be called from anywhere by any other class once setup as a [custom dispatcher](#custom-dispatcher);
 hence, being the most shareable pieces of code.
 
----
+![Lucid Jobs in Domains](/media/images/jobs/jobs-in-domains.png)
 
 ## Jobs in Domains
 
