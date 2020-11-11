@@ -30,10 +30,7 @@ features using the built-in `serve` method.
 {{% tabs %}}
 
     {{% tab "Micro" %}}
-**Signature**
-```bash
-lucid make:controller <controller>
-```
+**Signature** `lucid make:controller <controller>`
 
 **Example**
 ```bash
@@ -44,16 +41,13 @@ Generated class will be at `app/Http/Controllers/ArticleController.php`
     {{% /tab %}}
 
     {{% tab "Monolith" %}}
-**Signature**
-```bash
-lucid make:controller <controller> <service>
-```
+**Signature** `lucid make:controller <controller> <service>`
 
 **Example**
 ```bash
-lucid make:controller Article MyService
+lucid make:controller Article Publishing
 ```
-Generated class will be at `src/Services/MyService/Http/Controllers/ArticleController.php`
+Generated class will be at `app/Services/Publishing/Http/Controllers/ArticleController.php`
 
     {{% /tab %}}
 

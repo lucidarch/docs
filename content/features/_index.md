@@ -69,10 +69,7 @@ Use `lucid` CLI to generate a Feature class that extends Lucid's Feature base cl
 {{% tabs %}}
 
     {{% tab "Micro" %}}
-**Signature**
-```bash
- lucid make:feature <feature>
-```
+**Signature** `lucid make:feature <feature>`
 
 **Example**
 ```bash
@@ -85,18 +82,15 @@ and its test at `tests/Features/ListProductsFeaturesTest.php`
 
 
     {{% tab "Monolith" %}}
-**Signature**
-```bash
- lucid make:feature <feature> <service>
-```
+**Signature** `lucid make:feature <feature> <service>`
 
 **Example**
 ```bash
  lucid make:feature ListProducts Commerce
 ```
-Generated class will be at `src/Services/Commerce/Features/ListProductsFeatures.php`
+Generated class will be at `app/Services/Commerce/Features/ListProductsFeatures.php`
 
-and its test at `src/Services/Commerce/Tests/Features/ListProductsFeaturesTest.php`
+and its test at `app/Services/Commerce/Tests/Features/ListProductsFeaturesTest.php`
     {{% /tab %}}
 
 {{% /tabs %}}
@@ -256,8 +250,8 @@ Would generate two files:
 `lucid make:feature ListProductsFeature api`
 
 Would generate two files:
-- `src/Services/Api/Features/ListProductsFeature`
-- `src/Services/Api/Tests/Features/ListProductsFeatureTest`
+- `app/Services/Api/Features/ListProductsFeature`
+- `app/Services/Api/Tests/Features/ListProductsFeatureTest`
 
 Since Monolith is about scope and distribution of responsibility, and features are a scope of a service,
 tests are distributed and scoped accordingly in the corresponding service.
@@ -442,7 +436,7 @@ even if it means to repeat the same sequence of units. Below is a brief example 
 
 **Shared Feature**
 
-Supposing that we decided to move the feature class from `src/Services/{service}/Features` to a place all services may access
+Supposing that we decided to move the feature class from `app/Services/{service}/Features` to a place all services may access
 like `app/Features/UpdateProductDetailsFeature.php` and we'd like our Api and Web services to use it.
 This feature should serve the response in JSON when in the Api service and return a view when in Web:
 
@@ -530,7 +524,7 @@ Ugly, isn't it? See the other example for a cleaner approach below.
 
 `Api::UpdateProductDetailsFeature`
 
-located at `src/Services/Api/Features/UpdateProductDetailsFeature.php`
+located at `app/Services/Api/Features/UpdateProductDetailsFeature.php`
 
 <div style="margin-left: 23px;">
 
@@ -564,7 +558,7 @@ class UpdateProductDetailsFeature
 
 `Web::UpdateProductDetailsFeature`
 
-located at `src/Services/Web/Features/UpdateProductDetailsFeature.php`
+located at `app/Services/Web/Features/UpdateProductDetailsFeature.php`
 
 <div style="margin-left: 23px;">
 

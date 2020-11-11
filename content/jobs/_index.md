@@ -43,7 +43,7 @@ through the `handle` method when calling `run`.
 
 In a Feature or Operation we can use `$this->run(ValidateProductDetailsJob::class)` to run the job's `handle` method.
 
-`{app|src}/Domains/Product/ValidateProductDetailsJob`
+`app/Domains/Product/ValidateProductDetailsJob`
 
 ```php
 use Lucid\Units\Job;
@@ -128,10 +128,7 @@ Use `lucid` CLI to generate a Job class that extends Lucid's Job base class by d
 {{% tabs %}}
 
     {{% tab "Micro" %}}
-**Signature**
-```bash
- lucid make:job <job> <domain> {--Q|queue}
-```
+**Signature** `lucid make:job <job> <domain> {--Q|queue}`
 
 **Example**
 ```bash
@@ -144,18 +141,15 @@ and its test at `tests/Domains/Product/Tests/FindProductJobTest.php`
 
 
     {{% tab "Monolith" %}}
-**Signature**
-```bash
-lucid make:job <job> <domain> {--Q|queue}
-```
+**Signature** `lucid make:job <job> <domain> {--Q|queue}`
 
 **Example**
 ```bash
  lucid make:job FindProduct product
 ```
-Generated class will be at `src/Domains/Product/Jobs/FindProductJob.php`
+Generated class will be at `app/Domains/Product/Jobs/FindProductJob.php`
 
-and its test at `src/Domains/Product/Tests/FindProductJobTest.php`
+and its test at `app/Domains/Product/Tests/FindProductJobTest.php`
 
     {{% /tab %}}
 
@@ -567,8 +561,8 @@ lucid make:job UpdateProductDetails product
 
 Would generate two files:
 
-- `src/Domains/Product/Jobs/UpdateProductDetailsJob`
-- `src/Domains/Product/Tests/Jobs/UpdateProductDetailsJobTest`
+- `app/Domains/Product/Jobs/UpdateProductDetailsJob`
+- `app/Domains/Product/Tests/Jobs/UpdateProductDetailsJobTest`
 
     {{% /tab %}}
 

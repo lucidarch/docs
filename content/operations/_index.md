@@ -100,11 +100,7 @@ Use `lucid` CLI to generate an Operation class that extends Lucid's Operation ba
 {{% tabs %}}
 
     {{% tab "Micro" %}}
-**Signature**
-
-```bash
-lucid make:operation <operation> {--Q|queue}
-```
+**Signature** `lucid make:operation <operation> {--Q|queue}`
 
 **Example**
 ```bash
@@ -116,11 +112,7 @@ and its test at `tests/Operations/NotifySubscribersOperationTest.php`
     {{% /tab %}}
 
     {{% tab "Monolith" %}}
-**Signature**
-
-```bash
-lucid make:operation <operation> <service> {--Q|queue}
-```
+**Signature** `lucid make:operation <operation> <service> {--Q|queue}`
 
 **Example**
 
@@ -128,9 +120,9 @@ lucid make:operation <operation> <service> {--Q|queue}
 lucid make:operation NotifySubscribers publishing
 ```
 
-Generated class will be at `src/Services/Publishing/Operations/NotifySubscribersOperation.php`
+Generated class will be at `app/Services/Publishing/Operations/NotifySubscribersOperation.php`
 
-and its test at `src/Services/Publishing/Tests/Operations/NotifySubscribersOperationTest.php`
+and its test at `app/Services/Publishing/Tests/Operations/NotifySubscribersOperationTest.php`
 
     {{% /tab %}}
 
@@ -237,8 +229,8 @@ lucid make:operation NotifySubscribers publishing
 
 Would generate two files:
 
-- `src/Services/Publishing/Operations/NotifySubscribersOperation.php`
-- `src/Services/Publishing/Tests/Operations/NotifySubscribersOperationTest.php`
+- `app/Services/Publishing/Operations/NotifySubscribersOperation.php`
+- `app/Services/Publishing/Tests/Operations/NotifySubscribersOperationTest.php`
 
     {{% /tab %}}
 
