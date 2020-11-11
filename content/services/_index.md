@@ -584,3 +584,25 @@ Even though you may wish to also have proprietary domains in the services themse
 
 Visit ["Micro vs. Monolith"]({{%ref "/micro-vs-monolith"%}}) for more.
 
+## SOA & Lucid
+
+When the word "services" is mentinoed it is invevitable to drift in thought towards Service-Orienter Architecture,
+where controllers call a method from a "service" class that performs the work required. In most cases where this structure
+is used, it was found that eventually services became the new controllers - large and full of unmaintainable logic.
+In addition to the difficulty in sharing code between services due to the tight coupling with other components.
+
+For that reason, Lucid services take it up a level to give the service a structure that allows it to grow, by organize its code
+according to a familiar structure and expose its functionalities.
+
+### Are Lucid Services Complient to SOA?
+
+In brief, yes. However, there's a difference in the hierarchy:
+
+- In SOA, the application layer is at the top, it includes the services that are needed and the application registers
+and handles the routing, controller and directs the requests to the service's entrypoint.
+- Lucid Services on the other hand give that power to the service so that it implements all that is required from routes, controllers,
+and the rest, and the application will only register the service.
+This approach has proven to be efficient at scale due to the degree of separation, specifically with team collaboration, interoperability
+and integrity.
+
+{{<figure alt="Lucid Service & Service-Oriented Architecture" src="/media/images/services/soa.png" width="500">}}

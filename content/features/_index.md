@@ -273,8 +273,8 @@ If the feature is served over an HTTP request, the test would be about actually 
 to receive the expected output, in addition to further assertions in the case of storage or other application aspects
 that require further assertion.
 
-{{% notice light %}}
-The example below is incomplete (e.g. `$fake` must be defined) just to illustrate the concept.
+{{% notice secondary %}}
+The example below is incomplete and is for illustrative purposes only (e.g. `$fake` must be defined).
 {{% /notice %}}
 
 ```php
