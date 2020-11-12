@@ -19,7 +19,7 @@ providers, tests and database; allowing our application to contain sections that
 clutter yet keep code navigation straight-forward.
 
 The example below illustrates a comparison between a Lucid Monolith and a traditional directory separation in an application that
-has Chat, Product Management, Task Management, Api and Admin listed with their features below:
+has Chat, Product Management, Forum, Api and Admin listed with their features below:
 
 {{<columns>}}
 
@@ -30,15 +30,15 @@ has Chat, Product Management, Task Management, Api and Admin listed with their f
     - Share message
     - Connect to channel
     - Search messages
-- Task Management
-    - CRUD tasks
-    - CRUD projects
-    - Manage tasks in lists
-    - Schedule task
-    - Set task priority
-    - Add user to project
-    - Follow/unfollow task
-    - Search tasks
+- Forum
+    - CRUD questions
+    - Manage questions in categories
+    - Schedule newsletter update
+    - Set answer as accepted
+    - Promote user as member
+    - Follow/unfollow question
+    - Search questions
+    - SEO
 
 <--->
 
@@ -57,7 +57,7 @@ has Chat, Product Management, Task Management, Api and Admin listed with their f
     - CRUD application (like Slack & Facebook apps etc.)
     - Send message
     - Subscribe to product updates
-    - Subscribe to task updates
+    - Subscribe to question updates
 
 {{</columns>}}
 
@@ -96,6 +96,12 @@ app/Services/Chat
 </pre>
 {{%/excerpt%}}
 
+{{% notice info %}}
+{{<icon name="fa-info-circle">}}&nbsp;This is the initial structure of a service, however you may choose to customise it for what it needs only, for example if you
+prefer to have the database stuff at the root or that this service doesn't have any database work to do on its own,
+you would simply remove it from within the service. Similar for Console and everything else.
+{{% /notice %}}
+
 ---
 
 Here's an illustrative comparison between the traditional and the services approaches in routing and controllers:
@@ -125,8 +131,8 @@ and avoid conflicts as a team.
 `app/Services/Chat/routes/web.php`
 ![Lucid Chat Routes Structure](/media/images/services/structure-lucid-chat.png)
 
-`app/Services/TaskManagement/routes/web.php`
-![Lucid Tasks Routes Structure](/media/images/services/structure-lucid-tasks.png)
+`app/Services/Forum/routes/web.php`
+![Lucid Forum Routes Structure](/media/images/services/structure-lucid-tasks.png)
 
 `app/Services/Admin/routes/web.php`
 ![Lucid Admin Routes Structure](/media/images/services/structure-lucid-admin.png)
@@ -151,7 +157,7 @@ have to go digging for code in foreign directories.
 app/Http/Controllers
 ├── Admin
 │   ├── ProductController.php
-│   ├── ProjectController.php
+│   ├── ForumController.php
 │   ├── UserController.php
 │   └── WorkspaceController.php
 ├── Api
@@ -162,10 +168,10 @@ app/Http/Controllers
 │   └── MessageController.php
 ├── Products
 │   └── ProductController.php
-└── Tasks
-    ├── ListController.php
-    ├── ProjectController.php
-    └── TaskController.php
+└── Forum
+    ├── QuestionController.php
+    ├── CategoryController.php
+    └── MemberController.php
 </pre>
 
 <--->
@@ -175,7 +181,7 @@ app/Http/Controllers
 <pre>
 app/Services/Admin/Http/Controllers
    ├── ProductController.php
-   ├── ProjectController.php
+   ├── ForumController.php
    ├── UserController.php
    └── WorkspaceController.php
 
@@ -190,10 +196,10 @@ app/Services/Chat/Http/Controllers
 app/Services/ProductManagement/Http/Controllers
    └── ProductController.php
 
-app/Services/TaskManagement/Http/Controllers
-    ├── ListController.php
-    ├── ProjectController.php
-    └── TaskController.php
+app/Services/Forum/Http/Controllers
+    ├── QuestionController.php
+    ├── MemberController.php
+    └── CategoryController.php
 </pre>
 
 {{</columns>}}
