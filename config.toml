@@ -2,6 +2,7 @@ baseURL = "https://docs.lucidarch.dev"
 languageCode = "en-GB"
 title = "Lucid"
 theme = "docport"
+googleAnalytics = "UA-96232175-1"
 enableRobotsTXT = true
 disableKinds = ["taxonomy", "taxonomyTerm", "category", "RSS"]
 pygmentsUseClasses = true
