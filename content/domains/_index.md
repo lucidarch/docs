@@ -70,6 +70,7 @@ app/Domains/GitHub
 │   ├── InvalidTokenException.php
 │   └── RepositoryNotFoundException.php
 └── Tests
+    └── GitHubClientTest.php
     └── Jobs
         ├── FetchGitHubReposJobTest.php
         └── LoginWithGitHubJobTest.php
@@ -129,8 +130,10 @@ class FetchGitHubRepoInfoJob extends Job
 
 ## Testing
 
-Domains contain the tests of their jobs and classes in order to be self-sufficient. Job tests are automatically generated
-in the corresponding locations upon generating jobs:
+Domains contain the tests of their jobs and classes in order to be self-sufficient. They are considered to be unit tests
+so that the domain can provide the guarantee of a working unit, that way we focus on feature tests in the rest of the application.
+
+When generating Jobs, their tests are automatically generated in the corresponding locations:
 
 ```bash
 lucid make:job FetchGitHubRepoInfoJob GitHub

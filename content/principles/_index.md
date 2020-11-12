@@ -9,7 +9,7 @@ hide: ["toc", "header"]
 {{%panel%}}
 ## Features shall serve a single purpose
 
-Favour creating as many of them as you wish rather than complicating one.
+Favour creating as many of them as you wish rather than complicating a single one.
 {{%/panel%}}
 
 {{% panel %}}
@@ -21,8 +21,8 @@ No job should do two things at a time, it will only get confusing the more you d
 {{% panel %}}
 ## Domains shouldn't cross
 
-When within a domain, strive to preserve the boundaries by not using functionality from other domains.
-If encountered a case where you should, consider Foundation, Operations and Features by rethinking your design.
+When working within a domain, strive to preserve the boundaries by not using functionality from other domains.
+If you encounter a case where you should, consider Foundation, Operations and Features by rethinking your design.
 {{% /panel %}}
 
 {{% panel %}}

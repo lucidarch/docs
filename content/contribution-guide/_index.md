@@ -14,12 +14,7 @@ However, if you file a bug report, your issue should contain a title and a clear
 
 Remember, bug reports are created in the hope that others with the same problem will be able to collaborate with you on solving it. Do not expect that the bug report will automatically see any activity or that others will jump to fix it. Creating a bug report serves to help yourself and others start on the path of fixing the problem.
 
-The Lucid Architecture source code is on GitHub, and there are repositories for each of the instance types:
-
-- [Console](https://github.com/lucid-architecture/console-laravel)
-- [Foundation](https://github.com/lucid-architecture/foundation-laravel)
-- [Laravel • Monolith](https://github.com/lucid-architecture/laravel)
-- [Laravel • Microservice](https://github.com/lucid-architecture/laravel-microservice)
+The Lucid Architecture source code is on GitHub as [lucidarch/lucid](https://github.com/lucid-architecture/lucid).
 
 ## Support Questions
 
@@ -30,9 +25,11 @@ Lucid Architecture's GitHub issue trackers are not intended to provide help or s
 
 ## Core Development Discussion
 
-You may propose new features or improvements of existing Lucid Architecture behaviour in the Lucid Ideas [issue board](https://github.com/lucid-architecture/ideas/issues). If you propose a new feature, please be willing to implement at least some of the code that would be needed to complete the feature.
+You may propose new features or improvements of existing Lucid Architecture behaviour in the Lucid Ideas [issue board](https://github.com/lucid-architecture/ideas/issues).
+If you propose a new feature, please be willing to implement at least some of the code that would be needed to complete the feature.
 
-Informal discussion regarding bugs, new features, and implementation of existing features takes place in the `#internals` channel of the [Lucid Slack workspace](https://lucid-slack.herokuapp.com/). Abed Halawi, the maintainer of Lucid, is typically present in the channel on weekdays from 8am-5pm EEST (Eastern European Summer Time), and sporadically present in the channel at other times.
+Informal discussion regarding bugs, new features, and implementation of existing features takes place in the `#internals` channel of the [Lucid Slack workspace](https://lucid-slack.herokuapp.com/).
+Abed Halawi, the maintainer of Lucid, is typically present in the channel on weekdays from 8am-5pm EEST (Eastern European Summer Time), and sporadically present in the channel at other times.
 
 ## Which Branch?
 
