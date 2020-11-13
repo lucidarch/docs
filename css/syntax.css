@@ -49,7 +49,7 @@
 /* LiteralNumberInteger */ .chroma .mi { color: #009999 }
 /* LiteralNumberIntegerLong */ .chroma .il { color: #009999 }
 /* LiteralNumberOct */ .chroma .mo { color: #009999 }
-/* Operator */ .chroma .o { color: #445588; font-weight: bold }
+/* Operator */ .chroma .o { color: #000000; font-weight: bold }
 /* OperatorWord */ .chroma .ow { color: #000000; font-weight: bold }
 /* Comment */ .chroma .c { color: #999988; font-style: italic }
 /* CommentHashbang */ .chroma .ch { color: #999988; font-style: italic }
@@ -71,3 +71,170 @@
 /* GenericUnderline */ .chroma .gl { text-decoration: underline }
 /* TextWhitespace */ .chroma .w { color: #bbbbbb }
 /* TextWhitespace */ .chroma .nx { color: #000000 }
+
+/*
+
+ -- GitHub Gist Custom Style --
+
+Customising GitHub Gist as a workaround for
+a bug with syntax highlighting within custom shortcodes
+that's causing corrupted HTML
+*/
+
+body .gist .gist-file {
+  border: none !important;
+  border-bottom: none !important;
+}
+
+body .gist .gist-data {
+  background: rgb(245, 247, 249);
+  border: none;
+  color: #A0A8B3;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 0;
+}
+
+body .gist .gist-data .blob-wrapper {
+  max-width: 100%;
+  padding-bottom: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+body .gist .highlight {
+  background: rgb(245, 247, 249);
+  max-width: 800px;
+  overflow-x: scroll;
+  border: none !important;
+}
+
+body .gist .highlight td, body .gist .highlight tbody {
+  border: none !important;
+}
+
+body .gist .blob-num {
+    display: none;
+}
+
+body .gist .blob-code-inner,
+body .gist .pl-ent,
+body .gist .pl-s1,
+body .gist .pl-s1 .pl-s2,
+body .gist .pl-smi,
+body .gist .pl-smp,
+body .gist .pl-stj,
+body .gist .pl-vo,
+body .gist .pl-v,
+body .gist .pl-vpf {
+  color: #000000;
+}
+
+body .gist .pl-c,
+body .gist .pl-c span {
+  color: #66747b;
+  font-style: italic;
+}
+
+body .gist .pl-mb {
+  color: #ec7600;
+  font-weight: 700;
+}
+
+body .gist .pl-mh .pl-en {
+  color: #66747b;
+  font-weight: 700;
+}
+
+body .gist .pl-mi {
+  color: #93c763;
+  font-style: italic;
+}
+
+body .gist .pl-sc {
+  color: #96989a;
+}
+
+body .gist .pl-st {
+  color: #da4236;
+}
+
+body .gist .pl-c1 > .pl-c1 {
+  color: #678cb1;
+}
+
+body .gist .pl-c1,
+body .gist .pl-sr .pl-cce {
+  color: #ffcd22;
+}
+
+body .gist .pl-e,
+body .gist .pl-k,
+body .gist .pl-mdh,
+body .gist .pl-mdr,
+body .gist .pl-ml,
+body .gist .pl-mm,
+body .gist .pl-mo,
+body .gist .pl-mp,
+body .gist .pl-mr,
+body .gist .pl-ms,
+body .gist .pl-s1,
+body .gist .pl-s3 {
+  color: #2b49a1;
+}
+
+body .gist .pl-en{
+  color: #008080;
+}
+
+body .gist .pl-mh,
+body .gist .pl-mq {
+  color: #66747b;
+}
+
+body .gist .pl-s {
+    color: #b063c9;
+}
+
+body .gist .pl-pds,
+body .gist .pl-s1 .pl-pse .pl-s2,
+body .gist .pl-sv {
+  color: #ec7600;
+}
+
+body .gist .pl-sr,
+body .gist .pl-sr .pl-sra,
+body .gist .pl-sr .pl-sre,
+body .gist .pl-src {
+  color: #d39745;
+}
+
+body .gist .pl-mi1,
+body .gist .pl-mdht {
+  color: #e0e2e4;
+  background: rgba(0, 64, 0, 0.5);
+}
+
+body .gist .pl-md,
+body .gist .pl-mdhf,
+body .gist .pl-id,
+body .gist .pl-ii {
+  color: #e0e2e4;
+  background: rgba(64, 0, 0, 0.5);
+}
+
+body .gist .gist-meta {
+  display: none;
+  background: #ccc;
+  border-radius: 0 0 4px 4px;
+  font-size: 14px;
+  padding: 6px 16px;
+}
+
+body .gist .gist-meta a {
+  color: #E96B2C;
+}
+
+body .gist .gist-meta a:hover {
+  text-decoration: underline;
+}
