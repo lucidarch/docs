@@ -50,7 +50,7 @@ has Chat, Product Management, Forum, Api and Admin listed with their features be
     - Search products
 - Admin
     - CRUD users
-    - CRUD workspaces
+    - CRUD organizations
     - CRUD products
     - CRUD projects
 - Api
@@ -106,45 +106,130 @@ you would simply remove it from within the service. Similar for Console and ever
 
 Here's an illustrative comparison between the traditional and the services approaches in routing and controllers:
 
-### Routes
-
-{{<columns>}}
+### Routes Showcase
 
 **Traditional**
 
 Using the traditional approach where all of our routes are in `routes/web.php`, we'll find that this file will keep growing
 the more functionalities we add. Also, if more than a single person is working on it, it is highly likely to produce conflicts
-among team members on merge.
+on merge which is always an unpleasant experience.
 
-![Traditional Structure](/media/images/services/structure-traditional.png)
+{{% notice light %}}
+{{<icon name="fa-info-circle">}} Expand file locations to see their code.
+{{% /notice %}}
+
+<span class="lucid-code-expand">
+{{% expand "routes/web.php" %}}
+{{<gist mulkave 89eb6b9c6b0f9ab8574ab8e7a32aa8d2>}}
+{{% /expand %}}
+</span>
+
+<span class="lucid-code-expand">
+{{% expand "routes/api.php" %}}
+{{<gist mulkave 316bf292318f16862103b248c363d38c>}}
+{{% /expand %}}
+</span>
+
 
 Of course there are ways to separate routes into several files and load them in the service provider, but routing isn't
 the only problem that we will be facing, it is just a part of it.
 
-<--->
-
-**Lucid Service Routes**
+**Lucid Service Routes Showcase**
 
 On the other hand, with services we've separated these routes files where they belong to have a pleasant experience working with them
 and avoid conflicts as a team.
 
-`app/Services/Chat/routes/web.php`
-![Lucid Chat Routes Structure](/media/images/services/structure-lucid-chat.png)
+<span class="lucid-code-expand">
+{{% expand "app/Services/Chat/routes/web.php" %}}
 
-`app/Services/Forum/routes/web.php`
-![Lucid Forum Routes Structure](/media/images/services/structure-lucid-tasks.png)
+```php
+Route::middleware(['auth', 'subscription'])->group('chat', function() {
+    Route::post('/messages', [ChatController::class, 'sendMessage']);
+    Route::put('/messages/{id}', [ChatController::class, 'updateMessage']);
+    Route::post('/messages/{id}/share', [ChatController::class, 'shareMessage']);
+    Route::post('/channels/{channel}/connect', [ChatController::class, 'connect']);
+    Route::post('/search', [ChatController::class, 'search']);
+});
+```
+{{% /expand %}}
+</span>
 
-`app/Services/Admin/routes/web.php`
-![Lucid Admin Routes Structure](/media/images/services/structure-lucid-admin.png)
+<span class="lucid-code-expand">
+{{% expand "app/Services/Forum/routes/web.php" %}}
 
-`app/Services/Api/routes/web.php`
-![Lucid Api Routes Structure](/media/images/services/structure-lucid-api.png)
+```php
+Route::middleware(['auth', 'subscription'])->group('forum', function() {
+    Route::get('/questions', [ForumController::class, 'questions']);
+    Route::post('/questions', [ForumController::class, 'addQuestion']);
+    Route::put('/questions/{id}', [ForumController::class, 'updateQuestion']);
+    Route::delete('/questions/{id}', [ForumController::class, 'deleteQuestion']);
+    Route::put('/questions/{id}/category', [ForumController::class, 'category']);
+    Route::put('/questions/{id}/accept', [ForumController::class, 'accept']);
+    Route::post('/questions/{id}/follow', [ForumUserController::class, 'follow']);
+    Route::get('/questions/search', [ForumUserController::class, 'search']);
+    Route::put('/users/{id}/promote', [ForumUserController::class, 'promote']);
+});
+```
+{{% /expand %}}
+</span>
 
-{{</columns>}}
+<span class="lucid-code-expand">
+{{% expand "app/Services/Products/routes/web.php" %}}
+
+```php
+Route::middleware(['auth', 'subscription'])->group('products', function() {
+    Route::get('/search', [ProductController::class, 'search']);
+    Route::get('/', [ProductController::class, 'get']);
+    Route::get('/{id}', [ProductController::class, 'show']);
+    Route::post('/', [ProductController::class, 'add']);
+    Route::put('/{id}', [ProductController::class, 'update']);
+    Route::delete('/{id}', [ProductController::class, 'delete']);
+    Route::put('/{id}/category', [ProductController::class, 'category']);
+    Route::put('/{id}/price', [ProductController::class, 'price']);
+    Route::put('/{id}/stock', [ProductController::class, 'stock']);
+});
+```
+{{% /expand %}}
+</span>
+
+<span class="lucid-code-expand">
+{{% expand "app/Services/Api/routes/api.php" %}}
+
+```php
+Route::middleware(['throttle:api'])->group('api', function () {
+    Route::get('/apps/search', [AppController::class, 'search']);
+    Route::get('/apps', [AppController::class, 'get']);
+    Route::get('/apps/{id}', [AppController::class, 'show']);
+    Route::post('/apps', [AppController::class, 'add']);
+    Route::put('/apps/{id}', [AppController::class, 'update']);
+    Route::delete('/apps/{id}', [AppController::class, 'delete']);
+    Route::post('/channels/{id}', [ChatController::class, 'subscribe']);
+    Route::post('/products/{id}', [ProductController::class, 'subscribe']);
+    Route::post('/questions/{id}', [ForumController::class, 'subscribe']);
+});
+```
+{{% /expand %}}
+</span>
+
+<span class="lucid-code-expand">
+{{% expand "app/Services/Admin/routes/web.php" %}}
+{{<gist mulkave 37bb21541cf42f2cafa6f3fe98c8e0c3>}}
+{{% /expand %}}
+</span>
+
+Another variation of routes would be to reduce Admin routes by including them in their corresponding services instead of having
+Admin service include them all. Both approaches have their benefits so you may choose whichever works best for your case.
+
+<span class="lucid-code-expand">
+{{% expand "app/Services/Products/routes/web.php" %}}
+{{<gist mulkave 72777eabde48996067daf968b62c468f>}}
+{{% /expand %}}
+</span>
+
 
 ---
 
-### Controllers
+### Controllers Showcase
 
 Consolidating routes and controllers in services allows us to have them side-by-side within the same context, so that we don't
 have to go digging for code in foreign directories.
@@ -159,7 +244,7 @@ app/Http/Controllers
 │   ├── ProductController.php
 │   ├── ForumController.php
 │   ├── UserController.php
-│   └── WorkspaceController.php
+│   └── OrganizationController.php
 ├── Api
 │   ├── AppController.php
 │   ├── ChatController.php
@@ -183,7 +268,7 @@ app/Services/Admin/Http/Controllers
    ├── ProductController.php
    ├── ForumController.php
    ├── UserController.php
-   └── WorkspaceController.php
+   └── OrganizationController.php
 
 app/Services/Api/Http/Controllers
    ├── AppController.php
@@ -210,27 +295,33 @@ app/Services/Forum/Http/Controllers
 
 {{<columns>}}
 
-**Concentration**
+{{% panel %}}
+### Concentration
 
 Working on a feature in a service wouldn't concern you with others outside the bounds of said service.
+{{% /panel %}}
 
 <--->
 
-**Efficiency**
+{{% panel %}}
+### Efficiency
 
-Reduced code merge time when working with a team by avoiding conflicts hell when all is working on the same files, yet different tasks.
+Reduced code review time and merge conflicts when working with a team, due to the separation of concerns.
+{{% /panel %}}
 
 <--->
 
-**Separation**
+{{% panel %}}
+### Separation
 
 Consider having Single Responsibility and Separation of Concerns, not only at the code level, but also in the structure.
+{{% /panel %}}
 
 {{</columns>}}
 
 {{%notice info%}}
 {{<icon name="fa-asterisk">}}&nbsp;Remember that it is completely optional to use Services. In fact there is no obligation
-with Lucid, pick any unit from the stack and use it to your convenience; just preserve Lucid's guidelines as you do.
+whatsoever with Lucid, pick any unit from the stack and use it to your convenience; just preserve Lucid's guidelines as you do.
 {{%/notice%}}
 
 ## Create a Service
@@ -243,11 +334,54 @@ This will generate the directory structure for a service in `app/Services/Chat/*
 
 {{% excerpt-include filename="/services/_index.md" /%}}
 
-**Register Service:** Once created you'll need to tell Laravel about it so that it loads its files from routes, migrations, views etc.
+### Register Service
 
-Add `App\Services\Chat\Providers\ChatServiceProvider::class` to `'providers'` in `config/app.php`.
+Once created we'll need to tell Laravel about our service so that it loads its files such as routes, migrations, views and others.
+There are two ways to register the service's provider, in this case it's `ChatServiceProvider`:
 
-### Run Tests With PHPUnit
+**1. In Configuration: `config/app.php`**
+
+Add `App\Services\Chat\Providers\ChatServiceProvider::class` to `'providers'` in `config/app.php`
+
+This will register and load the service every time the application launches.
+
+**2. In `AppServiceProvider::register`**
+
+```php
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use App\Services\Api\Providers\ApiServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->register(ApiServiceProvider::class);
+    }
+}
+```
+
+This opens up possibilities for conditional registration of services. For example you may choose to load Dashboard service
+only when in the local environment:
+
+```php
+public function register()
+{
+    if (App::environment('local')) {
+        $this->app->register(DashboardServiceProvider::class);
+    }
+}
+```
+
+### Run Service Tests
 
 Initially service tests aren't automatically registered in `phpunit.xml` to run by default when running `phpunit`.
 To do that, please add the following to your `phpunit.xml` under `<testsuites>` (must be done for each service), which also
@@ -257,6 +391,12 @@ allows running the service's testsuite in isolation with `phpunit --testsuite <n
 <testsuite name="Chat">
     <directory suffix="Test.php">./app/Services/Chat/Tests</directory>
 </testsuite>
+```
+
+Now we can run the tests for this service in isolation:
+
+```bash
+phpunit --testsuite Chat
 ```
 
 ## Working with Services
@@ -566,7 +706,6 @@ Then register `RiakServiceProvider` in the service's provider to be automaticall
 ```php
 public function regsiter()
 {
-    ...
     $this->app->register(RiakServiceProvider::class);
 }
 ```
