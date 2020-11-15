@@ -2,11 +2,11 @@
 title: "Micro • Monolith"
 date: 2020-11-07T22:25:15Z
 draft: false
-weight: 12
+weight: 13
 hide: ["header"]
 ---
 
-Often times we start projects not knowing how they will evolve over time, they may reach a steady maintainance stage with small tweaks here and there,
+Often times we start building our applications with little forecast on how they will evolve over time, they may reach a steady maintainance stage with small tweaks here and there,
 or undergo pivots that require a high degree of flexibility to not clutter and cause an abundance of technical debt.
 
 In both cases, the familiarity with the system's architecture is the guaranteed constant to protect our codebase from going out of bounds.
