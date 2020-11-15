@@ -2,7 +2,7 @@
 title: "Micro • Monolith"
 date: 2020-11-07T22:25:15Z
 draft: false
-weight: 10
+weight: 12
 hide: ["header"]
 ---
 

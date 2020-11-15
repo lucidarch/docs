@@ -115,7 +115,7 @@ the more functionalities we add. Also, if more than a single person is working o
 on merge which is always an unpleasant experience.
 
 {{% notice light %}}
-{{<icon name="fa-info-circle">}} Expand file locations to see their code.
+{{<icon name="fa-info-circle">}}&nbsp;Expand file locations to see their code.
 {{% /notice %}}
 
 <span class="lucid-code-expand">

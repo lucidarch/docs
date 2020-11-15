@@ -6,4 +6,4 @@ hide: [toc, header, nextpage]
 
 ---
 
-<meta http-equiv="refresh" content='0; url={{% ref "/introduction"%}}' />
+<meta http-equiv="refresh" content='0; url={{% ref "/installation"%}}' />
