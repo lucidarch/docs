@@ -1,7 +1,7 @@
 ---
 title: "Installation"
 date: 2020-11-13T18:14:56Z
-draft: true
+draft: false
 weight: 11
 head: "<hr />"
 hide: ["header"]

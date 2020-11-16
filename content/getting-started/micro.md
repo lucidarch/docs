@@ -200,7 +200,7 @@ to submit a link with a title and a description:
 
 ```
 
-Generate `LinkController` to manage our links using `lucid` to have it ready for serving features.
+Generate `LinkController` to manage our links using `lucid` and have it ready for serving features.
 
 ```bash
 lucid make:controller Link
