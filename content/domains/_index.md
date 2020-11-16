@@ -2,7 +2,7 @@
 title: "Domains"
 date: 2020-11-08T19:34:03Z
 draft: false
-weight: 10
+weight: 13
 hide: ["header"]
 ---
 

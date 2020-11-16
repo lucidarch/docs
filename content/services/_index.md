@@ -2,7 +2,7 @@
 title: "Services"
 date: 2020-11-06T05:13:11Z
 draft: false
-weight: 9
+weight: 12
 hide: ["header"]
 ---
 
