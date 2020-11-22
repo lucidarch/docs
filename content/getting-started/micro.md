@@ -6,6 +6,10 @@ weight: 1
 hide: ["header"]
 ---
 
+{{% notice light %}}
+<i class="fab fa-github fa-lg"></i>&nbsp;The source code for this exercise is on [GitHub](https://github.com/lucid-architecture/getting-started-micro).
+{{% /notice %}}
+
 In this guide we're going to build a link directory where we can register and save links of our own using Lucid Micro -
 the default variant for single-purpose applications.
 
@@ -65,7 +69,7 @@ without affecting the code.
     `.env`
     ```ini
     DB_CONNECTION=sqlite
-    DB_DATABASE="storage/app/database/database.sql"
+    DB_DATABASE={ABSOLUTE PATH}/storage/app/database/database.sql
     ```
 
 3. Create tables
@@ -119,7 +123,9 @@ To create an account click on Register at the top right and enter your account d
 
 ## Link Submission
 
-First, create a new route in `routes/web.php`:
+### View
+
+First, create a new route to serve our view in `routes/web.php`:
 
 ```php
 Route::get('/submit', function() {
@@ -200,6 +206,8 @@ to submit a link with a title and a description:
 
 ![Submit Form](/media/images/getting-started/submit.png)
 
+### Controller
+
 Generate `LinkController` to manage our links using `lucid` and have it ready for serving features.
 
 ```bash
@@ -235,6 +243,8 @@ class LinkController extends Controller
     }
 }
 ```
+
+### Feature
 
 The `add` method will then serve the feature that will run the jobs required to add links.
 Generate a feature called `AddLinkFeature`:
@@ -277,6 +287,8 @@ use App\Http\Controllers\LinkController;
 Route::post('/submit', [LinkController::class, 'add']);
 ```
 
+So far so good, now we'll fill our feature with the steps required to add a link.
+
 ### Database & Model
 
 Before we can start accepting data we need to prepare our database with a migration to create the links table:
@@ -285,7 +297,7 @@ Before we can start accepting data we need to prepare our database with a migrat
 php artisan make:migration create_links_table --create=links
 ```
 
-The generated file will contain the creation schema at `database/migrations/{datetime}_create_links_table`.
+The generated file will contain the creation schema at `database/migrations/{datetime}_create_links_table.php`.
 Let's add the fields for our link:
 
 ```php
@@ -330,9 +342,9 @@ The first step of receiving input is to validate it. We will be using [Form Requ
 where each Request belongs in a Domain representing the entity that's being managed, in this case it's `Link` containing an `AddLink` Request class.
 
 This will be the beginning of working with Domains in Lucid. They're used to group Jobs and custom classes which logic is
-associated with certain topic according to the domain-driven design.
+associated with certain topic according to domain-driven design.
 
-Starting with validation, Lucid positions Request classes within their corresponding domains. Let's generate an `AddLink` request:
+Starting with validation, Lucid places Request classes within their corresponding domains. Let's generate an `AddLink` request:
 
 ```bash
 lucid make:request AddLink link
@@ -344,7 +356,7 @@ Request class created successfully.
 Find it at app/Domains/Link/Requests/AddLink.php
 ```
 
-In the `AddLink` we'll need to update the methods `authorize()` and `rules()` to validate the request and its input:
+In `AddLink` we'll need to update the methods `authorize()` and `rules()` to validate the request and its input:
 
 ```php
 <?php
@@ -405,7 +417,7 @@ class AddLinkFeature extends Feature
 
 Now if we visit `/submit` and click `Add` wihtout passing any input it will generate errors and print their messages from validation failures.
 
-![Validation errors UI](/media/images/getting-started/validation-errors.png)
+![Validation errors UI](/media/images/getting-started/links-validation-errors.png)
 
 ### Save Links
 
@@ -418,7 +430,7 @@ lucid make:job SaveLik link
 
 {{% notice info %}}
 {{<icon name="fa-asterisk">}}&nbsp;Notice the naming that we've used with this job "`SaveLinkJob`" in contrast with "`AddLink`".
-It is intended for reuse whenever needed by extending its functionality futher as we will see through this guide.
+It is intended for reuse whenever needed by extending its functionality futher, for example `UpdateLink` feature may be able to use the same job.
 {{% /notice %}}
 
 `SaveLinkJob` should define the parameters that are required in its constructor, a.k.a the job's *signature*, rather than accessing
@@ -597,19 +609,47 @@ class RedirectBackJob extends Job
 
 ```
 
-### Testing
+## Testing
 
 If you visit `/submit` fill the form it should now add the links, but to be certain about the functionality we just built
-it is necessary that we write some tests to ensure that continues to.
+it is necessary that we write some tests to ensure it continues to.
 
-**Unit Tests**
+### Configure PHPUnit
+
+First we need to configure the database to run in a memory SQLite database instance, in `phpunit.xml`
+uncomment the following lines:
+
+```xml
+<server name="DB_CONNECTION" value="sqlite"/>
+<server name="DB_DATABASE" value=":memory:"/>
+```
+
+And for domain tests to be automatically detected by PHPunit,
+we'll need to add the following snippet to `phpunit.xml` within the `<testsuites>` tag:
+
+```xml
+<testsuite name="Domains">
+    <directory suffix="Test.php">./app/Domains</directory>
+</testsuite>
+<testsuite name="Features">
+    <directory suffix="Test.php">./tests/Features</directory>
+</testsuite>
+```
+
+{{% notice secondary %}}
+This also allows us to run this suite in isolation with `phpunit --testsuite Domains`
+{{% /notice %}}
+
+### Unit Tests
+
 Jobs in Lucid are units, and their tests are that of a unit test where we verify that all the variations of the data it might
 receive wouldn't misbehave unexpectedly.
 
-Let's write a test for `SaveLinkJob` in `app/Domains/Link/Tests/Jobs/SaveLinkJobTest` which has already been generated by `lucid`:
+Let's write a test for `SaveLinkJob` in `app/Domains/Link/Tests/Jobs/SaveLinkJobTest` which has already been created by `lucid`
+when generating the job:
 
 {{% notice danger %}}
-{{<icon name="fa-exclamation-triangle">}}&nbsp;Runnig this test prior to configuring `phpunit.xml` as mentioned below will wipe
+{{<icon name="fa-exclamation-triangle">}}&nbsp;Runnig tests prior to configuring `phpunit.xml` as mentioned above will wipe
 out the data that is currently in your database.
 {{% /notice %}}
 
@@ -648,36 +688,12 @@ class SaveLinkJobTest extends TestCase
 
 ```
 
-**Configure PHPUnit**
+For more on testing jobs visit [jobs#testing]({{<ref "/jobs#testing">}}).
 
-First we need to configure the database to run in a memory SQLite database instance, in `phpunit.xml`
-uncomment the following lines:
+### Feature Test
 
-```xml
-<server name="DB_CONNECTION" value="sqlite"/>
-<server name="DB_DATABASE" value=":memory:"/>
-```
-
-And for this test to be automatically detected by PHPunit, as well as any future test in Domains,
-we'll need to add the following snippet to `phpunit.xml` within the `<testsuites>` tag:
-
-```xml
-<testsuite name="Domains">
-    <directory suffix="Test.php">./app/Domains</directory>
-</testsuite>
-<testsuite name="Features">
-    <directory suffix="Test.php">./tests/Features</directory>
-</testsuite>
-```
-
-{{% notice secondary %}}
-This also allows us to run this suite in isolation with `phpunit --testsuite Domains`
-{{% /notice %}}
-
-**Feature Test**
-
-The last step is to test the feature's behaviour with different input variations and make sure that all responses are as expected.
-In principle, Lucid's feature tests are about testing the integration between the units that the feature runs.
+The last test is the feature's behaviour with different input variations and make sure that all responses are as expected.
+In principle, Lucid's feature tests are about testing the integration between the units that the feature runs (jobs and operations).
 
 Starting with our test layout as a plan to what we will be examining and prepare the test class by including `RefreshDatabase` trait:
 
@@ -723,7 +739,7 @@ class AddLinkFeatureTest extends TestCase
 
 Now we'll just fill the tests with corresponding calls and assertions:
 
-We expect a guest to not be able to submit links since in our Request class `AddLink::authorize()` we require authorization:
+We expect a guest to not be able to submit links since in our Request class `AddLink::authorize()` requires authorization:
 ```php
 public function test_guest_cannot_submit_a_link()
 {
@@ -824,13 +840,15 @@ and this is where this architecture's role becomes crucial. It is just like wine
 Here are a few points that are worth mentioning to showcase where the architecture came in and how it would help forward:
 
 - We are still using Laravel's internals and `artisan` for most of the things we did. This is intended to show how Lucid preserves
-Laravel's defaults and avoids replicating or replacing them; in fact it is here to complement them by taking care of elevating
+Laravel's defaults and avoids replicating or replacing them; in fact it complements them by elevating
 their presence and fitting them within a defined structure.
 
 - Navigating features couldn't get any easier, by looking at the `app/Features` directory you'd be able to have a summary of what
-this application does at a glance. Visiting a feature's class would also provide an overview of the steps required with the least
-details possible, yet available when wanting to dig deeper.
-In addition to the presence of tests that mirror these classes which makes it easy to update functionality with reduced unintentional impact.
+this application does at a glance.
+
+- Visiting a feature's class would also provide an overview of the steps required with the least
+details possible, yet details are available when wanting to dig deeper.
+In addition to the presence of tests that mirror these classes which makes it easy to update functionality with reduced unintentional negative impact.
 
 - Expanding on functionality such as `SaveArticleJob` makes it easy to achieve a high degree of reusable code.
 Consider updating a link, we'd still use this job to save an existing link by supplying an optional `id` parameter and have the
