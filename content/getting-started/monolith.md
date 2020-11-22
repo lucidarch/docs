@@ -6,6 +6,10 @@ weight: 2
 hide: ["header"]
 ---
 
+{{% notice light %}}
+<i class="fab fa-github fa-lg"></i>&nbsp;The source code for this exercise is on [GitHub](https://github.com/lucid-architecture/getting-started-monolith).
+{{% /notice %}}
+
 In this guide we're going to build an application to share and discuss food recipes that's made up of two sections:
 
 1. **Kitchen**: To manage and share recipes, calculating calories and avg. price.
@@ -874,9 +878,9 @@ class CalculateIngredientsTotalJob extends Job
     /**
      * Execute the job.
      *
-     * @return void
+     * @return float
      */
-    public function handle()
+    public function handle(): float
     {
         return $this->ingredients->sum('total');
     }
@@ -934,7 +938,7 @@ class CalculateRecipePriceOperation extends Operation
         $this->ingredients = $ingredients;
     }
 
-    public function handle() : float
+    public function handle(): float
     {
         $ingredients = $this->run(ParseIngredientsJob::class, [
             'ingredients' => $this->ingredients,
@@ -1020,9 +1024,9 @@ class SaveRecipeJob extends Job
     /**
      * Execute the job.
      *
-     * @return void
+     * @return Recipe
      */
-    public function handle()
+    public function handle(): Recipe
     {
         $attributes = [
             'title' => $this->title,
@@ -1315,6 +1319,8 @@ class ParseIngredientsJobTest extends TestCase
 {{% /notice %}}
 
 For more on testing jobs visit [jobs#testing]({{<ref "/jobs#testing">}}).
+
+The tests for the rest of the jobs are available in the [source code](https://github.com/lucid-architecture/getting-started-monolith).
 
 ---
 

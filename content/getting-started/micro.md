@@ -658,9 +658,9 @@ out the data that is currently in your database.
 
 namespace App\Domains\Link\Tests\Jobs;
 
-use Faker\Factory as Fake;
 use Tests\TestCase;
 use App\Data\Models\Link;
+use Faker\Factory as Fake;
 use App\Domains\Link\Jobs\SaveLinkJob;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
