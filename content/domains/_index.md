@@ -9,7 +9,7 @@ hide: ["header"]
 Inspired by Domain-Driven Development, this piece of the Lucid stack is merely directories that are all about organizing and categorizing
 code according to the topic they belong to.
 
-There is no specific way of organizing them because it differs per case, but according to our experience over
+There is no specific way of naming them because it differs per case, but according to our experience over
 the years we found that they're usually of two types, the "internal" and the "external" type of domain. Here are a few examples
 to illustrate the difference
 

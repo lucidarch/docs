@@ -75,7 +75,7 @@ app/Services/Chat
 │   ├── Controllers
 │   └── Middleware
 ├── Providers
-│   ├── ApiServiceProvider.php
+│   ├── ChatServiceProvider.php
 │   ├── BroadcastServiceProvider.php
 │   └── RouteServiceProvider.php
 ├── <strong>Tests</strong>
