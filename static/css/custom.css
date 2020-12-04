@@ -7,6 +7,15 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Raleway';
+    src: url('/font/Raleway-Regular.woff2') format('woff2'),
+        url('/font/Raleway-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 header {
     background: rgb(23, 162, 184) !important;
     border: none !important;

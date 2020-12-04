@@ -6,8 +6,10 @@ title: Footer
 
 {{% columns %}}
 
-<h3 style="color: #fdfdfd !important;">Lucid Architecture</h3>
+<div style="font-family: Raleway !important">
+<h3 style="color: #fdfdfd !important">lucid architecture</h3>
 for a scalable future software
+</div>
 
 <--->
 
