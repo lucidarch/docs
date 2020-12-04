@@ -7,13 +7,14 @@ title: Footer
 {{% columns %}}
 
 <h3 style="color: #fdfdfd !important;">Lucid Architecture</h3>
-for scalable software.
+for a scalable future software
 
 <--->
 
 <div style="display: flex; justify-content: flex-end; align-items: center;">
-    <div>
-        <a href="https://github.com/lucid-architecture" target="_blank"><i class="fab fa-github fa-lg"></i></a>
+    <div style="align-items: center; display: flex;">
+        <a href="https://lucidarch.dev" target="_blank"><img src="/icon/lucid-coloured.png" alt="Lucid website link" width="28px" style="margin-top:4px;" /></a>
+        <a href="https://github.com/lucid-architecture" target="_blank" style="margin-left: 10px;"><i class="fab fa-github fa-lg"></i></a>
         <a href="https://lucid-slack.herokuapp.com" target="_blank" style="margin-left: 10px;"><i class="fab fa-slack fa-lg"></i></a>
         <a href="https://www.reddit.com/r/LucidArchitecture/" target="_blank" style="margin-left: 10px;"><i class="fab fa-reddit-alien fa-lg"></i></a>
     </div>
