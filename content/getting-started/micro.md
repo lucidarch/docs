@@ -7,14 +7,14 @@ hide: ["header"]
 ---
 
 {{% notice light %}}
-<i class="fab fa-github fa-lg"></i>&nbsp;The source code for this exercise is on [GitHub](https://github.com/lucid-architecture/getting-started-micro).
+<i class="fab fa-github fa-lg"></i>&nbsp;The source code for this exercise is on [GitHub](https://github.com/lucidarch/getting-started-micro).
 {{% /notice %}}
 
 In this guide we're going to build a link directory where we can register and save links of our own using Lucid Micro -
 the default variant for single-purpose applications.
 
 {{% notice dark %}}
-{{<icon name="fa-archway">}} For Monolith - the multi-purpose service-oriented variant see [Getting Started • Monolith]({{<ref "/getting-started/monolith">}}).
+{{<icon name="fa-archway">}}&nbsp;For Monolith - the multi-purpose service-oriented variant see [Getting Started • Monolith]({{<ref "/getting-started/monolith">}}).
 {{% /notice %}}
 
 From the Lucid stack we'd be using

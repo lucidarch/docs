@@ -7,7 +7,7 @@ hide: ["header"]
 ---
 
 {{% notice light %}}
-<i class="fab fa-github fa-lg"></i>&nbsp;The source code for this exercise is on [GitHub](https://github.com/lucid-architecture/getting-started-monolith).
+<i class="fab fa-github fa-lg"></i>&nbsp;The source code for this exercise is on [GitHub](https://github.com/lucidarch/getting-started-monolith).
 {{% /notice %}}
 
 In this guide we're going to build an application to share and discuss food recipes that's made up of two sections:
@@ -1320,7 +1320,7 @@ class ParseIngredientsJobTest extends TestCase
 
 For more on testing jobs visit [jobs#testing]({{<ref "/jobs#testing">}}).
 
-The tests for the rest of the jobs are available in the [source code](https://github.com/lucid-architecture/getting-started-monolith).
+The tests for the rest of the jobs are available in the [source code](https://github.com/lucidarch/getting-started-monolith).
 
 ---
 
@@ -1480,7 +1480,7 @@ public function test_max_length_succeeds_when_under_max()
 We've covered a breadth of Lucid features with this exercise, however it only covered the `Kitchen` service.
 We are left with the Forum service, which is similar in process to Kitchen, just different business logic.
 For that reason we'll leave it to you to test your familiarity with the architecture, and the full source code
-is present as a reference <i class="fab fa-github fa-lg"></i>&nbsp;[Getting Started - Monolith](https://github.com/lucid-architecture/getting-started-monolith).
+is present as a reference <i class="fab fa-github fa-lg"></i>&nbsp;[Getting Started - Monolith](https://github.com/lucidarch/getting-started-monolith).
 
 ### Highlights
 

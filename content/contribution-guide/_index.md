@@ -14,7 +14,7 @@ However, if you file a bug report, your issue should contain a title and a clear
 
 Remember, bug reports are created in the hope that others with the same problem will be able to collaborate with you on solving it. Do not expect that the bug report will automatically see any activity or that others will jump to fix it. Creating a bug report serves to help yourself and others start on the path of fixing the problem.
 
-The Lucid Architecture source code is on GitHub as [lucidarch/lucid](https://github.com/lucid-architecture/lucid).
+The Lucid Architecture source code is on GitHub as [lucidarch/lucid](https://github.com/lucidarch/lucid).
 
 ## Support Questions
 
@@ -25,7 +25,7 @@ Lucid Architecture's GitHub issue trackers are not intended to provide help or s
 
 ## Core Development Discussion
 
-You may propose new features or improvements of existing Lucid Architecture behaviour in the Lucid Ideas [issue board](https://github.com/lucid-architecture/ideas/issues).
+You may propose new features or improvements of existing Lucid Architecture behaviour in the Lucid Ideas [issue board](https://github.com/lucidarch/ideas/issues).
 If you propose a new feature, please be willing to implement at least some of the code that would be needed to complete the feature.
 
 Informal discussion regarding bugs, new features, and implementation of existing features takes place in the `#internals` channel of the [Lucid Slack workspace](https://lucid-slack.herokuapp.com/).
@@ -38,9 +38,9 @@ What's on the `master` branch is always the latest Laravel version.
 
 The main repositories are the following:
 
-- Main: [Laravel (monolith)](https://github.com/lucid-architecture/laravel) and [Microservice](https://github.com/lucid-architecture/laravel-microservice)
-- [Foundation](https://github.com/lucid-architecture/foundation-laravel): Has Lucid units and other abstract classes such as Validator, Repository etc.
-- [Console](https://github.com/lucid-architecture/console-laravel)**:** contains the Console companion, the CLI and the dashboard
+- Main: [Laravel (monolith)](https://github.com/lucidarch/laravel) and [Microservice](https://github.com/lucidarch/laravel-microservice)
+- [Foundation](https://github.com/lucidarch/foundation-laravel): Has Lucid units and other abstract classes such as Validator, Repository etc.
+- [Console](https://github.com/lucidarch/console-laravel)**:** contains the Console companion, the CLI and the dashboard
 
 ## Compiled Assets
 
