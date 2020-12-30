@@ -8,7 +8,8 @@ hide: [header]
 
 ## Bug Reports
 
-To encourage active collaboration, Lucid Architecture strongly encourages pull requests, not just bug reports. "Bug reports" may also be sent in the form of a pull request containing a failing test or steps to reproduce the bug.
+To encourage active collaboration, Lucid strongly encourages pull requests, not just bug reports.
+"Bug reports" may also be sent in the form of a pull request containing a failing test or steps to reproduce the bug.
 
 However, if you file a bug report, your issue should contain a title and a clear description of the issue. You should also include as much relevant information as possible and a code sample that demonstrates the issue. The goal of a bug report is to make it easy for yourself - and others - to replicate the bug and develop a fix.
 
