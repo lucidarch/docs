@@ -963,7 +963,7 @@ public function handle(AddRecipe $request)
 ### Save Recipes
 
 To save the recipe we'll create a job that saves recipes and run it in our feature, which will be added to our `Recipe` domain at
-`app/Domains/Recipe/Jobs/SaveRecipeJob` along with its test `app/Domains/Recipes/Tests/Jobs/SaveRecipeJobTest`.
+`app/Domains/Recipe/Jobs/SaveRecipeJob` along with its test `tests/Unit/Domains/Recipes/Jobs/SaveRecipeJobTest`.
 
 ```bash
 lucid make:job SaveRecipe recipe
@@ -1209,38 +1209,21 @@ uncomment the following lines:
 <server name="DB_DATABASE" value=":memory:"/>
 ```
 
-And for domains and services tests to be automatically detected by PHPunit,
-we'll need to add the following snippet to `phpunit.xml` within the `<testsuites>` tag:
-
-```xml
-<testsuite name="Domains">
-    <directory suffix="Test.php">./app/Domains</directory>
-</testsuite>
-<testsuite name="Services">
-    <directory suffix="Test.php">./app/Services/*/Tests</directory>
-</testsuite>
-```
-
-{{% notice secondary %}}
-This also allows us to run this suite in isolation with `phpunit --testsuite Domains`
-{{% /notice %}}
-
-
 ### Unit Tests
 
 Jobs in Lucid are units, and their tests are that of a unit test where we verify that all the variations of the data it might
 receive wouldn't misbehave unexpectedly.
 
 {{% notice danger %}}
-{{<icon name="fa-exclamation-triangle">}}&nbsp;Runnig tests prior to configuring `phpunit.xml` as mentioned above will wipe
-out the data that is currently in your database.
+{{<icon name="fa-exclamation-triangle">}}&nbsp;Runnig tests prior to configuring `phpunit.xml` as mentioned in [Configure PHPUnit](#configure-phpunit)
+will wipe out the data that is currently in your database.
 {{% /notice %}}
 
 ---
 
 #### `ParseIngredientsJobTest`
 
-Let's write a test for `ParseIngredientsJob` to make sure that it's failsafe, in `app/Domains/Recipe/Tests/Jobs/ParseIngredientsJobTest`
+Let's write a test for `ParseIngredientsJob` to make sure that it's failsafe, in `tests/Unit/Domains/Recipe/Jobs/ParseIngredientsJobTest`
 which has already been created by `lucid` when generating the job. The test should cover three conditions:
 
 1. successful parsing
@@ -1250,7 +1233,7 @@ which has already been created by `lucid` when generating the job. The test shou
 ```php
 <?php
 
-namespace App\Domains\Recipe\Tests\Jobs;
+namespace Tests\Unit\Domains\Recipe\Jobs;
 
 use Tests\TestCase;
 use App\Data\Collections\IngredientsCollection;
@@ -1327,12 +1310,12 @@ The tests for the rest of the jobs are available in the [source code](https://gi
 #### `CalculateRecipeOperationTest`
 
 Testing operations is fairly similar and also fits among unit testing. We'll right the tests in the generated file
-`app/Services/Kitchen/Tests/Operations/CalculateRecipeOperationTest`
+`tests/Unit/Services/Kitchen/Operations/CalculateRecipeOperationTest`
 
 ```php
 <?php
 
-namespace App\Services\Kitchen\Tests\Operations;
+namespace Tests\Unit\Services\Kitchen\Operations;
 
 use Tests\TestCase;
 use App\Services\Kitchen\Operations\CalculateRecipePriceOperation;
@@ -1376,12 +1359,12 @@ In principle, Lucid's feature tests are about testing the integration between th
 
 Starting with our test layout as a plan to what we will be examining and prepare the test class by including `RefreshDatabase` trait:
 
-`app/Services/Kitchen/Tests/Features/AddRecipeFeatureTest.php`
+`tests/Feature/Services/Kitchen/AddRecipeFeatureTest.php`
 
 ```php
 <?php
 
-namespace App\Services\Kitchen\Tests\Features;
+namespace Tests\Feature\Services\Kitchen;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;

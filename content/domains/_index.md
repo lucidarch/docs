@@ -141,13 +141,4 @@ lucid make:job FetchGitHubRepoInfoJob GitHub
 
 Will generate two files:
 1. `app/Domains/GitHub/Jobs/FetchGitHubRepoInfoJob.php`
-2. `app/Domains/GitHub/Tests/FetchGitHubRepoInfoJobTest.php`
-
-However these tests will not be recognized by PHPUnit, to configure them add the following to `phpunit.xml` under `<testsuites>`
-and the next time you run `phpunit` all your tests within domains will be included automatically in the run:
-
-```xml
-<testsuite name="Domains">
-    <directory suffix="Test.php">./app/Domains</directory>
-</testsuite>
-```
+2. `tests/Unit/Domains/GitHub/Jobs/FetchGitHubRepoInfoJobTest.php`

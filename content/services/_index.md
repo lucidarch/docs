@@ -617,18 +617,11 @@ remember to remove `registerResources` method from the service provider as well 
 
 ### Tests
 
-Testing services is about testing their features and operations, they're scoped within the services themsevles for better
-encapsulation `app/Services/{service}/Tests/{Features,Operations}`.
+Testing services is about testing their features and operations, they're scoped according to the type of test:
+- Feature: `tests/Feature/Services/{service}/{Feature}Test.php`
+- Operation: `tests/Unit/Services/{service}/{Operation}Test.php`
 
-Initially service tests aren't automatically registered in `phpunit.xml` to run by default when running `phpunit`.
-To do that, please add the following to your `phpunit.xml` under `<testsuites>` (must be done for each service), which also
-allows running the service's testsuite in isolation with `phpunit --testsuite <name>`
-
-```xml
-<testsuite name="Chat">
-    <directory suffix="Test.php">./app/Services/Chat/Tests</directory>
-</testsuite>
-```
+Other tests that belong to the service can be placed in correspondance to the above.
 
 It is also recommended to namespace your test classes just to avoid conflicts. This is done by default for features and operations
 that are generated using `lucid make:*` following PSR-4 standard. An initial test could look like this:
@@ -636,7 +629,7 @@ that are generated using `lucid make:*` following PSR-4 standard. An initial tes
 ```php
 <?php
 
-namespace App\Services\Chat\Tests\Features;
+namespace Tests\Feature\Services\Chat;
 
 use Tests\TestCase;
 use App\Services\Chat\Features\SendMessageFeature;

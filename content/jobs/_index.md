@@ -136,7 +136,7 @@ lucid make:job FindProduct product
 ```
 Generated class will be at `app/Domains/Product/Jobs/FindProductJob.php`
 
-and its test at `tests/Domains/Product/Tests/FindProductJobTest.php`
+and its test at `tests/Unit/Domains/Product/Jobs/FindProductJobTest.php`
     {{% /tab %}}
 
 
@@ -149,7 +149,7 @@ and its test at `tests/Domains/Product/Tests/FindProductJobTest.php`
 ```
 Generated class will be at `app/Domains/Product/Jobs/FindProductJob.php`
 
-and its test at `app/Domains/Product/Tests/FindProductJobTest.php`
+and its test at `tests/Unit/Domains/Product/Jobs/FindProductJobTest.php`
 
     {{% /tab %}}
 
@@ -549,7 +549,7 @@ lucid make:job UpdateProductDetails product
 Would generate two files:
 
 - `app/Domains/Product/Jobs/UpdateProductDetailsJob`
-- `app/Domains/Product/Tests/Jobs/UpdateProductDetailsJobTest`
+- `tests/Unit/Domains/Product/Jobs/UpdateProductDetailsJobTest`
 
     {{% /tab %}}
 
@@ -562,7 +562,7 @@ lucid make:job UpdateProductDetails product
 Would generate two files:
 
 - `app/Domains/Product/Jobs/UpdateProductDetailsJob`
-- `app/Domains/Product/Tests/Jobs/UpdateProductDetailsJobTest`
+- `tests/Unit/Domains/Product/Jobs/UpdateProductDetailsJobTest`
 
     {{% /tab %}}
 
@@ -571,7 +571,7 @@ Would generate two files:
 The example below illustrates a simplified version of testing user input validation job:
 
 ```php
-namespace App\Domains\User\Tests\Jobs;
+namespace Tests\Unit\Domains\User\Jobs;
 
 use Tests\TestCase;
 use Lucid\Exceptions\InvalidInputException;
@@ -643,7 +643,7 @@ Client class code has been omitted, needless to say it is where the connection t
 **Test**
 
 ```php
-namespace App\Domains\DevTo\Tests\Jobs;
+namespace Tests\Unit\Domains\DevTo\Jobs;
 
 use Mockery;
 use Tests\TestCase;

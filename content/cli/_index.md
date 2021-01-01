@@ -46,16 +46,6 @@ lucid make:feature --help
 
 ## Commands
 
-### `src:name`
-
-Set the root namespace.
-
-```bash
-lucid src:name <namespace>
-```
-
----
-
 ### `make:service`
 
 {{% notice info %}}
@@ -123,7 +113,7 @@ lucid make:controller <controller> <service>
 ```bash
 lucid make:controller Article Publishing
 ```
-Generated class will be at `src/Services/Publishing/Http/Controllers/ArticleController.php`
+Generated class will be at `app/Services/Publishing/Http/Controllers/ArticleController.php`
 
 {{</tab>}}
 
@@ -158,7 +148,7 @@ Generate a Feature class.
 ```
 Generated class will be at `app/Features/ListProductsFeatures.php`
 
-and its test at `tests/Features/ListProductsFeaturesTest.php`
+and its test at `tests/Feature/ListProductsFeaturesTest.php`
 {{</tab>}}
 
 
@@ -173,9 +163,9 @@ and its test at `tests/Features/ListProductsFeaturesTest.php`
 ```bash
  lucid make:feature ListProducts Commerce
 ```
-Generated class will be at `src/Services/Commerce/Features/ListProductsFeatures.php`
+Generated class will be at `app/Services/Commerce/Features/ListProductsFeatures.php`
 
-and its test at `src/Services/Commerce/Tests/Features/ListProductsFeaturesTest.php`
+and its test at `tests/Feature/Services/Commerce/ListProductsFeaturesTest.php`
 {{</tab>}}
 
 
@@ -203,7 +193,7 @@ Generate a Job class.
 ```
 Generated class will be at `app/Domains/Product/Jobs/FindProductJob.php`
 
-and its test at `tests/Domains/Product/Tests/FindProductJobTest.php`
+and its test at `tests/Unit/Domains/Product/Jobs/FindProductJobTest.php`
 {{</tab>}}
 
 
@@ -218,9 +208,9 @@ and its test at `tests/Domains/Product/Tests/FindProductJobTest.php`
 ```bash
  lucid make:job FindProduct product
 ```
-Generated class will be at `src/Domains/Product/Jobs/FindProductJob.php`
+Generated class will be at `app/Domains/Product/Jobs/FindProductJob.php`
 
-and its test at `src/Domains/Product/Tests/FindProductJobTest.php`
+and its test at `tests/Unit/Domains/Product/Jobs/FindProductJobTest.php`
 
 {{</tab>}}
 
@@ -248,7 +238,7 @@ lucid make:operation NotifySubscribers
 ```
 Generated class will be at `app/Operations/NotifySubscribersOperation.php`
 
-and its test at `tests/Operations/NotifySubscribersOperationTest.php`
+and its test at `tests/Unit/Operations/NotifySubscribersOperationTest.php`
 {{</tab>}}
 
 
@@ -265,9 +255,9 @@ lucid make:operation <operation> <service> {--Q|queue}
 lucid make:operation NotifySubscribers publishing
 ```
 
-Generated class will be at `src/Services/Publishing/Operations/NotifySubscribersOperation.php`
+Generated class will be at `app/Services/Publishing/Operations/NotifySubscribersOperation.php`
 
-and its test at `src/Services/Publishing/Tests/Operations/NotifySubscribersOperationTest.php`
+and its test at `tests/Unit/Services/Publishing/Operations/NotifySubscribersOperationTest.php`
 
 {{</tab>}}
 
@@ -314,7 +304,7 @@ lucid make:migration <migration> <service>
 lucid make:migration create_articles_table publishing
 ```
 
-Generated file will be at `src/Services/Publishing/database/migrations/2020_10_28_180253_create_articles_table.php`
+Generated file will be at `app/Services/Publishing/database/migrations/2020_10_28_180253_create_articles_table.php`
 
 {{</tab>}}
 
@@ -339,7 +329,7 @@ lucid make:model <name>
 lucid make:model Product
 ```
 
-Generated model file will be at `[app|src]/Data/Product.php`.
+Generated model file will be at `app/Data/Product.php`.
 
 ---
 
@@ -362,7 +352,7 @@ Generated file will be at `app/Domains/<domain>/Requests/<request>`.
 lucid make:request <request> <domain>
 ```
 
-Generated file will be at `src/Domains/<domain>/Requests/<request>`.
+Generated file will be at `app/Domains/<domain>/Requests/<request>`.
 {{</tab>}}
 
 
@@ -389,7 +379,7 @@ Generated file will be at `app/Http/Policies/<policy>`.
 lucid make:policy <policy> <service>
 ```
 
-Generated file will be at `src/Services/<service>/Http/Policies/<policy>`.
+Generated file will be at `app/Services/<service>/Http/Policies/<policy>`.
 {{</tab>}}
 
 
@@ -413,9 +403,9 @@ lucid list:services
 +------------+------------+-------------------------+
 | Service    | Slug       | Path                    |
 +------------+------------+-------------------------+
-| Commerce   | commerce   | src/Services/Commerce   |
-| Publishing | publishing | src/Services/Publishing |
-| Admin      | admin      | src/Services/Admin      |
+| Commerce   | commerce   | app/Services/Commerce   |
+| Publishing | publishing | app/Services/Publishing |
+| Admin      | admin      | app/Services/Admin      |
 +------------+------------+-------------------------+
 ```
 

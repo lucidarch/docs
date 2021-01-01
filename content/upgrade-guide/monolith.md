@@ -27,8 +27,9 @@ Moving everything from `/src` to `/app`
 - Foundation
 - Services
 
-- `Services/<service>/Tests` → `tests/Services/<service>`
-- Move domain tests `app/Domains/<domain>/Tests` → `tests/Domains/<domain>`
+- `Services/<service>/Tests/Features` → `tests/Feature/Services/<service>`
+- `Services/<service>/Tests/Operations` and other unit tests → `tests/Unit/Services/<service>/Operations`
+- Move domain tests `app/Domains/<domain>/Tests` → `tests/Unit/Domains/<domain>`
 
     use the script below to do that for you, run it at the root of the project:
 
@@ -37,20 +38,23 @@ Moving everything from `/src` to `/app`
     BASE_DIR=$(pwd)
     TESTS_DIR="$BASE_DIR/tests"
 
-    mkdir $BASE_DIR/tests/Domains
+    mkdir $BASE_DIR/tests/Unit/Domains
 
     for d in ./app/Domains/* ; do
         DOMAIN=${d##*/}
-        echo "moving $d/Tests --> $TESTS_DIR/Domains/$DOMAIN"
+        echo "moving $d/Tests --> $TESTS_DIR/Unit/Domains/$DOMAIN"
         mv "$d/Tests" $TESTS_DIR/Domains/$DOMAIN
     done
 
-    mkdir $BASE_DIR/tests/Services
+    mkdir $BASE_DIR/tests/Unit/Services $BASE_DIR/tests/Feature/Services
 
     for s in ./app/Services/* ; do
         SERVICE=${s##*/}
-        echo "moving $s/Tests --> $TESTS_DIR/Services/$SERVICE"
-        mv "$s/Tests" $TESTS_DIR/Services/$SERVICE
+        echo "moving $s/Tests/Features --> $TESTS_DIR/Feature/Services/$SERVICE"
+        mv "$s/Tests/Features" $TESTS_DIR/Feature/Services/$SERVICE
+
+        echo "moving $s/Tests/Operations --> $TESTS_DIR/Unit/Services/$SERVICE/Operations"
+        mv "$s/Tests/Operations" $TESTS_DIR/Unit/Services/$SERVICE/Operations
     done
     ```
 
@@ -107,11 +111,25 @@ Replace unit namespaces (find & replace in `app` folder. Additionally you may wa
 - delete the line under `autoload.psr-4`: `"Framework\\": "app/",`
 - reset namespace of `src` `"App\\": "app/",`
 
-The only content that should be there (besides custom ones) is the following:
+The following content (besides custom ones) must be present in `composer.json`:
 
 ```json
-"psr-4": {
-    "App\\": "app/",
-    "Tests\\": "tests/"
+{
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
 }
 ```
+
+- Run `composer dump-autoload` to feel the waters
+
+    This time it should all be clear of errors. Otherwise, keep digging and replacing until it passes
+
+- Run tests again and expect the same results as in the run before the upgrade

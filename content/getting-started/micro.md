@@ -422,7 +422,7 @@ Now if we visit `/submit` and click `Add` wihtout passing any input it will gene
 ### Save Links
 
 To save the link we'll create a job that saves links and run it in our feature, which will be added to our `Link` domain at
-`app/Domains/Link/Jobs/SaveLinkJob` along with its test `app/Domains/Link/Tests/Jobs/SaveLinkJobTest`.
+`app/Domains/Link/Jobs/SaveLinkJob` along with its test `tests/Unit/Domains/Link/Jobs/SaveLinkJobTest`.
 
 ```bash
 lucid make:job SaveLik link
@@ -624,39 +624,23 @@ uncomment the following lines:
 <server name="DB_DATABASE" value=":memory:"/>
 ```
 
-And for domain tests to be automatically detected by PHPunit,
-we'll need to add the following snippet to `phpunit.xml` within the `<testsuites>` tag:
-
-```xml
-<testsuite name="Domains">
-    <directory suffix="Test.php">./app/Domains</directory>
-</testsuite>
-<testsuite name="Features">
-    <directory suffix="Test.php">./tests/Features</directory>
-</testsuite>
-```
-
-{{% notice secondary %}}
-This also allows us to run this suite in isolation with `phpunit --testsuite Domains`
-{{% /notice %}}
-
 ### Unit Tests
 
 Jobs in Lucid are units, and their tests are that of a unit test where we verify that all the variations of the data it might
 receive wouldn't misbehave unexpectedly.
 
-Let's write a test for `SaveLinkJob` in `app/Domains/Link/Tests/Jobs/SaveLinkJobTest` which has already been created by `lucid`
+Let's write a test for `SaveLinkJob` in `tests/Unit/Domains/Link/Jobs/SaveLinkJobTest` which has already been created by `lucid`
 when generating the job:
 
 {{% notice danger %}}
-{{<icon name="fa-exclamation-triangle">}}&nbsp;Runnig tests prior to configuring `phpunit.xml` as mentioned above will wipe
-out the data that is currently in your database.
+{{<icon name="fa-exclamation-triangle">}}&nbsp;Runnig tests prior to configuring `phpunit.xml` as mentioned in [Configure PHPUnit](#configure-phpunit)
+will wipe out the data that is currently in your database.
 {{% /notice %}}
 
 ```php
 <?php
 
-namespace App\Domains\Link\Tests\Jobs;
+namespace Tests\Unit\Domains\Link\Jobs;
 
 use Tests\TestCase;
 use App\Data\Models\Link;
@@ -697,11 +681,11 @@ In principle, Lucid's feature tests are about testing the integration between th
 
 Starting with our test layout as a plan to what we will be examining and prepare the test class by including `RefreshDatabase` trait:
 
-`tests/Features/AddLinkFeatureTest`
+`tests/Feature/AddLinkFeatureTest`
 ```php
 <?php
 
-namespace App\Tests\Features;
+namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;

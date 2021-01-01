@@ -108,7 +108,7 @@ lucid make:operation NotifySubscribers
 ```
 Generated class will be at `app/Operations/NotifySubscribersOperation.php`
 
-and its test at `tests/Operations/NotifySubscribersOperationTest.php`
+and its test at `tests/Unit/Operations/NotifySubscribersOperationTest.php`
     {{% /tab %}}
 
     {{% tab "Monolith" %}}
@@ -122,7 +122,7 @@ lucid make:operation NotifySubscribers publishing
 
 Generated class will be at `app/Services/Publishing/Operations/NotifySubscribersOperation.php`
 
-and its test at `app/Services/Publishing/Tests/Operations/NotifySubscribersOperationTest.php`
+and its test at `tests/Unit/Services/Publishing/Operations/NotifySubscribersOperationTest.php`
 
     {{% /tab %}}
 
@@ -217,7 +217,7 @@ lucid make:operation NotifySubscribers
 Would generate two files:
 
 - `app/Operations/NotifySubscribersOperation.php`
-- `tests/Operations/NotifySubscribersOperationTest.php`
+- `tests/Unit/Operations/NotifySubscribersOperationTest.php`
 
     {{% /tab %}}
 
@@ -230,7 +230,7 @@ lucid make:operation NotifySubscribers publishing
 Would generate two files:
 
 - `app/Services/Publishing/Operations/NotifySubscribersOperation.php`
-- `app/Services/Publishing/Tests/Operations/NotifySubscribersOperationTest.php`
+- `tests/Unit/Services/Publishing/Operations/NotifySubscribersOperationTest.php`
 
     {{% /tab %}}
 
@@ -244,7 +244,7 @@ For example, consider the following operation test:
 ```php
 <?php
 
-namespace App\Services\Publishing\Tests\Operations;
+namespace Tests\Unit\Services\Publishing\Operations;
 
 use Tests\TestCase;
 use App\Data\Models\Author;
@@ -295,9 +295,10 @@ And in case the operation doesn't call `run(SendNotificationJob::class, $params)
 ```php
 <?php
 
-namespace App\Services\Publishing\Tests\Operations;
+namespace Tests\Unit\Services\Publishing\Operations;
 
 use Mockery;
+use Tests\TestCase;
 use App\Data\Models\Author;
 use App\Data\Models\Subscriber;
 use App\Services\Operations\NotifySubscribersOperation;

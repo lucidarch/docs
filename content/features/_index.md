@@ -8,7 +8,7 @@ hide: ["header"]
 
 ---
 
-Represents a human-readable project feature in a class, named the way you would describe it to your colleagues and clients.
+Represents a human-readable app feature in a class, named the way you would describe it to your colleagues and clients.
 It contains the logic of implementing the feature with minimum friction and level of detail to remain concise and straight to the point.
 
 It runs Lucid Units: *Jobs* and *Operations* to perform its tasks. They are thought of as the steps in the process of serving its purpose. A *Feature* can be served from anywhere, most commonly Controllers and Commands. Can also be queued to run asynchronously using Laravel's powerful [Queueing capabilities](https://laravel.com/docs/queues).
@@ -77,7 +77,7 @@ Use `lucid` CLI to generate a Feature class that extends Lucid's Feature base cl
 ```
 Generated class will be at `app/Features/ListProductsFeatures.php`
 
-and its test at `tests/Features/ListProductsFeaturesTest.php`
+and its test at `tests/Feature/ListProductsFeaturesTest.php`
     {{% /tab %}}
 
 
@@ -90,7 +90,7 @@ and its test at `tests/Features/ListProductsFeaturesTest.php`
 ```
 Generated class will be at `app/Services/Commerce/Features/ListProductsFeatures.php`
 
-and its test at `app/Services/Commerce/Tests/Features/ListProductsFeaturesTest.php`
+and its test at `tests/Feature/Services/Commerce/ListProductsFeaturesTest.php`
     {{% /tab %}}
 
 {{% /tabs %}}
@@ -242,7 +242,7 @@ in a stub method as a reminder to fill the missing test.
 
 Would generate two files:
 - `app/Features/ListProductsFeature`
-- `tests/Features/ListProductsFeatureTest`
+- `tests/Feature/ListProductsFeatureTest`
 
 {{% /tab %}}
 
@@ -251,7 +251,7 @@ Would generate two files:
 
 Would generate two files:
 - `app/Services/Api/Features/ListProductsFeature`
-- `app/Services/Api/Tests/Features/ListProductsFeatureTest`
+- `tests/Feature/Services/Api/ListProductsFeatureTest`
 
 Since Monolith is about scope and distribution of responsibility, and features are a scope of a service,
 tests are distributed and scoped accordingly in the corresponding service.
@@ -335,10 +335,10 @@ Mocks are usually for 3rd-party APIs and other services that we integrate with, 
 This example contains missing variables and is for illustrative purposes only.
 {{% /notice %}}
 
-`app/Features/UpdateFacebookPosts.php`
+`app/Features/UpdateFacebookPostsFeature.php`
 
 ```php
-class UpdateFacebookPosts extends Feature
+class UpdateFacebookPostsFeature extends Feature
 {
     public function handle()
     {
@@ -362,10 +362,10 @@ class FetchFacebookPostsJob extends Job
 }
 ```
 
-`tests/Features/UpdateFacebookPostsTest.php`
+`tests/Feature/UpdateFacebookPostsFeatureTest.php`
 ```php
 
-class UpdateFacebookPostsTest extends TestCase
+class UpdateFacebookPostsFeatureTest extends TestCase
 {
     public function test_successfully_fetching_facebook_posts()
     {
@@ -401,22 +401,6 @@ This guarantees consistency and predictability when reading the feature's code i
 to the code to skim through quickly and have an idea about the required steps.
 - **Call another Feature:** In order to avoid the [Pyramid of Doom](https://en.wikipedia.org/wiki/Pyramid_of_doom_(programming)) and reduce the [cognitive load](https://en.wikiversity.org/wiki/Software_Design/Cognitive_load) required to navigate the codebase and understand the code, Features should not call each other. Though the same feature may be called numerous times as long as
 it does not add up to the Feature's [complexity](https://en.wikiversity.org/wiki/Software_Design/Complexity_(primary_quality)).
-
-{{% /panel %}}
-
-{{% panel %}}
-### Should a Feature pass the entire set of input to other units?
-
-More elaborately: instead of specifying parameters in constructors, jobs and operations would accept an associative array of input
-and operate on that instead of a concise set of parameters.
-
-Another option from
-
-For several reasons:
-
-- **Clarity:**
-- **Isolation**:
-- **Reusability:**
 
 {{% /panel %}}
 
