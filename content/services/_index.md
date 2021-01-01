@@ -383,13 +383,14 @@ public function register()
 
 ### Run Service Tests
 
-Initially service tests aren't automatically registered in `phpunit.xml` to run by default when running `phpunit`.
-To do that, please add the following to your `phpunit.xml` under `<testsuites>` (must be done for each service), which also
-allows running the service's testsuite in isolation with `phpunit --testsuite <name>`
+Initially service tests are part of the default testsuite, but in case you wish to run a single service's tests in isolation
+please add the following to your `phpunit.xml` under `<testsuites>` (must be done for each service),
+and then we would be able to use `phpunit --testsuite <name>` to run them.
 
 ```xml
 <testsuite name="Chat">
-    <directory suffix="Test.php">./app/Services/Chat/Tests</directory>
+    <directory suffix="Test.php">./tests/Feature/Services/Chat</directory>
+    <directory suffix="Test.php">./tests/Unit/Services/Chat</directory>
 </testsuite>
 ```
 
