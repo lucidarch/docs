@@ -112,10 +112,7 @@ app
 ├── Http
 ├── Policies
 ├── Providers
-└── <strong>Services</strong>
-    ├── <strong>Admin</strong>
-    ├── <strong>Api</strong>
-    └── <strong>Web</strong>
+├── <strong>Services</strong>
 ├── artisan
 ├── bootstrap
 ├── composer.json
@@ -144,7 +141,7 @@ lucid init:monolith blog
 And the following will be added to the initial structure:
 
 <pre>
-app/Services/Blog
+<strong>app/Services/Blog</strong>
 ├── Console
 │   └── Commands
 ├── <strong>Features</strong>
