@@ -156,9 +156,6 @@ app/Services/Blog
 │   ├── BlogServiceProvider.php
 │   ├── BroadcastServiceProvider.php
 │   └── RouteServiceProvider.php
-├── <strong>Tests</strong>
-│   ├── <strong>Features</strong>
-│   └── <strong>Operations</strong>
 ├── database
 │   ├── factories
 │   ├── migrations
