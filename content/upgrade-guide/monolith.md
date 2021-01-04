@@ -43,7 +43,7 @@ Moving everything from `/src` to `/app`
     for d in ./app/Domains/* ; do
         DOMAIN=${d##*/}
         echo "moving $d/Tests --> $TESTS_DIR/Unit/Domains/$DOMAIN"
-        mv "$d/Tests" $TESTS_DIR/Domains/$DOMAIN
+        mv "$d/Tests" $TESTS_DIR/Unit/Domains/$DOMAIN
     done
 
     mkdir $BASE_DIR/tests/Unit/Services $BASE_DIR/tests/Feature/Services
