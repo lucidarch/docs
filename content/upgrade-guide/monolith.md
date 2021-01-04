@@ -62,7 +62,7 @@ Moving everything from `/src` to `/app`
 
 - Rename Framework namespaces in `/app`
     - `namespace Framework\` → `namespace App\`
-    - `use Framework` → `use App\`
+    - `use Framework\` → `use App\`
 - Rename Framework in `/bootstrap` , `/app` and `/config`
     - `Framework\` → `App\`
 - Rename custom namespace in `/app`
