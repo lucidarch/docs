@@ -22,7 +22,7 @@ for a scalable future software
     </div>
     <div style="margin-left: 50px; margin-top: 6px;">
         <a class="github-button" href="https://github.com/sponsors/lucidarch" data-icon="octicon-heart" aria-label="Sponsor @lucidarch on GitHub">Sponsor</a>
-        <a class="github-button" href="https://github.com/ntkme/github-buttons" data-icon="octicon-star" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+        <a class="github-button" href="https://github.com/lucidarch/lucid" data-icon="octicon-star" data-show-count="true" aria-label="Star lucidarch/lucid on GitHub">Star</a>
     </div>
 </div>
 
