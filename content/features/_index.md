@@ -521,7 +521,9 @@ class UpdateProductDetailsFeature
             'input' => $request->input()
         ]);
 
-        $user = $this->run(GetUserFromSessionJob::class);
+        $user = $this->run(GetUserByApiTokenJob::class, [
+            'token' => $request->input('token'),
+        ]);
 
         $product = $this->run(UpdateProductDetailsJob::class, [
             'title' => $request->input('title'),
@@ -554,10 +556,8 @@ class UpdateProductDetailsFeature
         $this->run(ValidateProductDeatilsInputJob::class, [
             'input' => $request->input()
         ]);
-
-        $user = $this->run(GetUserByApiTokenJob::class, [
-            'token' => $request->input('token'),
-        ]);
+        
+        $user = $this->run(GetUserFromSessionJob::class);
 
         $product = $this->run(UpdateProductDetailsJob::class, [
             'title' => $request->input('title'),
