@@ -314,9 +314,8 @@ class NotifySubscribersOperationTest extends TestCase
             ->has(Subscriber::factory($subscribers));
             ->create();
 
-        // create operation partial mock instance
-        $mOp = Mockery::mock(NotifySubscribersOperation::class, [$author->id])
-            ->makePartial();
+        // create operation mock instance
+        $mOp = Mockery::mock(NotifySubscribersOperation::class, [$author->id]);
 
         // set expectations to jobs that need to be skipped
         $mOp->shouldReceive('run')
