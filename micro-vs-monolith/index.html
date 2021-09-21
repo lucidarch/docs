@@ -1,40 +1,184 @@
-<!doctype html><html><head><title>Micro • Monolith :: Lucid</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name=revised content="2021-05-16T12:39:50 UTC"><meta name=description content><title>Micro • Monolith :: Lucid</title><link rel="shortcut icon" href=/images/favicon.png type=image/x-icon><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css integrity=sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css><script src=https://code.jquery.com/jquery-3.5.1.min.js></script><link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel=stylesheet><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/layout.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/css/style.main.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/css/style.menu.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/notice.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/tabs.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/panel.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/columns.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/children.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/attachments.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/alert.css><link rel=stylesheet type=text/css href=/css/docport.css><script src=/js/docport.js></script><script type=text/javascript>var baseurl="https://docs.lucidarch.dev"</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-96232175-1','auto'),ga('send','pageview'))</script><link rel=stylesheet href=/css/custom.css><link rel=stylesheet href=/css/syntax.css><link rel=apple-touch-icon sizes=180x180 href=/icon/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/icon/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/icon/favicon-16x16.png><link rel=manifest href=/icon/site.webmanifest><script async defer src=https://buttons.github.io/buttons.js></script></head><body data-url=/micro-vs-monolith/ class=hideheader><style type=text/css>#debug{display:-webkit-box;display:-ms-flexbox;display:flex;line-height:3.5rem;margin-bottom:.35rem;padding:0 2rem;position:fixed;left:0;right:0;top:0;top:0;min-height:150px;background-color:#fff;border:3px solid red;z-index:10000;word-wrap:all;overflow:auto}</style><article><aside><div class=search><div class=searchbox><input data-search-input id=search-by type=text placeholder="Type to search..."></div><script type=text/javascript src=/vendor/lunr/lunr.min.js></script><script type=text/javascript src=/vendor/auto-complete/auto-complete.js></script><link href=/vendor/auto-complete/auto-complete.css rel=stylesheet><script type=text/javascript>var baseurl="https://docs.lucidarch.dev"</script><script type=text/javascript src=/js/search.js></script></div><div style=margin-top:30px><a href=/concept style=display:flex;justify-content:left;align-items:center><img src=/icon/logo.png width=250 style=margin-left:10px></a></div><div id=close_menu><a href=javascript:void(0); style=font-size:15px onclick="$('article > aside').toggleClass('responsive')"><i class="fa fa-lg fa-times"></i></a></div><ul class=menu><li data-nav-id=https://docs.lucidarch.dev/concept/ class="dd-item
-alwaysopen
-item_level_$level"><a href=/concept/>Concept</a></li><li data-nav-id=https://docs.lucidarch.dev/philosophy/ class="dd-item
-alwaysopen
-item_level_$level"><a href=/philosophy/>Philosophy</a></li><li data-nav-id=https://docs.lucidarch.dev/principles/ class="dd-item
-alwaysopen
-item_level_$level"><a href=/principles/>Principles</a></li><hr><li data-nav-id=https://docs.lucidarch.dev/installation/ class="dd-item
-alwaysopen
-item_level_$level"><a href=/installation/>Installation</a></li><li data-nav-id=https://docs.lucidarch.dev/upgrade-guide/ class="dd-item
-alwaysopen
-item_level_$level"><a href=/upgrade-guide/>Upgrade Guide</a></li><li data-nav-id=https://docs.lucidarch.dev/getting-started/ class="dd-item
-alwaysopen
-item_level_$level"><a href=/getting-started/>Getting Started</a></li><li data-nav-id=https://docs.lucidarch.dev/micro-vs-monolith/ class="dd-item parent active
-alwaysopen
-item_level_$level"><a href=/micro-vs-monolith/>Micro • Monolith</a></li><hr><li data-nav-id=https://docs.lucidarch.dev/routing/ class="dd-item
-alwaysopen
-item_level_$level"><a href=/routing/>Routing</a></li><li data-nav-id=https://docs.lucidarch.dev/controllers/ class="dd-item
-alwaysopen
-item_level_$level"><a href=/controllers/>Controllers</a></li><li data-nav-id=https://docs.lucidarch.dev/features/ class="dd-item
-alwaysopen
-item_level_$level"><a href=/features/>Features</a></li><li data-nav-id=https://docs.lucidarch.dev/jobs/ class="dd-item
-alwaysopen
-item_level_$level"><a href=/jobs/>Jobs</a></li><li data-nav-id=https://docs.lucidarch.dev/operations/ class="dd-item
-alwaysopen
-item_level_$level"><a href=/operations/>Operations</a></li><li data-nav-id=https://docs.lucidarch.dev/services/ class="dd-item
-alwaysopen
-item_level_$level"><a href=/services/>Services</a></li><li data-nav-id=https://docs.lucidarch.dev/domains/ class="dd-item
-alwaysopen
-item_level_$level"><a href=/domains/>Domains</a></li><hr><li data-nav-id=https://docs.lucidarch.dev/validation/ class="dd-item
-alwaysopen
-item_level_$level"><a href=/validation/>Validation</a></li><hr><li data-nav-id=https://docs.lucidarch.dev/cli/ class="dd-item
-alwaysopen
-item_level_$level"><a href=/cli/>CLI Reference</a></li></ul></aside><section class=page><nav id=ariane aria-label=breadcrumb><ol class=ariane><li><a class=text-link href=https://docs.lucidarch.dev>Home</a></li><li class=active>Micro • Monolith</li></ol></nav><h1>Micro • Monolith</h1><div class=jump-to-section><span onclick="$h=$(this),$h.next('nav').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('nav').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})"><span class="fas fa-align-right"></span>Jump to Section
-<i class="fas fa-chevron-right"></i></span><nav id=TableOfContents><ul><li><a href=#micro>Micro</a><ul><li><a href=#when-to-use-micro>When To Use Micro?</a></li></ul></li><li><a href=#monolith>Monolith</a><ul><li><a href=#example-multifaceted-project>Example: Multifaceted Project</a></li><li><a href=#example-multifunction-project>Example: Multifunction project</a></li><li><a href=#when-to-use-monolith>When To Use Monolith?</a></li></ul></li></ul></nav></div><div class=content><p>Often times we start building our applications with little forecast on how they will evolve over time, they may reach a steady maintainance stage with small tweaks here and there,
-or undergo pivots that require a high degree of flexibility to not clutter and cause an abundance of technical debt.</p><p>In both cases, the familiarity with the system&rsquo;s architecture is the guaranteed constant to protect our codebase from going out of bounds.</p><hr><p>Lucid is provided in two variants - <strong>Micro</strong> and <strong>Monolith</strong> - to accompany a wide range of projects at all stages
+<!doctype html><html>
+<head>
+<title>
+Micro • Monolith :: Lucid
+</title>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name=revised content="2021-09-21T21:22:25 UTC">
+<meta name=description content>
+<title>Micro • Monolith :: Lucid</title>
+<link rel="shortcut icon" href=/images/favicon.png type=image/x-icon>
+<link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css integrity=sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css>
+<script src=https://code.jquery.com/jquery-3.5.1.min.js></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel=stylesheet>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/layout.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/css/style.main.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/css/style.menu.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/notice.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/tabs.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/panel.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/columns.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/children.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/attachments.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/alert.css>
+<link rel=stylesheet type=text/css href=/css/docport.css>
+<script src=/js/docport.js></script>
+<script type=text/javascript>var baseurl="https://docs.lucidarch.dev"</script>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-96232175-1','auto'),ga('send','pageview'))</script><link rel=stylesheet href=/css/custom.css>
+<link rel=stylesheet href=/css/syntax.css>
+<link rel=apple-touch-icon sizes=180x180 href=/icon/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/icon/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/icon/favicon-16x16.png>
+<link rel=manifest href=/icon/site.webmanifest>
+<script async defer src=https://buttons.github.io/buttons.js></script>
+</head>
+<body data-url=/micro-vs-monolith/ class=hideheader>
+<style type=text/css>#debug{display:-webkit-box;display:-ms-flexbox;display:flex;line-height:3.5rem;margin-bottom:.35rem;padding:0 2rem;position:fixed;left:0;right:0;top:0;top:0;min-height:150px;background-color:#fff;border:3px solid red;z-index:10000;word-wrap:all;overflow:auto}</style>
+<article>
+<aside>
+<div class=search>
+<div class=searchbox>
+<input data-search-input id=search-by type=text placeholder="Type to search...">
+</div>
+<script type=text/javascript src=/vendor/lunr/lunr.min.js></script>
+<script type=text/javascript src=/vendor/auto-complete/auto-complete.js></script>
+<link href=/vendor/auto-complete/auto-complete.css rel=stylesheet>
+<script type=text/javascript>var baseurl="https://docs.lucidarch.dev"</script>
+<script type=text/javascript src=/js/search.js></script>
+</div>
+<div style=margin-top:30px>
+<a href=/concept style=display:flex;justify-content:left;align-items:center>
+<img src=/icon/logo.png width=250 style=margin-left:10px>
+</a>
+</div>
+<div id=close_menu>
+<a href=javascript:void(0); style=font-size:15px onclick="$('article > aside').toggleClass('responsive')">
+<i class="fa fa-lg fa-times"></i>
+</a>
+</div>
+<ul class=menu>
+<li data-nav-id=https://docs.lucidarch.dev/concept/ class="dd-item
+item_level_$level">
+<a href=/concept/>Concept</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/philosophy/ class="dd-item
+item_level_$level">
+<a href=/philosophy/>Philosophy</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/principles/ class="dd-item
+item_level_$level">
+<a href=/principles/>Principles</a>
+</li>
+<hr>
+<li data-nav-id=https://docs.lucidarch.dev/installation/ class="dd-item
+item_level_$level">
+<a href=/installation/>Installation</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/upgrade-guide/ class="dd-item alwaysopen
+item_level_$level">
+<a href=/upgrade-guide/>Upgrade Guide</a>
+</li>
+<hr>
+<li data-nav-id=https://docs.lucidarch.dev/getting-started/ class="dd-item alwaysopen
+item_level_$level">
+<a href=/getting-started/>Getting Started</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/micro-vs-monolith/ class="dd-item parent active
+item_level_$level">
+<a href=/micro-vs-monolith/>Micro • Monolith</a>
+</li>
+<hr>
+<li data-nav-id=https://docs.lucidarch.dev/routing/ class="dd-item
+item_level_$level">
+<a href=/routing/>Routing</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/controllers/ class="dd-item
+item_level_$level">
+<a href=/controllers/>Controllers</a>
+</li>
+<hr>
+<li data-nav-id=https://docs.lucidarch.dev/features/ class="dd-item
+item_level_$level">
+<a href=/features/>Features</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/jobs/ class="dd-item
+item_level_$level">
+<a href=/jobs/>Jobs</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/operations/ class="dd-item
+item_level_$level">
+<a href=/operations/>Operations</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/services/ class="dd-item
+item_level_$level">
+<a href=/services/>Services</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/domains/ class="dd-item
+item_level_$level">
+<a href=/domains/>Domains</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/validation/ class="dd-item
+item_level_$level">
+<a href=/validation/>Validation</a>
+</li>
+<hr>
+<li data-nav-id=https://docs.lucidarch.dev/cli/ class="dd-item
+item_level_$level">
+<a href=/cli/>CLI Reference</a>
+</li>
+</ul>
+</aside>
+<section class=page>
+<nav id=ariane aria-label=breadcrumb>
+<ol class=ariane>
+<li>
+<a class=text-link href=https://docs.lucidarch.dev>
+Home
+</a>
+</li>
+<li class=active>
+Micro • Monolith
+</li>
+</ol>
+</nav>
+<h1>Micro • Monolith</h1>
+<div class=jump-to-section>
+<span onclick="$h=$(this),$h.next('nav').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('nav').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
+<span class="fas fa-align-right"></span>
+Jump to Section
+<i class="fas fa-chevron-right"></i>
+</span>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#micro>Micro</a>
+<ul>
+<li><a href=#when-to-use-micro>When To Use Micro?</a></li>
+</ul>
+</li>
+<li><a href=#monolith>Monolith</a>
+<ul>
+<li><a href=#example-multifaceted-project>Example: Multifaceted Project</a></li>
+<li><a href=#example-multifunction-project>Example: Multifunction project</a></li>
+<li><a href=#when-to-use-monolith>When To Use Monolith?</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<div class=content>
+<p>Often times we start building our applications with little forecast on how they will evolve over time, they may reach a steady maintainance stage with small tweaks here and there,
+or undergo pivots that require a high degree of flexibility to not clutter and cause an abundance of technical debt.</p>
+<p>In both cases, the familiarity with the system&rsquo;s architecture is the guaranteed constant to protect our codebase from going out of bounds.</p>
+<hr>
+<p>Lucid is provided in two variants - <strong>Micro</strong> and <strong>Monolith</strong> - to accompany a wide range of projects at all stages
 and provide the versatility of moving between one and the other, which is attributed to the composability of the Lucid stack,
-where you could use the units you need with no commitment to others - yet like lego bricks they all fit together when the need for them arises.</p><h2 ref=micro>Micro</h2><a class=anchor id=micro></a><p>A single-purpose project that contains a moderate amount of functionalities that fit in a similar context.</p><p>It contains the fundamental units of the Lucid stack: Domains, Features, Operations and Data, complementing the Laravel framework:</p><pre>
+where you could use the units you need with no commitment to others - yet like lego bricks they all fit together when the need for them arises.</p>
+<h2 ref=micro>Micro</h2><a class=anchor id=micro></a>
+<p>A single-purpose project that contains a moderate amount of functionalities that fit in a similar context.</p>
+<p>It contains the fundamental units of the Lucid stack: Domains, Features, Operations and Data, complementing the Laravel framework:</p>
+<pre>
 app
 ├── Console
 │   └── Kernel.php
@@ -56,15 +200,27 @@ app
     ├── BroadcastServiceProvider.php
     ├── EventServiceProvider.php
     └── RouteServiceProvider.php
-</pre><h3 ref=when-to-use-micro>When To Use Micro?</h3><a class=anchor id=when-to-use-micro></a><p>Micro is suitable for most projects, including quick prototypes that are ought to become actual products at some point which is
-where Lucid comes in to reduce the technical debt imposed over time. Or API projects that are meant to be organized for scale.</p><p>Also as the name suggests they are best suitable for Microservices, where you would have multiple instances of Laravel • Lucid Micro,
-each representing a microservice in your system.</p><h2 ref=monolith>Monolith</h2><a class=anchor id=monolith></a><p>A multi-purpose project that exposes functionality in groups that are best separated into their own contexts physically,
+</pre>
+<h3 ref=when-to-use-micro>When To Use Micro?</h3><a class=anchor id=when-to-use-micro></a>
+<p>Micro is suitable for most projects, including quick prototypes that are ought to become actual products at some point which is
+where Lucid comes in to reduce the technical debt imposed over time. Or API projects that are meant to be organized for scale.</p>
+<p>Also as the name suggests they are best suitable for Microservices, where you would have multiple instances of Laravel • Lucid Micro,
+each representing a microservice in your system.</p>
+<h2 ref=monolith>Monolith</h2><a class=anchor id=monolith></a>
+<p>A multi-purpose project that exposes functionality in groups that are best separated into their own contexts physically,
 mirroring their logical separation and encapsulation. To achieve this we use <a href=https://docs.lucidarch.dev/services/>Services</a> -
-the differentiating factor of Monolith in the Lucid stack.</p><p>Having services means we&rsquo;re expanding the functionalities that are available at the framework level, into a
+the differentiating factor of Monolith in the Lucid stack.</p>
+<p>Having services means we&rsquo;re expanding the functionalities that are available at the framework level, into a
 contextualised division as an extension. Enabling us to replicate the framework structure into sub-structures that contain
 routes, controllers, views, resources, tests, features and operations of their own, yet all connected together by sharing code
-using Domains and Data.</p><p>There are several ways to segregate services, below we mention two of the most common ways: <strong>Multifaceted</strong> and <strong>Multifunctional</strong>.</p><h3 ref=example-multifaceted-project>Example: Multifaceted Project</h3><a class=anchor id=example-multifaceted-project></a><p>Is a project that has multiple facets like Api, Admin, Web; where each would have their own way
-of authenticating users, authorizing requests and responding to them in corresponding formats.</p><div class=columns><div class=column><pre>
+using Domains and Data.</p>
+<p>There are several ways to segregate services, below we mention two of the most common ways: <strong>Multifaceted</strong> and <strong>Multifunctional</strong>.</p>
+<h3 ref=example-multifaceted-project>Example: Multifaceted Project</h3><a class=anchor id=example-multifaceted-project></a>
+<p>Is a project that has multiple facets like Api, Admin, Web; where each would have their own way
+of authenticating users, authorizing requests and responding to them in corresponding formats.</p>
+<div class=columns>
+<div class=column>
+<pre>
 app
 ├── Console
 ├── <strong>Data</strong>
@@ -94,7 +250,10 @@ app
 ├── storage
 ├── tests
 └── webpack.mix.js
-</pre></div><div class=column><pre>
+</pre>
+</div>
+<div class=column>
+<pre>
 app/Services/<i>{Admin,Api,Web}</i>
 ├── Console
 │   └── Commands
@@ -122,10 +281,18 @@ app/Services/<i>{Admin,Api,Web}</i>
     ├── channels.php
     ├── console.php
     └── web.php
-</pre></div></div><h3 ref=example-multifunction-project>Example: Multifunction project</h3><a class=anchor id=example-multifunction-project></a><p>Is a project with a wide range of functions that are best separated in logic due to the degree of difference in the areas they serve,
-like an application that has Chat, Product Management, Ecommerce (web UI) and an API.</p><p>The structure and usage is the same as multifacet, they only differ in concept and their logical separation.
+</pre>
+</div>
+</div>
+<h3 ref=example-multifunction-project>Example: Multifunction project</h3><a class=anchor id=example-multifunction-project></a>
+<p>Is a project with a wide range of functions that are best separated in logic due to the degree of difference in the areas they serve,
+like an application that has Chat, Product Management, Ecommerce (web UI) and an API.</p>
+<p>The structure and usage is the same as multifacet, they only differ in concept and their logical separation.
 As illustrated below, the naming of the services is different between the projects yet their internals
-are exactly the same. What matters is to choose whichever approach works best for your case and maintain it consistently.</p><div class=columns><div class=column><pre>
+are exactly the same. What matters is to choose whichever approach works best for your case and maintain it consistently.</p>
+<div class=columns>
+<div class=column>
+<pre>
 app
 ├── Console
 ├── <strong>Data</strong>
@@ -156,7 +323,10 @@ app
 ├── storage
 ├── tests
 └── webpack.mix.js
-</pre></div><div class=column><pre>
+</pre>
+</div>
+<div class=column>
+<pre>
 app/Services/<i>{Chat,Api,Ecommerce,ProductManagement}</i>
 ├── Console
 │   └── Commands
@@ -184,14 +354,93 @@ app/Services/<i>{Chat,Api,Ecommerce,ProductManagement}</i>
     ├── channels.php
     ├── console.php
     └── web.php
-</pre></div></div><div class="notices info"><p><i class="fas fa-hat-wizard fa-2x"></i> These are only two approaches to services, but there certainly are other creative ways you could benefit from them. Go crazy!</p></div><h3 ref=when-to-use-monolith>When To Use Monolith?</h3><a class=anchor id=when-to-use-monolith></a><p>Monolith is suitable for projects that have been pre-defined with a large set of functionalities across multiple sections
+</pre>
+</div>
+</div>
+<div class="notices info">
+<p><i class="fas fa-hat-wizard fa-2x"></i> These are only two approaches to services, but there certainly are other creative ways you could benefit from them. Go crazy!</p>
+</div>
+<h3 ref=when-to-use-monolith>When To Use Monolith?</h3><a class=anchor id=when-to-use-monolith></a>
+<p>Monolith is suitable for projects that have been pre-defined with a large set of functionalities across multiple sections
 and are known to grow vertically in functionality as well as horizontally in more areas.
 However this is not always easy to guess from the start, especially when having to identify the services involved,
-which is why it will be easy to start with Micro and then move to Monolith when the project has gotten better definition.</p><p>Also, Monolith projects have been witnessed to grow beyond the initially anticipated scale, to then be split into Microservices
-themselves, and Lucid happens to be perfect for the case where each of the Services is moved to its own Micro instance.</p></div><div class=chevrons><a class=next href=/routing/ title=Routing style=margin-right:0><div><p>Next page</p><label>Routing</label></div><i class="fas fa-arrow-right" style=font-size:1.7em></i></a></div></section><section class=right-menu><div class=TableOfContents><label><i class="fas fa-align-right"></i>&nbsp;&nbsp;What's on this page</label><nav><ul><li><a href=/micro-vs-monolith/>Micro • Monolith</a></li></ul></nav><nav id=TableOfContents><ul><li><a href=#micro>Micro</a><ul><li><a href=#when-to-use-micro>When To Use Micro?</a></li></ul></li><li><a href=#monolith>Monolith</a><ul><li><a href=#example-multifaceted-project>Example: Multifaceted Project</a></li><li><a href=#example-multifunction-project>Example: Multifunction project</a></li><li><a href=#when-to-use-monolith>When To Use Monolith?</a></li></ul></li></ul></nav></div><div class=Actions><nav><ul><li><i class="fas fa-calendar"></i>
-Last update on 16 May 2021</li><li title><i class="fas fa-user"></i>
-Last update by Abed Halawi</li></ul></nav></div></section></article><footer><div class=columns><div class=column><div style=font-family:Raleway!important><h3 style=color:#fdfdfd!important>lucid architecture</h3>for a scalable future software</div></div><div class=column><div style=display:flex;justify-content:flex-end;align-items:center><div style=align-items:center;display:flex><a href=https://lucidarch.dev target=_blank><img src=/icon/lucid-coloured.png alt="Lucid website link" width=28px style=margin-top:4px></a>
+which is why it will be easy to start with Micro and then move to Monolith when the project has gotten better definition.</p>
+<p>Also, Monolith projects have been witnessed to grow beyond the initially anticipated scale, to then be split into Microservices
+themselves, and Lucid happens to be perfect for the case where each of the Services is moved to its own Micro instance.</p>
+</div>
+<div class=chevrons>
+<a class=next href=/routing/ title=Routing style=margin-right:0>
+<div>
+<p>Next page</p>
+<label>Routing</label>
+</div>
+<i class="fas fa-arrow-right" style=font-size:1.7em></i></a>
+</div>
+</section>
+<section class=right-menu>
+<div class=TableOfContents>
+<label><i class="fas fa-align-right"></i>&nbsp;&nbsp;What's on this page</label>
+<nav>
+<ul>
+<li><a href=/micro-vs-monolith/>Micro • Monolith</a></li>
+</ul>
+</nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#micro>Micro</a>
+<ul>
+<li><a href=#when-to-use-micro>When To Use Micro?</a></li>
+</ul>
+</li>
+<li><a href=#monolith>Monolith</a>
+<ul>
+<li><a href=#example-multifaceted-project>Example: Multifaceted Project</a></li>
+<li><a href=#example-multifunction-project>Example: Multifunction project</a></li>
+<li><a href=#when-to-use-monolith>When To Use Monolith?</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<div class=Actions>
+<nav>
+<ul>
+<li>
+<i class="fas fa-calendar"></i>
+Last update on 22 September 2021
+</li>
+<li title>
+<i class="fas fa-user"></i>
+Last update by Abed Halawi
+</li>
+</ul>
+</nav>
+</div>
+</section>
+</article>
+<footer>
+<div class=columns>
+<div class=column>
+<div style=font-family:Raleway!important>
+<h3 style=color:#fdfdfd!important>lucid architecture</h3>
+for a scalable future software
+</div>
+</div>
+<div class=column>
+<div style=display:flex;justify-content:flex-end;align-items:center>
+<div style=align-items:center;display:flex>
+<a href=https://lucidarch.dev target=_blank><img src=/icon/lucid-coloured.png alt="Lucid website link" width=28px style=margin-top:4px></a>
 <a href=https://github.com/lucidarch target=_blank style=margin-left:10px><i class="fab fa-github fa-lg"></i></a>
 <a href=https://lucid-slack.herokuapp.com target=_blank style=margin-left:10px><i class="fab fa-slack fa-lg"></i></a>
-<a href=https://www.reddit.com/r/lucidarch target=_blank style=margin-left:10px><i class="fab fa-reddit-alien fa-lg"></i></a></div><div style=margin-left:50px;margin-top:6px><a class=github-button href=https://github.com/sponsors/lucidarch data-icon=octicon-heart aria-label="Sponsor @lucidarch on GitHub">Sponsor</a>
-<a class=github-button href=https://github.com/lucidarch/lucid data-icon=octicon-star data-show-count=true aria-label="Star lucidarch/lucid on GitHub">Star</a></div></div></div></div></footer></body></html>
+<a href=https://www.reddit.com/r/lucidarch target=_blank style=margin-left:10px><i class="fab fa-reddit-alien fa-lg"></i></a>
+</div>
+<div style=margin-left:50px;margin-top:6px>
+<a class=github-button href=https://github.com/sponsors/lucidarch data-icon=octicon-heart aria-label="Sponsor @lucidarch on GitHub">Sponsor</a>
+<a class=github-button href=https://github.com/lucidarch/lucid data-icon=octicon-star data-show-count=true aria-label="Star lucidarch/lucid on GitHub">Star</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
