@@ -2,7 +2,7 @@
 title: "Routing"
 date: 2020-10-18T12:49:47Z
 draft: false
-weight: 7
+weight: 10
 hide: ["toc", "header"]
 head: "<hr />"
 

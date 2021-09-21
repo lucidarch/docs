@@ -2,7 +2,7 @@
 title: "Contribution Guide"
 date: 2020-10-28T21:36:30Z
 draft: true
-weight: 20
+weight: 7
 hide: [header]
 ---
 
