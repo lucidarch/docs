@@ -21,8 +21,8 @@ for a scalable future software
         <a href="https://www.reddit.com/r/lucidarch" target="_blank" style="margin-left: 10px;"><i class="fab fa-reddit-alien fa-lg"></i></a>
     </div>
     <div style="margin-left: 50px; margin-top: 6px;">
-        <a class="github-button" href="https://github.com/sponsors/lucid-architecture" data-icon="octicon-heart" aria-label="Sponsor @lucid-architecture on GitHub">Sponsor</a>
-        <a class="github-button" href="https://github.com/ntkme/github-buttons" data-icon="octicon-star" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+        <a class="github-button" href="https://github.com/sponsors/lucidarch" data-icon="octicon-heart" aria-label="Sponsor @lucidarch on GitHub">Sponsor</a>
+        <a class="github-button" href="https://github.com/lucidarch/lucid" data-icon="octicon-star" data-show-count="true" aria-label="Star lucidarch/lucid on GitHub">Star</a>
     </div>
 </div>
 

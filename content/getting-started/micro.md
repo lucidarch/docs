@@ -425,7 +425,7 @@ To save the link we'll create a job that saves links and run it in our feature, 
 `app/Domains/Link/Jobs/SaveLinkJob` along with its test `tests/Unit/Domains/Link/Jobs/SaveLinkJobTest`.
 
 ```bash
-lucid make:job SaveLik link
+lucid make:job SaveLink link
 ```
 
 {{% notice info %}}
