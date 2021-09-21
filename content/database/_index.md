@@ -1,7 +1,7 @@
 ---
 title: "Database"
 date: 2021-09-21T18:46:27Z
-draft: true
+draft: false
 weight: 17
 hide: ["header"]
 head: "<hr />"
