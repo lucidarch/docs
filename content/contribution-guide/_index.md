@@ -6,14 +6,14 @@ weight: 7
 hide: [header]
 ---
 
-## Bug Reports
+## Bug & Issue Reports
 
-To encourage active collaboration, Lucid strongly encourages pull requests, not just bug reports.
-"Bug reports" may also be sent in the form of a pull request containing a failing test or steps to reproduce the bug.
+To encourage active collaboration, Lucid strongly encourages contribution through [pull requests](#which-branch-and-how-to-contribute).
+"Bug reports" may be searched or created in [issues](https://github.com/lucidarch/lucid/issues) or sent in the form of a pull request containing a failing test or steps to reproduce the bug.
 
-However, if you file a bug report, your issue should contain a title and a clear description of the issue. You should also include as much relevant information as possible and a code sample that demonstrates the issue. The goal of a bug report is to make it easy for yourself - and others - to replicate the bug and develop a fix.
+If you file a bug report, your issue should contain a title and a clear description of the issue. You should also include as much relevant information as possible and a code sample that demonstrates the issue. The goal of a bug report is to make it easy for yourself - and others - to replicate the bug and develop a fix.
 
-Remember, bug reports are created in the hope that others with the same problem will be able to collaborate with you on solving it. Do not expect that the bug report will automatically see any activity or that others will jump to fix it. Creating a bug report serves to help yourself and others start on the path of fixing the problem.
+⏱  PRs and issues are usually checked about three times a week so there is a high chance yours will be picked up soon.
 
 The Lucid Architecture source code is on GitHub as [lucidarch/lucid](https://github.com/lucidarch/lucid).
 
@@ -21,35 +21,35 @@ The Lucid Architecture source code is on GitHub as [lucidarch/lucid](https://git
 
 Lucid Architecture's GitHub issue trackers are not intended to provide help or support. Instead, use one of the following channels:
 
-- Official [Slack workspace](https://lucid-slack.herokuapp.com/) in the `#support` channel
-- [StackOverflow](https://stackoverflow.com/questions/tagged/lucid-architecture)
+- [Discussions](https://github.com/lucidarch/lucid/discussions) is where most conversations takes place
+- For a chat hit us on our official [Slack workspace](https://lucid-slack.herokuapp.com/) in the `#support` channel
+- If you prefer StackOverflow to post your questions you may use [#lucidarch](https://stackoverflow.com/questions/tagged/lucidarch) to tag them
 
 ## Core Development Discussion
 
-You may propose new features or improvements of existing Lucid Architecture behaviour in the Lucid Ideas [issue board](https://github.com/lucidarch/ideas/issues).
-If you propose a new feature, please be willing to implement at least some of the code that would be needed to complete the feature.
+You may propose new features or improvements of existing Lucid Architecture behaviour in the [Lucid Discussins](https://github.com/lucidarch/lucid/discussions).
+If you propose a new feature, please be willing to implement at least some of the code that would be needed to complete the feature, or collaborate on active ideation in the meantime.
 
 Informal discussion regarding bugs, new features, and implementation of existing features takes place in the `#internals` channel of the [Lucid Slack workspace](https://lucid-slack.herokuapp.com/).
 Abed Halawi, the maintainer of Lucid, is typically present in the channel on weekdays from 8am-5pm EEST (Eastern European Summer Time), and sporadically present in the channel at other times.
 
-## Which Branch?
+## Which Branch? And How To Contribute
 
-All repositories follow Laravel's versions in branching, where installing the branch `5.5` in any of the repositories will install Lucid with Laravel v5.5.
-What's on the `master` branch is always the latest Laravel version.
+The `main` branch is what contains the latest live version and is the one that gets released.
 
-The main repositories are the following:
+To apply changes:
+- Fork this repository
+- Clone the forked repository to where you'll edit your code
+- Create a branch for your edits (e.g. `feature/queueable-units`)
+- Commit your changes and their tests (if applicable) with meaningful short messages
+- Push your branch `git push origin feature/queueable-units`
+- Open a [PR](https://github.com/lucidarch/lucid/compare) to the `main` branch, which will run tests for your edits
 
-- Main: [Laravel (monolith)](https://github.com/lucidarch/laravel) and [Microservice](https://github.com/lucidarch/laravel-microservice)
-- [Foundation](https://github.com/lucidarch/foundation-laravel): Has Lucid units and other abstract classes such as Validator, Repository etc.
-- [Console](https://github.com/lucidarch/console-laravel)**:** contains the Console companion, the CLI and the dashboard
-
-## Compiled Assets
-
-If you are submitting a change that will affect a compiled file, such as most of the files in `resources/sass` or `resources/js` of the `lucid-architecture/laravel` repository, do not commit the compiled files. Due to their large size, they cannot realistically be reviewed by a maintainer. This could be exploited as a way to inject malicious code into Lucid Architecture. In order to defensively prevent this, all compiled files will be generated and committed by Lucid maintainers.
+⏱ PRs and issues are usually checked about three times a week.
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Lucid, please send an email to Abed Halawi at [halawi.abed@gmail.com](mailto:abed.halawi@gmail.com).
+If you discover a security vulnerability within Lucid, please send an email to Abed Halawi at [halawi.abed@gmail.com](mailto:halawi.abed@gmail.com).
 All security vulnerabilities will be promptly addressed.
 
 ## Coding Style
