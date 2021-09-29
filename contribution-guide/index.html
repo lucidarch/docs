@@ -1,0 +1,357 @@
+<!doctype html><html>
+<head>
+<title>
+Contribution Guide :: Lucid
+</title>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name=revised content="2021-09-29T15:39:53 UTC">
+<meta name=description content>
+<title>Contribution Guide :: Lucid</title>
+<link rel="shortcut icon" href=/images/favicon.png type=image/x-icon>
+<link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css integrity=sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css>
+<script src=https://code.jquery.com/jquery-3.5.1.min.js></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel=stylesheet>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/layout.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/css/style.main.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/css/style.menu.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/notice.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/tabs.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/panel.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/columns.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/children.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/attachments.css>
+<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/alert.css>
+<link rel=stylesheet type=text/css href=/css/docport.css>
+<script src=/js/docport.js></script>
+<script type=text/javascript>var baseurl="https://docs.lucidarch.dev"</script>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-96232175-1','auto'),ga('send','pageview'))</script><link rel=stylesheet href=/css/custom.css>
+<link rel=stylesheet href=/css/syntax.css>
+<link rel=apple-touch-icon sizes=180x180 href=/icon/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/icon/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/icon/favicon-16x16.png>
+<link rel=manifest href=/icon/site.webmanifest>
+<script async defer src=https://buttons.github.io/buttons.js></script>
+</head>
+<body data-url=/contribution-guide/ class=hideheader>
+<style type=text/css>#debug{display:-webkit-box;display:-ms-flexbox;display:flex;line-height:3.5rem;margin-bottom:.35rem;padding:0 2rem;position:fixed;left:0;right:0;top:0;top:0;min-height:150px;background-color:#fff;border:3px solid red;z-index:10000;word-wrap:all;overflow:auto}</style>
+<article>
+<aside>
+<div class=search>
+<div class=searchbox>
+<input data-search-input id=search-by type=text placeholder="Type to search...">
+</div>
+<script type=text/javascript src=/vendor/lunr/lunr.min.js></script>
+<script type=text/javascript src=/vendor/auto-complete/auto-complete.js></script>
+<link href=/vendor/auto-complete/auto-complete.css rel=stylesheet>
+<script type=text/javascript>var baseurl="https://docs.lucidarch.dev"</script>
+<script type=text/javascript src=/js/search.js></script>
+</div>
+<div style=margin-top:30px>
+<a href=/concept style=display:flex;justify-content:left;align-items:center>
+<img src=/icon/logo.png width=250 style=margin-left:10px>
+</a>
+</div>
+<div id=close_menu>
+<a href=javascript:void(0); style=font-size:15px onclick="$('article > aside').toggleClass('responsive')">
+<i class="fa fa-lg fa-times"></i>
+</a>
+</div>
+<ul class=menu>
+<li data-nav-id=https://docs.lucidarch.dev/concept/ class="dd-item
+item_level_$level">
+<a href=/concept/>Concept</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/philosophy/ class="dd-item
+item_level_$level">
+<a href=/philosophy/>Philosophy</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/principles/ class="dd-item
+item_level_$level">
+<a href=/principles/>Principles</a>
+</li>
+<hr>
+<li data-nav-id=https://docs.lucidarch.dev/installation/ class="dd-item
+item_level_$level">
+<a href=/installation/>Installation</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/upgrade-guide/ class="dd-item alwaysopen
+item_level_$level">
+<a href=/upgrade-guide/>Upgrade Guide</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/contribution-guide/ class="dd-item parent active
+item_level_$level">
+<a href=/contribution-guide/>Contribution Guide</a>
+</li>
+<hr>
+<li data-nav-id=https://docs.lucidarch.dev/getting-started/ class="dd-item alwaysopen
+item_level_$level">
+<a href=/getting-started/>Getting Started</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/micro-vs-monolith/ class="dd-item
+item_level_$level">
+<a href=/micro-vs-monolith/>Micro • Monolith</a>
+</li>
+<hr>
+<li data-nav-id=https://docs.lucidarch.dev/routing/ class="dd-item
+item_level_$level">
+<a href=/routing/>Routing</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/controllers/ class="dd-item
+item_level_$level">
+<a href=/controllers/>Controllers</a>
+</li>
+<hr>
+<li data-nav-id=https://docs.lucidarch.dev/features/ class="dd-item
+item_level_$level">
+<a href=/features/>Features</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/jobs/ class="dd-item
+item_level_$level">
+<a href=/jobs/>Jobs</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/operations/ class="dd-item
+item_level_$level">
+<a href=/operations/>Operations</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/services/ class="dd-item
+item_level_$level">
+<a href=/services/>Services</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/domains/ class="dd-item
+item_level_$level">
+<a href=/domains/>Domains</a>
+</li>
+<hr>
+<li data-nav-id=https://docs.lucidarch.dev/database/ class="dd-item
+item_level_$level">
+<a href=/database/>Database</a>
+</li>
+<li data-nav-id=https://docs.lucidarch.dev/validation/ class="dd-item
+item_level_$level">
+<a href=/validation/>Validation</a>
+</li>
+<hr>
+<li data-nav-id=https://docs.lucidarch.dev/cli/ class="dd-item
+item_level_$level">
+<a href=/cli/>CLI Reference</a>
+</li>
+</ul>
+</aside>
+<section class=page>
+<nav id=ariane aria-label=breadcrumb>
+<ol class=ariane>
+<li>
+<a class=text-link href=https://docs.lucidarch.dev>
+Home
+</a>
+</li>
+<li class=active>
+Contribution Guide
+</li>
+</ol>
+</nav>
+<h1>Contribution Guide</h1>
+<div class=jump-to-section>
+<span onclick="$h=$(this),$h.next('nav').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('nav').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
+<span class="fas fa-align-right"></span>
+Jump to Section
+<i class="fas fa-chevron-right"></i>
+</span>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#bug--issue-reports>Bug & Issue Reports</a></li>
+<li><a href=#support-questions>Support Questions</a></li>
+<li><a href=#core-development-discussion>Core Development Discussion</a></li>
+<li><a href=#which-branch-and-how-to-contribute>Which Branch? And How To Contribute</a>
+<ul>
+<li><a href=#setup-for-development>Setup for Development</a></li>
+</ul>
+</li>
+<li><a href=#security-vulnerabilities>Security Vulnerabilities</a></li>
+<li><a href=#coding-style>Coding Style</a>
+<ul>
+<li><a href=#phpdoc>PHPDoc</a></li>
+</ul>
+</li>
+<li><a href=#code-of-conduct>Code of Conduct</a></li>
+</ul>
+</nav>
+</div>
+<div class=content>
+<h2 ref=bug--issue-reports>Bug & Issue Reports</h2><a class=anchor id=bug--issue-reports></a>
+<p>To encourage active collaboration, Lucid strongly encourages contribution through <a href=#which-branch-and-how-to-contribute>pull requests</a>.
+&ldquo;Bug reports&rdquo; may be searched or created in <a href=https://github.com/lucidarch/lucid/issues>issues</a> or sent in the form of a pull request containing a failing test or steps to reproduce the bug.</p>
+<p>If you file a bug report, your issue should contain a title and a clear description of the issue. You should also include as much relevant information as possible and a code sample that demonstrates the issue. The goal of a bug report is to make it easy for yourself - and others - to replicate the bug and develop a fix.</p>
+<p>⏱ PRs and issues are usually checked about three times a week so there is a high chance yours will be picked up soon.</p>
+<p>The Lucid Architecture source code is on GitHub as <a href=https://github.com/lucidarch/lucid>lucidarch/lucid</a>.</p>
+<h2 ref=support-questions>Support Questions</h2><a class=anchor id=support-questions></a>
+<p>Lucid Architecture&rsquo;s GitHub issue trackers are not intended to provide help or support. Instead, use one of the following channels:</p>
+<ul>
+<li><a href=https://github.com/lucidarch/lucid/discussions>Discussions</a> is where most conversations takes place</li>
+<li>For a chat hit us on our official <a href=https://lucid-slack.herokuapp.com/>Slack workspace</a> in the <code>#support</code> channel</li>
+<li>If you prefer StackOverflow to post your questions you may use <a href=https://stackoverflow.com/questions/tagged/lucidarch>#lucidarch</a> to tag them</li>
+</ul>
+<h2 ref=core-development-discussion>Core Development Discussion</h2><a class=anchor id=core-development-discussion></a>
+<p>You may propose new features or improvements of existing Lucid Architecture behaviour in the <a href=https://github.com/lucidarch/lucid/discussions>Lucid Discussins</a>.
+If you propose a new feature, please be willing to implement at least some of the code that would be needed to complete the feature, or collaborate on active ideation in the meantime.</p>
+<p>Informal discussion regarding bugs, new features, and implementation of existing features takes place in the <code>#internals</code> channel of the <a href=https://lucid-slack.herokuapp.com/>Lucid Slack workspace</a>.
+Abed Halawi, the maintainer of Lucid, is typically present in the channel on weekdays from 8am-5pm EEST (Eastern European Summer Time), and sporadically present in the channel at other times.</p>
+<h2 ref=which-branch-and-how-to-contribute>Which Branch? And How To Contribute</h2><a class=anchor id=which-branch-and-how-to-contribute></a>
+<p>The <code>main</code> branch is what contains the latest live version and is the one that gets released.</p>
+<ul>
+<li>Fork this repository</li>
+<li>Clone the forked repository to where you&rsquo;ll edit your code</li>
+<li>Create a branch for your edits (e.g. <code>feature/queueable-units</code>)</li>
+<li>Commit your changes and their tests (if applicable) with meaningful short messages</li>
+<li>Push your branch <code>git push origin feature/queueable-units</code></li>
+<li>Open a <a href=https://github.com/lucidarch/lucid/compare>PR</a> to the <code>main</code> branch, which will run tests for your edits</li>
+</ul>
+<p>⏱ PRs and issues are usually checked about three times a week.</p>
+<h3 ref=setup-for-development>Setup for Development</h3><a class=anchor id=setup-for-development></a>
+<p>Following are the steps to setup for development on Lucid:</p>
+<blockquote>
+<p>Assuming we&rsquo;re in <code>~/dev</code> directory&mldr;</p>
+</blockquote>
+<ul>
+<li>
+<p>Clone the <code>lucidarch/lucid</code> repository which will create a <code>lucid</code> folder at <code>~/dev/lucid</code></p>
+</li>
+<li>
+<p>Create a Laravel project to test your implementation in it <code>composer create-project laravel/laravel myproject</code></p>
+</li>
+<li>
+<p>Connect the created Laravel project to the local Lucid installation; in the Laravel project&rsquo;s <code>composer.json</code></p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=s2>&#34;require&#34;</span><span class=err>:</span> <span class=p>{</span>
+    <span class=nt>&#34;...&#34;</span><span class=p>,</span>
+    <span class=nt>&#34;lucidarch/lucid&#34;</span><span class=p>:</span> <span class=s2>&#34;@dev&#34;</span>
+<span class=p>}</span><span class=err>,</span>
+<span class=s2>&#34;repositories&#34;</span><span class=err>:</span> <span class=p>[</span>
+    <span class=p>{</span>
+        <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;path&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;url&#34;</span><span class=p>:</span> <span class=s2>&#34;~/dev/lucid&#34;</span><span class=p>,</span>
+        <span class=nt>&#34;options&#34;</span><span class=p>:</span> <span class=p>{</span>
+            <span class=nt>&#34;symlink&#34;</span><span class=p>:</span> <span class=kc>true</span>
+        <span class=p>}</span>
+    <span class=p>}</span>
+<span class=p>]</span><span class=err>,</span>
+<span class=s2>&#34;minimum-stability&#34;</span><span class=err>:</span> <span class=s2>&#34;dev&#34;</span><span class=err>,</span>
+</code></pre></div><blockquote>
+<p>Make sure you change <code>url</code> to your directory&rsquo;s absolute path</p>
+</blockquote>
+</li>
+<li>
+<p>Run <code>composer update</code> to create the symlink</p>
+</li>
+</ul>
+<p>Now all your changes in the lucid directory will take effect automatically in the project.</p>
+<h2 ref=security-vulnerabilities>Security Vulnerabilities</h2><a class=anchor id=security-vulnerabilities></a>
+<p>If you discover a security vulnerability within Lucid, please send an email to Abed Halawi at <a href=mailto:halawi.abed@gmail.com>halawi.abed@gmail.com</a>.
+All security vulnerabilities will be promptly addressed.</p>
+<h2 ref=coding-style>Coding Style</h2><a class=anchor id=coding-style></a>
+<p>Lucid Architecture follows the <a href=https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md>PSR-2</a> coding standard and the <a href=https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md>PSR-4</a> autoloading standard.</p>
+<h3 ref=phpdoc>PHPDoc</h3><a class=anchor id=phpdoc></a>
+<p>Below is an example of a valid Lucid Architecture documentation block. Note that the <code>@param</code> attribute is followed by two spaces, the argument type, two more spaces, and finally the variable name:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=sd>/**
+</span><span class=sd> * Register a binding with the container.
+</span><span class=sd> *
+</span><span class=sd> * @param  string|array  $abstract
+</span><span class=sd> * @param  \Closure|string|null  $concrete
+</span><span class=sd> * @param  bool  $shared
+</span><span class=sd> * @return void
+</span><span class=sd> *
+</span><span class=sd> * @throws \Exception
+</span><span class=sd> */</span>
+<span class=k>public</span> <span class=k>function</span> <span class=nf>bind</span><span class=p>(</span><span class=nv>$abstract</span><span class=p>,</span> <span class=nv>$concrete</span> <span class=o>=</span> <span class=k>null</span><span class=p>,</span> <span class=nv>$shared</span> <span class=o>=</span> <span class=k>false</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=c1>//
+</span><span class=c1></span><span class=p>}</span>
+</code></pre></div><h2 ref=code-of-conduct>Code of Conduct</h2><a class=anchor id=code-of-conduct></a>
+<p>The Lucid Architecture code of conduct is derived from the Laravel code of conduct. Any violations of the code of conduct may be reported to Abed Halawi (<a href=mailto:halawi.abed@gmail.com>halawi.abed@gmail.com</a>):</p>
+<ul>
+<li>Participants will be tolerant of opposing views.</li>
+<li>Participants must ensure that their language and actions are free of personal attacks and disparaging personal remarks.</li>
+<li>When interpreting the words and actions of others, participants should always assume good intentions.</li>
+<li>Behavior that can be reasonably considered harassment will not be tolerated.</li>
+</ul>
+</div>
+<div class=chevrons>
+<a class=next href=/getting-started/ title="Getting Started" style=margin-right:0>
+<div>
+<p>Next page</p>
+<label>Getting Started</label>
+</div>
+<i class="fas fa-arrow-right" style=font-size:1.7em></i></a>
+</div>
+</section>
+<section class=right-menu>
+<div class=TableOfContents>
+<label><i class="fas fa-align-right"></i>&nbsp;&nbsp;What's on this page</label>
+<nav>
+<ul>
+<li><a href=/contribution-guide/>Contribution Guide</a></li>
+</ul>
+</nav>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#bug--issue-reports>Bug & Issue Reports</a></li>
+<li><a href=#support-questions>Support Questions</a></li>
+<li><a href=#core-development-discussion>Core Development Discussion</a></li>
+<li><a href=#which-branch-and-how-to-contribute>Which Branch? And How To Contribute</a>
+<ul>
+<li><a href=#setup-for-development>Setup for Development</a></li>
+</ul>
+</li>
+<li><a href=#security-vulnerabilities>Security Vulnerabilities</a></li>
+<li><a href=#coding-style>Coding Style</a>
+<ul>
+<li><a href=#phpdoc>PHPDoc</a></li>
+</ul>
+</li>
+<li><a href=#code-of-conduct>Code of Conduct</a></li>
+</ul>
+</nav>
+</div>
+<div class=Actions>
+<nav>
+<ul>
+<li>
+<i class="fas fa-calendar"></i>
+Last update on 29 September 2021
+</li>
+<li title>
+<i class="fas fa-user"></i>
+Last update by Abed Halawi
+</li>
+</ul>
+</nav>
+</div>
+</section>
+</article>
+<footer>
+<div class=columns>
+<div class=column>
+<div style=font-family:Raleway!important>
+<h3 style=color:#fdfdfd!important>lucid architecture</h3>
+for a scalable future software
+</div>
+</div>
+<div class=column>
+<div style=display:flex;justify-content:flex-end;align-items:center>
+<div style=align-items:center;display:flex>
+<a href=https://lucidarch.dev target=_blank><img src=/icon/lucid-coloured.png alt="Lucid website link" width=28px style=margin-top:4px></a>
+<a href=https://github.com/lucidarch target=_blank style=margin-left:10px><i class="fab fa-github fa-lg"></i></a>
+<a href=https://lucid-slack.herokuapp.com target=_blank style=margin-left:10px><i class="fab fa-slack fa-lg"></i></a>
+<a href=https://www.reddit.com/r/lucidarch target=_blank style=margin-left:10px><i class="fab fa-reddit-alien fa-lg"></i></a>
+</div>
+<div style=margin-left:50px;margin-top:6px>
+<a class=github-button href=https://github.com/sponsors/lucidarch data-icon=octicon-heart aria-label="Sponsor @lucidarch on GitHub">Sponsor</a>
+<a class=github-button href=https://github.com/lucidarch/lucid data-icon=octicon-star data-show-count=true aria-label="Star lucidarch/lucid on GitHub">Star</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
