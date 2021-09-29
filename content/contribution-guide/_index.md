@@ -1,7 +1,7 @@
 ---
 title: "Contribution Guide"
 date: 2020-10-28T21:36:30Z
-draft: true
+draft: false
 weight: 7
 hide: [header]
 ---
@@ -37,7 +37,6 @@ Abed Halawi, the maintainer of Lucid, is typically present in the channel on wee
 
 The `main` branch is what contains the latest live version and is the one that gets released.
 
-To apply changes:
 - Fork this repository
 - Clone the forked repository to where you'll edit your code
 - Create a branch for your edits (e.g. `feature/queueable-units`)
@@ -46,6 +45,38 @@ To apply changes:
 - Open a [PR](https://github.com/lucidarch/lucid/compare) to the `main` branch, which will run tests for your edits
 
 ⏱ PRs and issues are usually checked about three times a week.
+
+### Setup for Development
+
+Following are the steps to setup for development on Lucid:
+
+> Assuming we're in `~/dev` directory...
+
+- Clone the `lucidarch/lucid` repository which will create a `lucid` folder at `~/dev/lucid`
+- Create a Laravel project to test your implementation in it `composer create-project laravel/laravel myproject`
+- Connect the created Laravel project to the local Lucid installation; in the Laravel project's `composer.json`
+    ```json
+    "require": {
+        "...",
+        "lucidarch/lucid": "@dev"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "~/dev/lucid",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+    "minimum-stability": "dev",
+    ```
+
+    > Make sure you change `url` to your directory's absolute path
+
+- Run `composer update` to create the symlink
+
+Now all your changes in the lucid directory will take effect automatically in the project.
 
 ## Security Vulnerabilities
 
