@@ -5,7 +5,7 @@ Micro :: Lucid
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-09-29T15:39:53 UTC">
+<meta name=revised content="2021-10-13T21:04:32 UTC">
 <meta name=description content>
 <title>Micro :: Lucid</title>
 <link rel="shortcut icon" href=/images/favicon.png type=image/x-icon>
@@ -124,6 +124,10 @@ item_level_$level">
 <a href=/domains/>Domains</a>
 </li>
 <hr>
+<li data-nav-id=https://docs.lucidarch.dev/testing/ class="dd-item
+item_level_$level">
+<a href=/testing/>Testing</a>
+</li>
 <li data-nav-id=https://docs.lucidarch.dev/database/ class="dd-item
 item_level_$level">
 <a href=/database/>Database</a>
@@ -205,13 +209,31 @@ Micro
 <p>Validator</p>
 <p><code>use Lucid\Foundation\Validator;</code> → <code>use Lucid\Validation\Validator;</code></p>
 </li>
+<li>
+<p>Validation</p>
+<p><code>use Lucid\Foundation\Validation;</code> → <code>use Lucid\Validation\Validation;</code></p>
+</li>
+<li>
+<p>Events</p>
+<p><code>use Lucid\Foundation\Events</code> → <code>use Lucid\Events</code> (without <code>;</code>)</p>
+</li>
 </ul>
 </li>
 <li>
 <p>Replace traits namespaces</p>
 <ul>
-<li><code>use Lucid\Foundation\ServesFeaturesTrait;</code> → <code>use Lucid\Bus\ServesFeatures;</code></li>
-<li><code>use ServesFeaturesTrait;</code> → <code>use ServesFeatures;</code></li>
+<li>
+<p><code>use Lucid\Foundation\ServesFeaturesTrait;</code> → <code>use Lucid\Bus\ServesFeatures;</code></p>
+</li>
+<li>
+<p><code>use ServesFeaturesTrait;</code> → <code>use ServesFeatures;</code></p>
+</li>
+<li>
+<p><code>use Lucid\Foundation\MarshalTrait;</code> → <code>use Lucid\Bus\Marshal;</code></p>
+</li>
+<li>
+<p><code>use MarshalTrait;</code> → <code>use Marshal;</code></p>
+</li>
 </ul>
 </li>
 <li>
