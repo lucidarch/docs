@@ -2,9 +2,8 @@
 title: "Database"
 date: 2021-09-21T18:46:27Z
 draft: false
-weight: 17
+weight: 18
 hide: ["header"]
-head: "<hr />"
 ---
 
 ## Migrations
