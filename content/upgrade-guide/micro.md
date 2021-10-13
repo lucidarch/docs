@@ -43,9 +43,20 @@ Ensure that your tests are passing at the initial state of the upgrade to be abl
 
         `use Lucid\Foundation\Validator;` → `use Lucid\Validation\Validator;`
 
+    - Validation
+
+        `use Lucid\Foundation\Validation;` → `use Lucid\Validation\Validation;`
+
+    - Events
+
+        `use Lucid\Foundation\Events` → `use Lucid\Events` (without `;`)
+
 - Replace traits namespaces
     - `use Lucid\Foundation\ServesFeaturesTrait;` → `use Lucid\Bus\ServesFeatures;`
     - `use ServesFeaturesTrait;` → `use ServesFeatures;`
+
+    - `use Lucid\Foundation\MarshalTrait;` → `use Lucid\Bus\Marshal;`
+    - `use MarshalTrait;` → `use Marshal;`
 - Run `composer dump-autoload` to feel the waters
 
     This time it should all be clear of errors. Otherwise, keep digging and replacing until it passes
