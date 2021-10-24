@@ -5,7 +5,7 @@ Testing :: Lucid
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-10-13T21:04:33 UTC">
+<meta name=revised content="2021-10-24T10:39:56 UTC">
 <meta name=description content>
 <title>Testing :: Lucid</title>
 <link rel="shortcut icon" href=/images/favicon.png type=image/x-icon>
@@ -310,7 +310,7 @@ Here are a few examples:</p>
 <span class=p>}</span>
 </code></pre></div><p><strong>Simulate an Invitation Error</strong></p>
 <p>To see how our code will behave when an issue occurs as we invite other members, let&rsquo;s cause it to happen.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=k>public</span> <span class=k>function</span> <span class=nf>test_create_organization_unauthorized_member</span><span class=p>()</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=k>public</span> <span class=k>function</span> <span class=nf>test_create_organization_invitation_error</span><span class=p>()</span>
 <span class=p>{</span>
     <span class=nv>$member</span> <span class=o>=</span> <span class=nx>Member</span><span class=o>::</span><span class=na>factory</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>make</span><span class=p>();</span>
     <span class=nv>$channel</span> <span class=o>=</span> <span class=nx>Channel</span><span class=o>::</span><span class=na>factory</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>make</span><span class=p>();</span>
@@ -329,7 +329,7 @@ Here are a few examples:</p>
 
     <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>postJson</span><span class=p>(</span><span class=s1>&#39;/channels&#39;</span><span class=p>,</span> <span class=p>[</span>
         <span class=s1>&#39;id&#39;</span> <span class=o>=&gt;</span> <span class=nv>$member</span><span class=o>-&gt;</span><span class=na>id</span><span class=p>,</span>
-        <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;ping-channel&#39;</span><span class=p>,</span>
+        <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=nv>$channel</span><span class=o>-&gt;</span><span class=na>title</span><span class=p>,</span>
         <span class=s1>&#39;invited&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;member-id-1&#39;</span><span class=p>,</span> <span class=s1>&#39;member-id-2&#39;</span><span class=p>]</span>
     <span class=p>]);</span>
 <span class=p>}</span>
@@ -378,7 +378,7 @@ being mocked has tests of its own, extensively, otherwise we&rsquo;ll be leaving
 <ul>
 <li>
 <i class="fas fa-calendar"></i>
-Last update on 14 October 2021
+Last update on 24 October 2021
 </li>
 <li title>
 <i class="fas fa-user"></i>
