@@ -100,6 +100,14 @@ and its test at `tests/Feature/Services/Commerce/ListProductsFeaturesTest.php`
 The generated Feature class will automatically be suffixed with `Feature`, so the
 class above will be `ListProductsFeature`.
 
+Features can also be generated in subdirectories by specifying their paths
+
+```bash
+ lucid make:feature Thread/AddThread Forum
+```
+
+Generated class will be at `app/Services/Forum/Features/Thread/AddThreadFeature.php`
+
 {{% notice info %}}
 {{% icon name="fa-asterisk" %}}&nbsp;For more details on this command see the help manual with `lucid make:feature --help`
 {{% /notice %}}
