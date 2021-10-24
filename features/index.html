@@ -5,7 +5,7 @@ Features :: Lucid
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-10-24T10:39:56 UTC">
+<meta name=revised content="2021-10-24T20:48:33 UTC">
 <meta name=description content>
 <title>Features :: Lucid</title>
 <link rel="shortcut icon" href=/images/favicon.png type=image/x-icon>
@@ -248,6 +248,9 @@ units such as <em>Jobs</em> and <em>Operations</em> and <em>Features</em>.</p>
 </div></div>
 <p>The generated Feature class will automatically be suffixed with <code>Feature</code>, so the
 class above will be <code>ListProductsFeature</code>.</p>
+<p>Features can also be generated in subdirectories by specifying their paths</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash> lucid make:feature Thread/AddThread Forum
+</code></pre></div><p>Generated class will be at <code>app/Services/Forum/Features/Thread/AddThreadFeature.php</code></p>
 <div class="notices info">
 <p><i class="fas fa-asterisk"></i> For more details on this command see the help manual with <code>lucid make:feature --help</code></p>
 </div>
