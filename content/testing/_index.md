@@ -219,7 +219,7 @@ public function test_create_organization_unauthorized_member()
 To see how our code will behave when an issue occurs as we invite other members, let's cause it to happen.
 
 ```php
-public function test_create_organization_unauthorized_member()
+public function test_create_organization_invitation_error()
 {
     $member = Member::factory()->make();
     $channel = Channel::factory()->make();
@@ -238,7 +238,7 @@ public function test_create_organization_unauthorized_member()
 
     $this->postJson('/channels', [
         'id' => $member->id,
-        'title' => 'ping-channel',
+        'title' => $channel->title,
         'invited' => ['member-id-1', 'member-id-2']
     ]);
 }
