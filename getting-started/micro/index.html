@@ -5,7 +5,7 @@ Micro :: Lucid
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2021-10-24T20:48:33 UTC">
+<meta name=revised content="2022-02-12T10:53:49 UTC">
 <meta name=description content>
 <title>Micro :: Lucid</title>
 <link rel="shortcut icon" href=/images/favicon.png type=image/x-icon>
@@ -796,7 +796,7 @@ In principle, Lucid&rsquo;s feature tests are about testing the integration betw
                         <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;Example description&#39;</span><span class=p>,</span>
                     <span class=p>]);</span>
 
-    <span class=nv>$response</span><span class=o>-&gt;</span><span class=na>assertSessionHasErrors</span><span class=p>([</span><span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;The url format is invalid.&#39;</span><span class=p>]);</span>
+    <span class=nv>$response</span><span class=o>-&gt;</span><span class=na>assertSessionHasErrors</span><span class=p>([</span><span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;The url must be a valid URL.&#39;</span><span class=p>]);</span>
 <span class=p>}</span>
 </code></pre></div><p>Finally, test input strings lengths:</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=k>public</span> <span class=k>function</span> <span class=nf>test_max_length_fails_when_too_long</span><span class=p>()</span>
@@ -811,9 +811,9 @@ In principle, Lucid&rsquo;s feature tests are about testing the integration betw
                      <span class=o>-&gt;</span><span class=na>post</span><span class=p>(</span><span class=s1>&#39;/submit&#39;</span><span class=p>,</span> <span class=nx>compact</span><span class=p>(</span><span class=s1>&#39;title&#39;</span><span class=p>,</span> <span class=s1>&#39;url&#39;</span><span class=p>,</span> <span class=s1>&#39;description&#39;</span><span class=p>));</span>
 
     <span class=nv>$response</span><span class=o>-&gt;</span><span class=na>assertSessionHasErrors</span><span class=p>([</span>
-        <span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;The url may not be greater than 255 characters.&#39;</span><span class=p>,</span>
-        <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;The title may not be greater than 255 characters.&#39;</span><span class=p>,</span>
-        <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;The description may not be greater than 255 characters.&#39;</span><span class=p>,</span>
+        <span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;The url must not be greater than 255 characters.&#39;</span><span class=p>,</span>
+        <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;The title must not be greater than 255 characters.&#39;</span><span class=p>,</span>
+        <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;The description must not be greater than 255 characters.&#39;</span><span class=p>,</span>
     <span class=p>]);</span>
 <span class=p>}</span>
 
@@ -918,7 +918,7 @@ job create or update accordingly.</p>
 <ul>
 <li>
 <i class="fas fa-calendar"></i>
-Last update on 24 October 2021
+Last update on 12 February 2022
 </li>
 <li title>
 <i class="fas fa-user"></i>
