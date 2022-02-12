@@ -771,7 +771,7 @@ public function test_link_is_not_created_with_invalid_url($case)
                         'description' => 'Example description',
                     ]);
 
-    $response->assertSessionHasErrors(['url' => 'The url format is invalid.']);
+    $response->assertSessionHasErrors(['url' => 'The url must be a valid URL.']);
 }
 ```
 
@@ -790,9 +790,9 @@ public function test_max_length_fails_when_too_long()
                      ->post('/submit', compact('title', 'url', 'description'));
 
     $response->assertSessionHasErrors([
-        'url' => 'The url may not be greater than 255 characters.',
-        'title' => 'The title may not be greater than 255 characters.',
-        'description' => 'The description may not be greater than 255 characters.',
+        'url' => 'The url must not be greater than 255 characters.',
+        'title' => 'The title must not be greater than 255 characters.',
+        'description' => 'The description must not be greater than 255 characters.',
     ]);
 }
 
