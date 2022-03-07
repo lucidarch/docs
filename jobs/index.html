@@ -5,7 +5,7 @@ Jobs :: Lucid
 </title>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2022-02-12T10:53:49 UTC">
+<meta name=revised content="2022-03-07T15:53:44 UTC">
 <meta name=description content>
 <title>Jobs :: Lucid</title>
 <link rel="shortcut icon" href=/images/favicon.png type=image/x-icon>
@@ -514,7 +514,7 @@ where you may want to centralize your error responses in jobs to maintain a cons
 <p>Assuming that we are working on an API where all our errors must be returned in JSON format, to avoid the accidental rendering
 of an HTML page leading to unexpected behaviours. We would create a job to be run when encountering an exception that includes
 the response structure. Lucid ships with one that can be used as default, available in the built-in <code>Http</code> domain <code>App\Domains\Http\Jobs\RespondWithJsonErrorJob</code> which has a simple signature:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=nv>$this</span><span class=o>-&gt;</span><span class=na>run</span><span class=p>(</span><span class=nx>RespondWithJobErrorJob</span><span class=o>::</span><span class=na>class</span><span class=p>,</span> <span class=p>[</span>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=nv>$this</span><span class=o>-&gt;</span><span class=na>run</span><span class=p>(</span><span class=nx>RespondWithJsonErrorJob</span><span class=o>::</span><span class=na>class</span><span class=p>,</span> <span class=p>[</span>
     <span class=s1>&#39;message&#39;</span> <span class=o>=&gt;</span> <span class=nv>$e</span><span class=o>-&gt;</span><span class=na>getMessage</span><span class=p>(),</span>
     <span class=s1>&#39;code&#39;</span> <span class=o>=&gt;</span> <span class=mi>2900</span><span class=p>,</span> <span class=c1>// custom error code, optional, default: 400
 </span><span class=c1></span>    <span class=s1>&#39;status&#39;</span> <span class=o>=&gt;</span> <span class=mi>400</span><span class=p>,</span> <span class=c1>// HTTP response status code, optional, default: 400
@@ -754,7 +754,7 @@ we have a job to fetch articles from <a href=https://dev.to>dev.to</a> to test.<
 <ul>
 <li>
 <i class="fas fa-calendar"></i>
-Last update on 12 February 2022
+Last update on 07 March 2022
 </li>
 <li title>
 <i class="fas fa-user"></i>
