@@ -1,957 +1,532 @@
-<!doctype html><html>
-<head>
-<title>
-Micro :: Lucid
-</title>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name=revised content="2022-03-07T15:53:44 UTC">
-<meta name=description content>
-<title>Micro :: Lucid</title>
-<link rel="shortcut icon" href=/images/favicon.png type=image/x-icon>
-<link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css integrity=sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z crossorigin=anonymous>
-<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css>
-<script src=https://code.jquery.com/jquery-3.5.1.min.js></script>
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel=stylesheet>
-<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/layout.css>
-<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/css/style.main.css>
-<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/css/style.menu.css>
-<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/notice.css>
-<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/tabs.css>
-<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/panel.css>
-<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/columns.css>
-<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/children.css>
-<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/attachments.css>
-<link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/alert.css>
-<link rel=stylesheet type=text/css href=/css/docport.css>
-<script src=/js/docport.js></script>
-<script type=text/javascript>var baseurl="https://docs.lucidarch.dev"</script>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-96232175-1','auto'),ga('send','pageview'))</script><link rel=stylesheet href=/css/custom.css>
-<link rel=stylesheet href=/css/syntax.css>
-<link rel=apple-touch-icon sizes=180x180 href=/icon/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=/icon/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href=/icon/favicon-16x16.png>
-<link rel=manifest href=/icon/site.webmanifest>
-<script async defer src=https://buttons.github.io/buttons.js></script>
-</head>
-<body data-url=/getting-started/micro/ class=hideheader>
-<style type=text/css>#debug{display:-webkit-box;display:-ms-flexbox;display:flex;line-height:3.5rem;margin-bottom:.35rem;padding:0 2rem;position:fixed;left:0;right:0;top:0;top:0;min-height:150px;background-color:#fff;border:3px solid red;z-index:10000;word-wrap:all;overflow:auto}</style>
-<article>
-<aside>
-<div class=search>
-<div class=searchbox>
-<input data-search-input id=search-by type=text placeholder="Type to search...">
-</div>
-<script type=text/javascript src=/vendor/lunr/lunr.min.js></script>
+<!doctype html><html><head><title>Micro :: Lucid</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name=revised content="2022-04-13T14:02:59 UTC"><meta name=description content><title>Micro :: Lucid</title><link rel="shortcut icon" href=/images/favicon.png type=image/x-icon><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css integrity=sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css><script src=https://code.jquery.com/jquery-3.5.1.min.js></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel=stylesheet><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/layout.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/css/style.main.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/css/style.menu.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/notice.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/tabs.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/panel.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/columns.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/children.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/attachments.css><link rel=stylesheet type=text/css href=https://docs.lucidarch.dev/sass/shortcodes/alert.css><link rel=stylesheet type=text/css href=/css/docport.css><script src=/js/docport.js></script>
+<script type=text/javascript>var baseurl="https://docs.lucidarch.dev"</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-96232175-1","auto"),ga("send","pageview"))</script><link rel=stylesheet href=/css/custom.css><link rel=stylesheet href=/css/syntax.css><link rel=apple-touch-icon sizes=180x180 href=/icon/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/icon/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/icon/favicon-16x16.png><link rel=manifest href=/icon/site.webmanifest><script async defer src=https://buttons.github.io/buttons.js></script></head><body data-url=/getting-started/micro/ class=hideheader><style type=text/css>#debug{display:-webkit-box;display:-ms-flexbox;display:flex;line-height:3.5rem;margin-bottom:.35rem;padding:0 2rem;position:fixed;left:0;right:0;top:0;top:0;min-height:150px;background-color:#fff;border:3px solid red;z-index:10000;word-wrap:all;overflow:auto}</style><article><aside><div class=search><div class=searchbox><input data-search-input id=search-by type=text placeholder="Type to search..."></div><script type=text/javascript src=/vendor/lunr/lunr.min.js></script>
 <script type=text/javascript src=/vendor/auto-complete/auto-complete.js></script>
-<link href=/vendor/auto-complete/auto-complete.css rel=stylesheet>
-<script type=text/javascript>var baseurl="https://docs.lucidarch.dev"</script>
-<script type=text/javascript src=/js/search.js></script>
-</div>
-<div style=margin-top:30px>
-<a href=/concept style=display:flex;justify-content:left;align-items:center>
-<img src=/icon/logo.png width=250 style=margin-left:10px>
-</a>
-</div>
-<div id=close_menu>
-<a href=javascript:void(0); style=font-size:15px onclick="$('article > aside').toggleClass('responsive')">
-<i class="fa fa-lg fa-times"></i>
-</a>
-</div>
-<ul class=menu>
-<li data-nav-id=https://docs.lucidarch.dev/concept/ class="dd-item
-item_level_$level">
-<a href=/concept/>Concept</a>
-</li>
-<li data-nav-id=https://docs.lucidarch.dev/philosophy/ class="dd-item
-item_level_$level">
-<a href=/philosophy/>Philosophy</a>
-</li>
-<li data-nav-id=https://docs.lucidarch.dev/principles/ class="dd-item
-item_level_$level">
-<a href=/principles/>Principles</a>
-</li>
-<hr>
-<li data-nav-id=https://docs.lucidarch.dev/installation/ class="dd-item
-item_level_$level">
-<a href=/installation/>Installation</a>
-</li>
-<li data-nav-id=https://docs.lucidarch.dev/upgrade-guide/ class="dd-item alwaysopen
-item_level_$level">
-<a href=/upgrade-guide/>Upgrade Guide</a>
-</li>
-<li data-nav-id=https://docs.lucidarch.dev/contribution-guide/ class="dd-item
-item_level_$level">
-<a href=/contribution-guide/>Contribution Guide</a>
-</li>
-<hr>
-<li data-nav-id=https://docs.lucidarch.dev/getting-started/ class="dd-item parent active alwaysopen
-item_level_$level">
-<a href=/getting-started/>Getting Started</a>
-</li>
-<li data-nav-id=https://docs.lucidarch.dev/micro-vs-monolith/ class="dd-item
-item_level_$level">
-<a href=/micro-vs-monolith/>Micro • Monolith</a>
-</li>
-<hr>
-<li data-nav-id=https://docs.lucidarch.dev/routing/ class="dd-item
-item_level_$level">
-<a href=/routing/>Routing</a>
-</li>
-<li data-nav-id=https://docs.lucidarch.dev/controllers/ class="dd-item
-item_level_$level">
-<a href=/controllers/>Controllers</a>
-</li>
-<hr>
-<li data-nav-id=https://docs.lucidarch.dev/features/ class="dd-item
-item_level_$level">
-<a href=/features/>Features</a>
-</li>
-<li data-nav-id=https://docs.lucidarch.dev/jobs/ class="dd-item
-item_level_$level">
-<a href=/jobs/>Jobs</a>
-</li>
-<li data-nav-id=https://docs.lucidarch.dev/operations/ class="dd-item
-item_level_$level">
-<a href=/operations/>Operations</a>
-</li>
-<li data-nav-id=https://docs.lucidarch.dev/services/ class="dd-item
-item_level_$level">
-<a href=/services/>Services</a>
-</li>
-<li data-nav-id=https://docs.lucidarch.dev/domains/ class="dd-item
-item_level_$level">
-<a href=/domains/>Domains</a>
-</li>
-<hr>
-<li data-nav-id=https://docs.lucidarch.dev/testing/ class="dd-item
-item_level_$level">
-<a href=/testing/>Testing</a>
-</li>
-<li data-nav-id=https://docs.lucidarch.dev/database/ class="dd-item
-item_level_$level">
-<a href=/database/>Database</a>
-</li>
-<li data-nav-id=https://docs.lucidarch.dev/validation/ class="dd-item
-item_level_$level">
-<a href=/validation/>Validation</a>
-</li>
-<hr>
-<li data-nav-id=https://docs.lucidarch.dev/cli/ class="dd-item
-item_level_$level">
-<a href=/cli/>CLI Reference</a>
-</li>
-</ul>
-</aside>
-<section class=page>
-<nav id=ariane aria-label=breadcrumb>
-<ol class=ariane>
-<li>
-<a class=text-link href=https://docs.lucidarch.dev>
-Home
-</a>
-</li>
-<li>
-<a class=text-link href=/getting-started/>
-Getting Started
-</a>
-</li>
-<li class=active>
-Micro
-</li>
-</ol>
-</nav>
-<h1>Getting Started<span>Micro</span></h1>
-<nav class=subpages>
-<li class=active>
-<a title=$pagetitle href=/getting-started/micro/>Micro</a>
-</li>
-<li>
-<a title=$pagetitle href=/getting-started/monolith/>Monolith</a>
-</li>
-</nav>
-<div class=jump-to-section>
-<span onclick="$h=$(this),$h.next('nav').slideToggle(100,function(){$h.children('i').attr('class',function(){return $h.next('nav').is(':visible')?'fas fa-chevron-down':'fas fa-chevron-right'})})">
-<span class="fas fa-align-right"></span>
+<link href=/vendor/auto-complete/auto-complete.css rel=stylesheet><script type=text/javascript>var baseurl="https://docs.lucidarch.dev"</script><script type=text/javascript src=/js/search.js></script></div><div style=margin-top:30px><a href=/concept style=display:flex;justify-content:left;align-items:center><img src=/icon/logo.png width=250 style=margin-left:10px></a></div><div id=close_menu><a href=javascript:void(0); style=font-size:15px onclick='$("article > aside").toggleClass("responsive")'><i class="fa fa-lg fa-times"></i></a></div><ul class=menu><li data-nav-id=https://docs.lucidarch.dev/concept/ class="dd-item
+item_level_$level"><a href=/concept/>Concept</a></li><li data-nav-id=https://docs.lucidarch.dev/philosophy/ class="dd-item
+item_level_$level"><a href=/philosophy/>Philosophy</a></li><li data-nav-id=https://docs.lucidarch.dev/principles/ class="dd-item
+item_level_$level"><a href=/principles/>Principles</a></li><hr><li data-nav-id=https://docs.lucidarch.dev/installation/ class="dd-item
+item_level_$level"><a href=/installation/>Installation</a></li><li data-nav-id=https://docs.lucidarch.dev/upgrade-guide/ class="dd-item alwaysopen
+item_level_$level"><a href=/upgrade-guide/>Upgrade Guide</a></li><li data-nav-id=https://docs.lucidarch.dev/contribution-guide/ class="dd-item
+item_level_$level"><a href=/contribution-guide/>Contribution Guide</a></li><hr><li data-nav-id=https://docs.lucidarch.dev/getting-started/ class="dd-item parent active alwaysopen
+item_level_$level"><a href=/getting-started/>Getting Started</a></li><li data-nav-id=https://docs.lucidarch.dev/micro-vs-monolith/ class="dd-item
+item_level_$level"><a href=/micro-vs-monolith/>Micro • Monolith</a></li><hr><li data-nav-id=https://docs.lucidarch.dev/routing/ class="dd-item
+item_level_$level"><a href=/routing/>Routing</a></li><li data-nav-id=https://docs.lucidarch.dev/controllers/ class="dd-item
+item_level_$level"><a href=/controllers/>Controllers</a></li><hr><li data-nav-id=https://docs.lucidarch.dev/features/ class="dd-item
+item_level_$level"><a href=/features/>Features</a></li><li data-nav-id=https://docs.lucidarch.dev/jobs/ class="dd-item
+item_level_$level"><a href=/jobs/>Jobs</a></li><li data-nav-id=https://docs.lucidarch.dev/operations/ class="dd-item
+item_level_$level"><a href=/operations/>Operations</a></li><li data-nav-id=https://docs.lucidarch.dev/services/ class="dd-item
+item_level_$level"><a href=/services/>Services</a></li><li data-nav-id=https://docs.lucidarch.dev/domains/ class="dd-item
+item_level_$level"><a href=/domains/>Domains</a></li><hr><li data-nav-id=https://docs.lucidarch.dev/testing/ class="dd-item
+item_level_$level"><a href=/testing/>Testing</a></li><li data-nav-id=https://docs.lucidarch.dev/database/ class="dd-item
+item_level_$level"><a href=/database/>Database</a></li><li data-nav-id=https://docs.lucidarch.dev/validation/ class="dd-item
+item_level_$level"><a href=/validation/>Validation</a></li><hr><li data-nav-id=https://docs.lucidarch.dev/cli/ class="dd-item
+item_level_$level"><a href=/cli/>CLI Reference</a></li></ul></aside><section class=page><nav id=ariane aria-label=breadcrumb><ol class=ariane><li><a class=text-link href=https://docs.lucidarch.dev>Home</a></li><li><a class=text-link href=/getting-started/>Getting Started</a></li><li class=active>Micro</li></ol></nav><h1>Getting Started<span>Micro</span></h1><nav class=subpages><li class=active><a title=$pagetitle href=/getting-started/micro/>Micro</a></li><li><a title=$pagetitle href=/getting-started/monolith/>Monolith</a></li></nav><div class=jump-to-section><span onclick='$h=$(this),$h.next("nav").slideToggle(100,function(){$h.children("i").attr("class",function(){return $h.next("nav").is(":visible")?"fas fa-chevron-down":"fas fa-chevron-right"})})'><span class="fas fa-align-right"></span>
 Jump to Section
-<i class="fas fa-chevron-right"></i>
-</span>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#setup>Setup</a>
-<ul>
-<li><a href=#install-laravel>Install Laravel</a></li>
-<li><a href=#install-lucid>Install Lucid</a></li>
-<li><a href=#database-configuration>Database Configuration</a></li>
-</ul>
-</li>
-<li><a href=#implementation>Implementation</a></li>
-<li><a href=#authentication>Authentication</a></li>
-<li><a href=#link-submission>Link Submission</a>
-<ul>
-<li><a href=#view>View</a></li>
-<li><a href=#controller>Controller</a></li>
-<li><a href=#feature>Feature</a></li>
-<li><a href=#database--model>Database & Model</a></li>
-<li><a href=#request-validation>Request Validation</a></li>
-<li><a href=#save-links>Save Links</a></li>
-</ul>
-</li>
-<li><a href=#testing>Testing</a>
-<ul>
-<li><a href=#configure-phpunit>Configure PHPUnit</a></li>
-<li><a href=#unit-tests>Unit Tests</a></li>
-<li><a href=#feature-test>Feature Test</a></li>
-</ul>
-</li>
-<li><a href=#conclusion>Conclusion</a>
-<ul>
-<li><a href=#highlights>Highlights</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-<div class=content>
-<div class="notices light">
-<p><i class="fab fa-github fa-lg"></i> The source code for this exercise is on <a href=https://github.com/lucidarch/getting-started-micro>GitHub</a>.</p>
-</div>
-<p>In this guide we&rsquo;re going to build a link directory where we can register and save links of our own using Lucid Micro -
-the default variant for single-purpose applications.</p>
-<div class="notices dark">
-<p><i class="fas fa-archway"></i> For Monolith - the multi-purpose service-oriented variant see <a href=https://docs.lucidarch.dev/getting-started/monolith/>Getting Started • Monolith</a>.</p>
-</div>
-<p>From the Lucid stack we&rsquo;d be using
+<i class="fas fa-chevron-right"></i></span><nav id=TableOfContents><ul><li><a href=#setup>Setup</a><ul><li><a href=#install-laravel>Install Laravel</a></li><li><a href=#install-lucid>Install Lucid</a></li><li><a href=#database-configuration>Database Configuration</a></li></ul></li><li><a href=#implementation>Implementation</a></li><li><a href=#authentication>Authentication</a></li><li><a href=#link-submission>Link Submission</a><ul><li><a href=#view>View</a></li><li><a href=#controller>Controller</a></li><li><a href=#feature>Feature</a></li><li><a href=#database--model>Database & Model</a></li><li><a href=#request-validation>Request Validation</a></li><li><a href=#save-links>Save Links</a></li></ul></li><li><a href=#testing>Testing</a><ul><li><a href=#configure-phpunit>Configure PHPUnit</a></li><li><a href=#unit-tests>Unit Tests</a></li><li><a href=#feature-test>Feature Test</a></li></ul></li><li><a href=#conclusion>Conclusion</a><ul><li><a href=#highlights>Highlights</a></li></ul></li></ul></nav></div><div class=content><div class="notices light"><p><i class="fab fa-github fa-lg"></i> The source code for this exercise is on <a href=https://github.com/lucidarch/getting-started-micro>GitHub</a>.</p></div><p>In this guide we&rsquo;re going to build a link directory where we can register and save links of our own using Lucid Micro -
+the default variant for single-purpose applications.</p><div class="notices dark"><p><i class="fas fa-archway"></i> For Monolith - the multi-purpose service-oriented variant see <a href=https://docs.lucidarch.dev/getting-started/monolith/>Getting Started • Monolith</a>.</p></div><p>From the Lucid stack we&rsquo;d be using
 <a href=https://docs.lucidarch.dev/features/>Features</a>, <a href=https://docs.lucidarch.dev/jobs/>Jobs</a>, <a href=https://docs.lucidarch.dev/domains/>Domains</a> and <a href=https://docs.lucidarch.dev/validation/#/#form-request-validation>Requests</a>
-to implement the following:</p>
-<ul>
-<li>Create a form to submit new links.</li>
-<li>Validate the form.</li>
-<li>Insert the data into the database.</li>
-</ul>
-<div class="notices info">
-<p><i class="fas fa-info-circle"></i> This tutorial is based on the excellent Laravel Tutorial:
-<a href=https://laravel-news.com/your-first-laravel-application>Step by Step Guide to Building Your First Laravel Application</a>.</p>
-</div>
-<h2 ref=setup>Setup</h2><a class=anchor id=setup></a>
-<h3 ref=install-laravel>Install Laravel</h3><a class=anchor id=install-laravel></a>
-<p>Let&rsquo;s start by creating a new Laravel project. It is best if you refer to <a href=https://laravel.com/docs/installation>Laravel&rsquo;s installation docs</a>
-and choose your preferred way of installation, but here are the common ways to do it:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># via the installer</span>
-laravel new links
-
-<span class=c1># via composer</span>
-composer create-project --prefer-dist laravel/laravel links
-</code></pre></div><h3 ref=install-lucid>Install Lucid</h3><a class=anchor id=install-lucid></a>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>composer require lucidarch/lucid
-</code></pre></div><h3 ref=database-configuration>Database Configuration</h3><a class=anchor id=database-configuration></a>
-<p>Now that we have our project ready with a <code>.env</code> file we can configure the database connection.</p>
-<p>For the brevity of this example
+to implement the following:</p><ul><li>Create a form to submit new links.</li><li>Validate the form.</li><li>Insert the data into the database.</li></ul><div class="notices info"><p><i class="fas fa-info-circle"></i> This tutorial is based on the excellent Laravel Tutorial:
+<a href=https://laravel-news.com/your-first-laravel-application>Step by Step Guide to Building Your First Laravel Application</a>.</p></div><h2 ref=setup>Setup</h2><a class=anchor id=setup></a><h3 ref=install-laravel>Install Laravel</h3><a class=anchor id=install-laravel></a><p>Let&rsquo;s start by creating a new Laravel project. It is best if you refer to <a href=https://laravel.com/docs/installation>Laravel&rsquo;s installation docs</a>
+and choose your preferred way of installation, but here are the common ways to do it:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># via the installer</span>
+</span></span><span class=line><span class=cl>laravel new links
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># via composer</span>
+</span></span><span class=line><span class=cl>composer create-project --prefer-dist laravel/laravel links
+</span></span></code></pre></div><h3 ref=install-lucid>Install Lucid</h3><a class=anchor id=install-lucid></a><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>composer require lucidarch/lucid
+</span></span></code></pre></div><h3 ref=database-configuration>Database Configuration</h3><a class=anchor id=database-configuration></a><p>Now that we have our project ready with a <code>.env</code> file we can configure the database connection.</p><p>For the brevity of this example
 we will utilise SQLite as it requires the least steps to get going. This is surely not recommended in real apps
 but will make very little difference since you can change the configuration and use your favourite database
-without affecting the code.</p>
-<ol>
-<li>
-<p>Create database file <code>storage/app/database/database.sql</code></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>mkdir -p storage/app/database <span class=o>&amp;&amp;</span> touch storage/app/database/database.sql
-</code></pre></div></li>
-<li>
-<p>Configure database
-<code>.env</code></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-ini data-lang=ini><span class=na>DB_CONNECTION</span><span class=o>=</span><span class=s>sqlite</span>
-<span class=na>DB_DATABASE</span><span class=o>=</span><span class=s>{ABSOLUTE PATH}/storage/app/database/database.sql</span>
-</code></pre></div></li>
-<li>
-<p>Create tables</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>php artisan migrate
-</code></pre></div><p>And the output should match this:</p>
-<pre tabindex=0><code>Migration table created successfully.
+without affecting the code.</p><ol><li><p>Create database file <code>storage/app/database/database.sql</code></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>mkdir -p storage/app/database <span class=o>&amp;&amp;</span> touch storage/app/database/database.sql
+</span></span></code></pre></div></li><li><p>Configure database
+<code>.env</code></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-ini data-lang=ini><span class=line><span class=cl><span class=na>DB_CONNECTION</span><span class=o>=</span><span class=s>sqlite</span>
+</span></span><span class=line><span class=cl><span class=na>DB_DATABASE</span><span class=o>=</span><span class=s>{ABSOLUTE PATH}/storage/app/database/database.sql</span>
+</span></span></code></pre></div></li><li><p>Create tables</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>php artisan migrate
+</span></span></code></pre></div><p>And the output should match this:</p><pre tabindex=0><code>Migration table created successfully.
 Migrating: 2014_10_12_000000_create_users_table
 Migrated:  2014_10_12_000000_create_users_table (4.11ms)
 Migrating: 2014_10_12_100000_create_password_resets_table
 Migrated:  2014_10_12_100000_create_password_resets_table (2.14ms)
 Migrating: 2019_08_19_000000_create_failed_jobs_table
 Migrated:  2019_08_19_000000_create_failed_jobs_table (2.54ms)
-</code></pre></li>
-</ol>
-<hr>
-<h2 ref=implementation>Implementation</h2><a class=anchor id=implementation></a>
-<p>We will be using a handful of Laravel features to demonstrate how they organically fit within the Lucid Architecture due to its
-timeless approach towards application structure.</p>
-<p>Frontend technologies used in this guide:</p>
-<ul>
-<li><a href=https://tailwindcss.com>TailwindCSS</a> for styling</li>
-<li><a href=https://laravel.com/docs/blade>Laravel Blade</a> for templating</li>
-</ul>
-<h2 ref=authentication>Authentication</h2><a class=anchor id=authentication></a>
-<p>We will try to avoid re-inventing the wheel as much as possible by using <a href=https://github.com/laravel/breeze><code>laravel/breeze</code></a>
-to scaffold configuration and Auth routes, views and controllers styled with TailwindCSS.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>composer require laravel/breeze --dev
-
-php artisan breeze:install
-
-npm install <span class=o>&amp;&amp;</span> npm run dev
-</code></pre></div><p>Now to watch assets and build on change we may run <code>npm run watch</code>.</p>
-<p>The resulting files are under <code>resources/views/auth</code> and the <code>welcome</code> page has been updated to look as follows:</p>
-<p><img src=/media/images/getting-started/welcome.png alt=Welcome></p>
-<p>To create an account click on Register at the top right and enter your account details to be logged in to the dashboard:</p>
-<p><img src=/media/images/getting-started/register.png alt=Register></p>
-<h2 ref=link-submission>Link Submission</h2><a class=anchor id=link-submission></a>
-<h3 ref=view>View</h3><a class=anchor id=view></a>
-<p>First, create a new route to serve our view in <code>routes/web.php</code>:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=nx>Route</span><span class=o>::</span><span class=na>get</span><span class=p>(</span><span class=s1>&#39;/submit&#39;</span><span class=p>,</span> <span class=k>function</span><span class=p>()</span> <span class=p>{</span>
-    <span class=k>return</span> <span class=nx>view</span><span class=p>(</span><span class=s1>&#39;submit&#39;</span><span class=p>);</span>
-<span class=p>});</span>
-</code></pre></div><p>Next, we need to create the <code>submit.blade.php</code> template at <code>resources/views/submit.blade.php</code> with the following boilerplate
-to submit a link with a title and a description:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=p>&lt;</span><span class=nt>x-app-layout</span><span class=p>&gt;</span>
-    <span class=p>&lt;</span><span class=nt>x-slot</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;header&#34;</span><span class=p>&gt;</span>
-        Add Link
-    <span class=p>&lt;/</span><span class=nt>x-slot</span><span class=p>&gt;</span>
-
-    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;flex items-center justify-center h-screen&#34;</span><span class=p>&gt;</span>
-        <span class=p>&lt;</span><span class=nt>form</span> <span class=na>action</span><span class=o>=</span><span class=s>&#34;/submit&#34;</span> <span class=na>method</span><span class=o>=</span><span class=s>&#34;post&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;w-full max-w-sm bg-white shadow-md rounded px-8 pt-6 pb-8&#34;</span><span class=p>&gt;</span>
-            @csrf
-            @if ($errors-&gt;any())
-                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;bg-red-100 border border-red-400 text-red-700 px-4 py-3 mt-2 mb-2 rounded relative&#34;</span> <span class=na>role</span><span class=o>=</span><span class=s>&#34;alert&#34;</span><span class=p>&gt;</span>
-                    Please fix the following errors
-                <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-            @endif
-            <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:flex md:items-center mb-6&#34;</span><span class=p>&gt;</span>
-                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:w-1/3&#34;</span><span class=p>&gt;</span>
-                    <span class=p>&lt;</span><span class=nt>label</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4&#34;</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;title&#34;</span><span class=p>&gt;</span>
-                        Title
-                    <span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
-                <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:w-2/3&#34;</span><span class=p>&gt;</span>
-                    <span class=p>&lt;</span><span class=nt>input</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;title&#34;</span> <span class=na>value</span><span class=o>=</span><span class=s>&#34;{{ old(&#39;title&#39;) }}&#34;</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;title&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;appearance-none border-2 @error(&#39;title&#39;) border-red-400 @else border-gray-200 @enderror rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;text&#34;</span><span class=p>&gt;</span>
-                    @error(&#39;title&#39;)
-                    <span class=p>&lt;</span><span class=nt>p</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;text-red-500 text-xs italic mt-2&#34;</span><span class=p>&gt;</span>{{ $message }}<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
-                    @enderror
-                <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-            <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-            <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:flex md:items-center mb-6&#34;</span><span class=p>&gt;</span>
-                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:w-1/3&#34;</span><span class=p>&gt;</span>
-                    <span class=p>&lt;</span><span class=nt>label</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4&#34;</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;url&#34;</span><span class=p>&gt;</span>
-                        URL
-                    <span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
-                <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:w-2/3&#34;</span><span class=p>&gt;</span>
-                    <span class=p>&lt;</span><span class=nt>input</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;url&#34;</span> <span class=na>value</span><span class=o>=</span><span class=s>&#34;{{ old(&#39;url&#39;) }}&#34;</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;url&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;appearance-none border-2 @error(&#39;url&#39;) border-red-400 @else border-gray-200 @enderror rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;text&#34;</span><span class=p>&gt;</span>
-                    @error(&#39;url&#39;)
-                    <span class=p>&lt;</span><span class=nt>p</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;text-red-500 text-xs italic mt-2&#34;</span><span class=p>&gt;</span>{{ $message }}<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
-                    @enderror
-                <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-            <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-            <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:flex md:items-center mb-6&#34;</span><span class=p>&gt;</span>
-                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:w-1/3&#34;</span><span class=p>&gt;</span>
-                    <span class=p>&lt;</span><span class=nt>label</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;description&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4&#34;</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;desription&#34;</span><span class=p>&gt;</span>
-                        Description
-                    <span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
-                <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:w-2/3&#34;</span><span class=p>&gt;</span>
-                    <span class=p>&lt;</span><span class=nt>textarea</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;description&#34;</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;description&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;appearance-none border-2 @error(&#39;description&#39;) border-red-400 @else border-gray-200 @enderror rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;description&#34;</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;description&#34;</span><span class=p>&gt;</span>{{old(&#39;description&#39;)}}<span class=p>&lt;/</span><span class=nt>textarea</span><span class=p>&gt;</span>
-                    @error(&#39;description&#39;)
-                    <span class=p>&lt;</span><span class=nt>p</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;text-red-500 text-xs italic mt-2&#34;</span><span class=p>&gt;</span>{{ $message }}<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
-                    @enderror
-                <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-            <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-
-            <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:flex md:items-center&#34;</span><span class=p>&gt;</span>
-                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:w-1/3&#34;</span><span class=p>&gt;&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:w-2/3&#34;</span><span class=p>&gt;</span>
-                    <span class=p>&lt;</span><span class=nt>button</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;submit&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded&#34;</span><span class=p>&gt;</span>
-                        Add
-                    <span class=p>&lt;/</span><span class=nt>button</span><span class=p>&gt;</span>
-                <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-            <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-        <span class=p>&lt;/</span><span class=nt>form</span><span class=p>&gt;</span>
-    <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-<span class=p>&lt;/</span><span class=nt>x-app-layout</span><span class=p>&gt;</span>
-
-</code></pre></div><p><img src=/media/images/getting-started/submit.png alt="Submit Form"></p>
-<h3 ref=controller>Controller</h3><a class=anchor id=controller></a>
-<p>Generate <code>LinkController</code> to manage our links using <code>lucid</code> and have it ready for serving features.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>lucid make:controller Link
-</code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>Controller class created successfully.
-
-Find it at app/Http/Controllers/LinkController.php
-</code></pre></div>
-<div class="notices info">
-<p>Notice the automatic addition of <code>Controller</code> suffix, used as a naming convention to match other suffixes in the Lucid stack such as <code>Feature</code>, <code>Job</code> and <code>Operation</code>.</p>
-</div>
-<p>We will need a method to handle the form&rsquo;s submission request, let&rsquo;s call it <code>add</code>:</p>
-<p><code>app/Http/Controllers/LinkController.php</code></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=o>&lt;?</span><span class=nx>php</span>
-
-<span class=k>namespace</span> <span class=nx>App\Http\Controllers</span><span class=p>;</span>
-
-<span class=k>use</span> <span class=nx>Lucid\Units\Controller</span><span class=p>;</span>
-
-<span class=k>class</span> <span class=nc>LinkController</span> <span class=k>extends</span> <span class=nx>Controller</span>
-<span class=p>{</span>
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>add</span><span class=p>()</span>
-    <span class=p>{</span>
-
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div><h3 ref=feature>Feature</h3><a class=anchor id=feature></a>
-<p>The <code>add</code> method will then serve the feature that will run the jobs required to add links.
-Generate a feature called <code>AddLinkFeature</code>:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>lucid make:feature AddLink
-</code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>Feature class AddLinkFeature created successfully.
-
-Find it at app/Features/AddLinkFeature.php
-</code></pre></div><p><code>add()</code> will now serve <code>AddLinkFeature</code></p>
-<p><code>app/Http/Controllers/LinkController.php</code></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=k>use</span> <span class=nx>App\Features\AddLinkFeature</span><span class=p>;</span>
-
-<span class=o>...</span>
-
-<span class=k>public</span> <span class=k>function</span> <span class=nf>add</span><span class=p>()</span>
-<span class=p>{</span>
-    <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>serve</span><span class=p>(</span><span class=nx>AddLinkFeature</span><span class=o>::</span><span class=na>class</span><span class=p>);</span>
-<span class=p>}</span>
-</code></pre></div><p>Beginning with the step of generating a feature will cognitively set our context to what we will be working on, helping us concentrate
-on the task at hand.</p>
-<p>Let&rsquo;s expose our feature with a route:</p>
-<p><code>routes/web.php</code></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=k>use</span> <span class=nx>App\Http\Controllers\LinkController</span><span class=p>;</span>
-
-<span class=nx>Route</span><span class=o>::</span><span class=na>post</span><span class=p>(</span><span class=s1>&#39;/submit&#39;</span><span class=p>,</span> <span class=p>[</span><span class=nx>LinkController</span><span class=o>::</span><span class=na>class</span><span class=p>,</span> <span class=s1>&#39;add&#39;</span><span class=p>]);</span>
-</code></pre></div><p>So far so good, now we&rsquo;ll fill our feature with the steps required to add a link.</p>
-<h3 ref=database--model>Database & Model</h3><a class=anchor id=database--model></a>
-<p>Before we can start accepting data we need to prepare our database with a migration to create the links table:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>php artisan make:migration create_links_table --create<span class=o>=</span>links
-</code></pre></div><p>The generated file will contain the creation schema at <code>database/migrations/{datetime}_create_links_table.php</code>.
-Let&rsquo;s add the fields for our link:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=k>public</span> <span class=k>function</span> <span class=nf>up</span><span class=p>()</span>
-<span class=p>{</span>
-    <span class=nx>Schema</span><span class=o>::</span><span class=na>create</span><span class=p>(</span><span class=s1>&#39;links&#39;</span><span class=p>,</span> <span class=k>function</span> <span class=p>(</span><span class=nx>Blueprint</span> <span class=nv>$table</span><span class=p>)</span> <span class=p>{</span>
-        <span class=nv>$table</span><span class=o>-&gt;</span><span class=na>id</span><span class=p>();</span>
-        <span class=nv>$table</span><span class=o>-&gt;</span><span class=na>string</span><span class=p>(</span><span class=s1>&#39;title&#39;</span><span class=p>);</span>
-        <span class=nv>$table</span><span class=o>-&gt;</span><span class=na>string</span><span class=p>(</span><span class=s1>&#39;url&#39;</span><span class=p>)</span><span class=o>-&gt;</span><span class=na>unique</span><span class=p>();</span>
-        <span class=nv>$table</span><span class=o>-&gt;</span><span class=na>text</span><span class=p>(</span><span class=s1>&#39;description&#39;</span><span class=p>);</span>
-        <span class=nv>$table</span><span class=o>-&gt;</span><span class=na>timestamps</span><span class=p>();</span>
-    <span class=p>});</span>
-<span class=p>}</span>
-</code></pre></div><p>Run the migration to create the table in the database:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>php artisan migrate
-</code></pre></div><p>Then we create our <code>Link</code> model class at <code>app/Data/Models/Link.php</code></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=o>&lt;?</span><span class=nx>php</span>
-
-<span class=k>namespace</span> <span class=nx>App\Data\Models</span><span class=p>;</span>
-
-<span class=k>use</span> <span class=nx>Illuminate\Database\Eloquent\Model</span><span class=p>;</span>
-
-<span class=k>class</span> <span class=nc>Link</span> <span class=k>extends</span> <span class=nx>Model</span>
-<span class=p>{</span>
-    <span class=k>protected</span> <span class=nv>$fillable</span> <span class=o>=</span> <span class=p>[</span><span class=s1>&#39;url&#39;</span><span class=p>,</span> <span class=s1>&#39;title&#39;</span><span class=p>,</span> <span class=s1>&#39;description&#39;</span><span class=p>];</span>
-<span class=p>}</span>
-</code></pre></div><p>We&rsquo;re all set to start building our feature!</p>
-<h3 ref=request-validation>Request Validation</h3><a class=anchor id=request-validation></a>
-<p>The first step of receiving input is to validate it. We will be using <a href=https://laravel.com/docs/validation#form-request-validation>Form Request validation</a>
-where each Request belongs in a Domain representing the entity that&rsquo;s being managed, in this case it&rsquo;s <code>Link</code> containing an <code>AddLink</code> Request class.</p>
-<p>This will be the beginning of working with Domains in Lucid. They&rsquo;re used to group Jobs and custom classes which logic is
-associated with certain topic according to domain-driven design.</p>
-<p>Starting with validation, Lucid places Request classes within their corresponding domains. Let&rsquo;s generate an <code>AddLink</code> request:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>lucid make:request AddLink link
-</code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>Request class created successfully.
-
-Find it at app/Domains/Link/Requests/AddLink.php
-</code></pre></div><p>In <code>AddLink</code> we&rsquo;ll need to update the methods <code>authorize()</code> and <code>rules()</code> to validate the request and its input:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=o>&lt;?</span><span class=nx>php</span>
-
-<span class=k>namespace</span> <span class=nx>App\Domains\Link\Requests</span><span class=p>;</span>
-
-<span class=k>use</span> <span class=nx>Illuminate\Support\Facades\Auth</span><span class=p>;</span>
-<span class=k>use</span> <span class=nx>Illuminate\Foundation\Http\FormRequest</span><span class=p>;</span>
-
-<span class=k>class</span> <span class=nc>AddLink</span> <span class=k>extends</span> <span class=nx>FormRequest</span>
-<span class=p>{</span>
-    <span class=sd>/**
-</span><span class=sd>     * Determine if the user is authorized to make this request.
-</span><span class=sd>     *
-</span><span class=sd>     * @return bool
-</span><span class=sd>     */</span>
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>authorize</span><span class=p>()</span>
-    <span class=p>{</span>
-        <span class=k>return</span> <span class=nx>Auth</span><span class=o>::</span><span class=na>check</span><span class=p>();</span>
-    <span class=p>}</span>
-
-    <span class=sd>/**
-</span><span class=sd>     * Get the validation rules that apply to the request.
-</span><span class=sd>     *
-</span><span class=sd>     * @return array
-</span><span class=sd>     */</span>
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>rules</span><span class=p>()</span>
-    <span class=p>{</span>
-        <span class=k>return</span> <span class=p>[</span>
-            <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;required&#39;</span><span class=p>,</span> <span class=s1>&#39;max:255&#39;</span><span class=p>],</span>
-            <span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;required&#39;</span><span class=p>,</span> <span class=s1>&#39;url&#39;</span><span class=p>,</span> <span class=s1>&#39;max:255&#39;</span><span class=p>],</span>
-            <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;required&#39;</span><span class=p>,</span> <span class=s1>&#39;max:255&#39;</span><span class=p>],</span>
-        <span class=p>];</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div><p>With our request ready, now we need <code>AddLinkFeature</code> to use that request class when served. We can do that by simply injecting
-the request class in the feature&rsquo;s <code>handle()</code> method and every time the feature is served this validation will be applied.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=o>&lt;?</span><span class=nx>php</span>
-
-<span class=k>namespace</span> <span class=nx>App\Features</span><span class=p>;</span>
-
-<span class=k>use</span> <span class=nx>Lucid\Units\Feature</span><span class=p>;</span>
-<span class=k>use</span> <span class=nx>App\Domains\Link\Requests\AddLink</span><span class=p>;</span>
-
-<span class=k>class</span> <span class=nc>AddLinkFeature</span> <span class=k>extends</span> <span class=nx>Feature</span>
-<span class=p>{</span>
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>handle</span><span class=p>(</span><span class=nx>AddLink</span> <span class=nv>$request</span><span class=p>)</span>
-    <span class=p>{</span>
-
-    <span class=p>}</span>
-<span class=p>}</span>
-
-</code></pre></div><p>Now if we visit <code>/submit</code> and click <code>Add</code> wihtout passing any input it will generate errors and print their messages from validation failures.</p>
-<p><img src=/media/images/getting-started/links-validation-errors.png alt="Validation errors UI"></p>
-<h3 ref=save-links>Save Links</h3><a class=anchor id=save-links></a>
-<p>To save the link we&rsquo;ll create a job that saves links and run it in our feature, which will be added to our <code>Link</code> domain at
-<code>app/Domains/Link/Jobs/SaveLinkJob</code> along with its test <code>tests/Unit/Domains/Link/Jobs/SaveLinkJobTest</code>.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>lucid make:job SaveLink link
-</code></pre></div>
-<div class="notices info">
-<p><i class="fas fa-asterisk"></i> Notice the naming that we&rsquo;ve used with this job &ldquo;<code>SaveLinkJob</code>&rdquo; in contrast with &ldquo;<code>AddLink</code>&rdquo;.
-It is intended for reuse whenever needed by extending its functionality futher, for example <code>UpdateLink</code> feature may be able to use the same job.</p>
-</div>
-<p><code>SaveLinkJob</code> should define the parameters that are required in its constructor, a.k.a the job&rsquo;s <em>signature</em>, rather than accessing
+</code></pre></li></ol><hr><h2 ref=implementation>Implementation</h2><a class=anchor id=implementation></a><p>We will be using a handful of Laravel features to demonstrate how they organically fit within the Lucid Architecture due to its
+timeless approach towards application structure.</p><p>Frontend technologies used in this guide:</p><ul><li><a href=https://tailwindcss.com>TailwindCSS</a> for styling</li><li><a href=https://laravel.com/docs/blade>Laravel Blade</a> for templating</li></ul><h2 ref=authentication>Authentication</h2><a class=anchor id=authentication></a><p>We will try to avoid re-inventing the wheel as much as possible by using <a href=https://github.com/laravel/breeze><code>laravel/breeze</code></a>
+to scaffold configuration and Auth routes, views and controllers styled with TailwindCSS.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>composer require laravel/breeze --dev
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>php artisan breeze:install
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>npm install <span class=o>&amp;&amp;</span> npm run dev
+</span></span></code></pre></div><p>Now to watch assets and build on change we may run <code>npm run watch</code>.</p><p>The resulting files are under <code>resources/views/auth</code> and the <code>welcome</code> page has been updated to look as follows:</p><p><img src=/media/images/getting-started/welcome.png alt=Welcome></p><p>To create an account click on Register at the top right and enter your account details to be logged in to the dashboard:</p><p><img src=/media/images/getting-started/register.png alt=Register></p><h2 ref=link-submission>Link Submission</h2><a class=anchor id=link-submission></a><h3 ref=view>View</h3><a class=anchor id=view></a><p>First, create a new route to serve our view in <code>routes/web.php</code>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=nx>Route</span><span class=o>::</span><span class=na>get</span><span class=p>(</span><span class=s1>&#39;/submit&#39;</span><span class=p>,</span> <span class=k>function</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nx>view</span><span class=p>(</span><span class=s1>&#39;submit&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>});</span>
+</span></span></code></pre></div><p>Next, we need to create the <code>submit.blade.php</code> template at <code>resources/views/submit.blade.php</code> with the following boilerplate
+to submit a link with a title and a description:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>x-app-layout</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>x-slot</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;header&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        Add Link
+</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>x-slot</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;flex items-center justify-center h-screen&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>&lt;</span><span class=nt>form</span> <span class=na>action</span><span class=o>=</span><span class=s>&#34;/submit&#34;</span> <span class=na>method</span><span class=o>=</span><span class=s>&#34;post&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;w-full max-w-sm bg-white shadow-md rounded px-8 pt-6 pb-8&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>            @csrf
+</span></span><span class=line><span class=cl>            @if ($errors-&gt;any())
+</span></span><span class=line><span class=cl>                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;bg-red-100 border border-red-400 text-red-700 px-4 py-3 mt-2 mb-2 rounded relative&#34;</span> <span class=na>role</span><span class=o>=</span><span class=s>&#34;alert&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                    Please fix the following errors
+</span></span><span class=line><span class=cl>                <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>            @endif
+</span></span><span class=line><span class=cl>            <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:flex md:items-center mb-6&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:w-1/3&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                    <span class=p>&lt;</span><span class=nt>label</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4&#34;</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;title&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                        Title
+</span></span><span class=line><span class=cl>                    <span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:w-2/3&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                    <span class=p>&lt;</span><span class=nt>input</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;title&#34;</span> <span class=na>value</span><span class=o>=</span><span class=s>&#34;{{ old(&#39;title&#39;) }}&#34;</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;title&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;appearance-none border-2 @error(&#39;title&#39;) border-red-400 @else border-gray-200 @enderror rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;text&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                    @error(&#39;title&#39;)
+</span></span><span class=line><span class=cl>                    <span class=p>&lt;</span><span class=nt>p</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;text-red-500 text-xs italic mt-2&#34;</span><span class=p>&gt;</span>{{ $message }}<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                    @enderror
+</span></span><span class=line><span class=cl>                <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:flex md:items-center mb-6&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:w-1/3&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                    <span class=p>&lt;</span><span class=nt>label</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4&#34;</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;url&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                        URL
+</span></span><span class=line><span class=cl>                    <span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:w-2/3&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                    <span class=p>&lt;</span><span class=nt>input</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;url&#34;</span> <span class=na>value</span><span class=o>=</span><span class=s>&#34;{{ old(&#39;url&#39;) }}&#34;</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;url&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;appearance-none border-2 @error(&#39;url&#39;) border-red-400 @else border-gray-200 @enderror rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500&#34;</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;text&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                    @error(&#39;url&#39;)
+</span></span><span class=line><span class=cl>                    <span class=p>&lt;</span><span class=nt>p</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;text-red-500 text-xs italic mt-2&#34;</span><span class=p>&gt;</span>{{ $message }}<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                    @enderror
+</span></span><span class=line><span class=cl>                <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:flex md:items-center mb-6&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:w-1/3&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                    <span class=p>&lt;</span><span class=nt>label</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;description&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4&#34;</span> <span class=na>for</span><span class=o>=</span><span class=s>&#34;desription&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                        Description
+</span></span><span class=line><span class=cl>                    <span class=p>&lt;/</span><span class=nt>label</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:w-2/3&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                    <span class=p>&lt;</span><span class=nt>textarea</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;description&#34;</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;description&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;appearance-none border-2 @error(&#39;description&#39;) border-red-400 @else border-gray-200 @enderror rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-teal-500&#34;</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;description&#34;</span> <span class=na>name</span><span class=o>=</span><span class=s>&#34;description&#34;</span><span class=p>&gt;</span>{{old(&#39;description&#39;)}}<span class=p>&lt;/</span><span class=nt>textarea</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                    @error(&#39;description&#39;)
+</span></span><span class=line><span class=cl>                    <span class=p>&lt;</span><span class=nt>p</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;text-red-500 text-xs italic mt-2&#34;</span><span class=p>&gt;</span>{{ $message }}<span class=p>&lt;/</span><span class=nt>p</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                    @enderror
+</span></span><span class=line><span class=cl>                <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:flex md:items-center&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:w-1/3&#34;</span><span class=p>&gt;&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                <span class=p>&lt;</span><span class=nt>div</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;md:w-2/3&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                    <span class=p>&lt;</span><span class=nt>button</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;submit&#34;</span> <span class=na>class</span><span class=o>=</span><span class=s>&#34;shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded&#34;</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                        Add
+</span></span><span class=line><span class=cl>                    <span class=p>&lt;/</span><span class=nt>button</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>                <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>            <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>        <span class=p>&lt;/</span><span class=nt>form</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
+</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>x-app-layout</span><span class=p>&gt;</span>
+</span></span></code></pre></div><p><img src=/media/images/getting-started/submit.png alt="Submit Form"></p><h3 ref=controller>Controller</h3><a class=anchor id=controller></a><p>Generate <code>LinkController</code> to manage our links using <code>lucid</code> and have it ready for serving features.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>lucid make:controller Link
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>Controller class created successfully.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Find it at app/Http/Controllers/LinkController.php
+</span></span></code></pre></div><div class="notices info"><p>Notice the automatic addition of <code>Controller</code> suffix, used as a naming convention to match other suffixes in the Lucid stack such as <code>Feature</code>, <code>Job</code> and <code>Operation</code>.</p></div><p>We will need a method to handle the form&rsquo;s submission request, let&rsquo;s call it <code>add</code>:</p><p><code>app/Http/Controllers/LinkController.php</code></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=nx>App\Http\Controllers</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Lucid\Units\Controller</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>LinkController</span> <span class=k>extends</span> <span class=nx>Controller</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>add</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h3 ref=feature>Feature</h3><a class=anchor id=feature></a><p>The <code>add</code> method will then serve the feature that will run the jobs required to add links.
+Generate a feature called <code>AddLinkFeature</code>:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>lucid make:feature AddLink
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>Feature class AddLinkFeature created successfully.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Find it at app/Features/AddLinkFeature.php
+</span></span></code></pre></div><p><code>add()</code> will now serve <code>AddLinkFeature</code></p><p><code>app/Http/Controllers/LinkController.php</code></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>use</span> <span class=nx>App\Features\AddLinkFeature</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=o>...</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>public</span> <span class=k>function</span> <span class=nf>add</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>serve</span><span class=p>(</span><span class=k>new</span> <span class=nx>AddLinkFeature</span><span class=p>());</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>Beginning with the step of generating a feature will cognitively set our context to what we will be working on, helping us concentrate
+on the task at hand.</p><p>Let&rsquo;s expose our feature with a route:</p><p><code>routes/web.php</code></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>use</span> <span class=nx>App\Http\Controllers\LinkController</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nx>Route</span><span class=o>::</span><span class=na>post</span><span class=p>(</span><span class=s1>&#39;/submit&#39;</span><span class=p>,</span> <span class=p>[</span><span class=nx>LinkController</span><span class=o>::</span><span class=na>class</span><span class=p>,</span> <span class=s1>&#39;add&#39;</span><span class=p>]);</span>
+</span></span></code></pre></div><p>So far so good, now we&rsquo;ll fill our feature with the steps required to add a link.</p><h3 ref=database--model>Database & Model</h3><a class=anchor id=database--model></a><p>Before we can start accepting data we need to prepare our database with a migration to create the links table:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>php artisan make:migration create_links_table --create<span class=o>=</span>links
+</span></span></code></pre></div><p>The generated file will contain the creation schema at <code>database/migrations/{datetime}_create_links_table.php</code>.
+Let&rsquo;s add the fields for our link:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>public</span> <span class=k>function</span> <span class=nf>up</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nx>Schema</span><span class=o>::</span><span class=na>create</span><span class=p>(</span><span class=s1>&#39;links&#39;</span><span class=p>,</span> <span class=k>function</span> <span class=p>(</span><span class=nx>Blueprint</span> <span class=nv>$table</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$table</span><span class=o>-&gt;</span><span class=na>id</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$table</span><span class=o>-&gt;</span><span class=na>string</span><span class=p>(</span><span class=s1>&#39;title&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$table</span><span class=o>-&gt;</span><span class=na>string</span><span class=p>(</span><span class=s1>&#39;url&#39;</span><span class=p>)</span><span class=o>-&gt;</span><span class=na>unique</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$table</span><span class=o>-&gt;</span><span class=na>text</span><span class=p>(</span><span class=s1>&#39;description&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$table</span><span class=o>-&gt;</span><span class=na>timestamps</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>});</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>Run the migration to create the table in the database:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>php artisan migrate
+</span></span></code></pre></div><p>Then we create our <code>Link</code> model class at <code>app/Data/Models/Link.php</code></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=nx>App\Data\Models</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Database\Eloquent\Model</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Link</span> <span class=k>extends</span> <span class=nx>Model</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>protected</span> <span class=nv>$fillable</span> <span class=o>=</span> <span class=p>[</span><span class=s1>&#39;url&#39;</span><span class=p>,</span> <span class=s1>&#39;title&#39;</span><span class=p>,</span> <span class=s1>&#39;description&#39;</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>We&rsquo;re all set to start building our feature!</p><h3 ref=request-validation>Request Validation</h3><a class=anchor id=request-validation></a><p>The first step of receiving input is to validate it. We will be using <a href=https://laravel.com/docs/validation#form-request-validation>Form Request validation</a>
+where each Request belongs in a Domain representing the entity that&rsquo;s being managed, in this case it&rsquo;s <code>Link</code> containing an <code>AddLink</code> Request class.</p><p>This will be the beginning of working with Domains in Lucid. They&rsquo;re used to group Jobs and custom classes which logic is
+associated with certain topic according to domain-driven design.</p><p>Starting with validation, Lucid places Request classes within their corresponding domains. Let&rsquo;s generate an <code>AddLink</code> request:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>lucid make:request AddLink link
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>Request class created successfully.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Find it at app/Domains/Link/Requests/AddLink.php
+</span></span></code></pre></div><p>In <code>AddLink</code> we&rsquo;ll need to update the methods <code>authorize()</code> and <code>rules()</code> to validate the request and its input:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=nx>App\Domains\Link\Requests</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Support\Facades\Auth</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Foundation\Http\FormRequest</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>AddLink</span> <span class=k>extends</span> <span class=nx>FormRequest</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=sd>/**
+</span></span></span><span class=line><span class=cl><span class=sd>     * Determine if the user is authorized to make this request.
+</span></span></span><span class=line><span class=cl><span class=sd>     *
+</span></span></span><span class=line><span class=cl><span class=sd>     * @return bool
+</span></span></span><span class=line><span class=cl><span class=sd>     */</span>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>authorize</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nx>Auth</span><span class=o>::</span><span class=na>check</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=sd>/**
+</span></span></span><span class=line><span class=cl><span class=sd>     * Get the validation rules that apply to the request.
+</span></span></span><span class=line><span class=cl><span class=sd>     *
+</span></span></span><span class=line><span class=cl><span class=sd>     * @return array
+</span></span></span><span class=line><span class=cl><span class=sd>     */</span>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>rules</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>            <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;required&#39;</span><span class=p>,</span> <span class=s1>&#39;max:255&#39;</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>            <span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;required&#39;</span><span class=p>,</span> <span class=s1>&#39;url&#39;</span><span class=p>,</span> <span class=s1>&#39;max:255&#39;</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>            <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=p>[</span><span class=s1>&#39;required&#39;</span><span class=p>,</span> <span class=s1>&#39;max:255&#39;</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>        <span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>With our request ready, now we need <code>AddLinkFeature</code> to use that request class when served. We can do that by simply injecting
+the request class in the feature&rsquo;s <code>handle()</code> method and every time the feature is served this validation will be applied.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=nx>App\Features</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Lucid\Units\Feature</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>App\Domains\Link\Requests\AddLink</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>AddLinkFeature</span> <span class=k>extends</span> <span class=nx>Feature</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>handle</span><span class=p>(</span><span class=nx>AddLink</span> <span class=nv>$request</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>Now if we visit <code>/submit</code> and click <code>Add</code> wihtout passing any input it will generate errors and print their messages from validation failures.</p><p><img src=/media/images/getting-started/links-validation-errors.png alt="Validation errors UI"></p><h3 ref=save-links>Save Links</h3><a class=anchor id=save-links></a><p>To save the link we&rsquo;ll create a job that saves links and run it in our feature, which will be added to our <code>Link</code> domain at
+<code>app/Domains/Link/Jobs/SaveLinkJob</code> along with its test <code>tests/Unit/Domains/Link/Jobs/SaveLinkJobTest</code>.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>lucid make:job SaveLink link
+</span></span></code></pre></div><div class="notices info"><p><i class="fas fa-asterisk"></i> Notice the naming that we&rsquo;ve used with this job &ldquo;<code>SaveLinkJob</code>&rdquo; in contrast with &ldquo;<code>AddLink</code>&rdquo;.
+It is intended for reuse whenever needed by extending its functionality futher, for example <code>UpdateLink</code> feature may be able to use the same job.</p></div><p><code>SaveLinkJob</code> should define the parameters that are required in its constructor, a.k.a the job&rsquo;s <em>signature</em>, rather than accessing
 the data from the request so that we can call this job from other places in our application (e.g. from a command or a custom class)
-and not be restricted by the protocol, in this case HTTP request.</p>
-<p>We use this technique to increase the degree of job isolation and secure the single responsibility principle.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=o>&lt;?</span><span class=nx>php</span>
-
-<span class=k>namespace</span> <span class=nx>App\Domains\Link\Jobs</span><span class=p>;</span>
-
-<span class=k>use</span> <span class=nx>Lucid\Units\Job</span><span class=p>;</span>
-<span class=k>use</span> <span class=nx>App\Data\Models\Link</span><span class=p>;</span>
-
-<span class=k>class</span> <span class=nc>SaveLinkJob</span> <span class=k>extends</span> <span class=nx>Job</span>
-<span class=p>{</span>
-    <span class=k>private</span> <span class=nv>$url</span><span class=p>;</span>
-    <span class=k>private</span> <span class=nv>$title</span><span class=p>;</span>
-    <span class=k>private</span> <span class=nv>$description</span><span class=p>;</span>
-
-    <span class=sd>/**
-</span><span class=sd>     * Create a new job instance.
-</span><span class=sd>     *
-</span><span class=sd>     * @param $url
-</span><span class=sd>     * @param $title
-</span><span class=sd>     * @param $description
-</span><span class=sd>     */</span>
-    <span class=k>public</span> <span class=k>function</span> <span class=fm>__construct</span><span class=p>(</span><span class=nv>$url</span><span class=p>,</span> <span class=nv>$title</span><span class=p>,</span> <span class=nv>$description</span><span class=p>)</span>
-    <span class=p>{</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>url</span> <span class=o>=</span> <span class=nv>$url</span><span class=p>;</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>title</span> <span class=o>=</span> <span class=nv>$title</span><span class=p>;</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>description</span> <span class=o>=</span> <span class=nv>$description</span><span class=p>;</span>
-    <span class=p>}</span>
-
-    <span class=sd>/**
-</span><span class=sd>     * Execute the job.
-</span><span class=sd>     *
-</span><span class=sd>     * @return Link
-</span><span class=sd>     */</span>
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>handle</span><span class=p>()</span>
-    <span class=p>{</span>
-        <span class=nv>$attributes</span> <span class=o>=</span> <span class=p>[</span>
-            <span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>url</span><span class=p>,</span>
-            <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>title</span><span class=p>,</span>
-            <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>description</span><span class=p>,</span>
-        <span class=p>];</span>
-
-        <span class=k>return</span> <span class=nx>tap</span><span class=p>(</span><span class=k>new</span> <span class=nx>Link</span><span class=p>(</span><span class=nv>$attributes</span><span class=p>))</span><span class=o>-&gt;</span><span class=na>save</span><span class=p>();</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div><p>The job&rsquo;s signature is its constructor: <code>__construct($url, $title, $description)</code> telling us what&rsquo;s required to run this job.
-This gets easier to read with PHP 7+ where we could type-hit these parameters:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=k>public</span> <span class=k>function</span> <span class=fm>__construct</span><span class=p>(</span><span class=nx>string</span> <span class=nv>$url</span><span class=p>,</span> <span class=nx>string</span> <span class=nv>$title</span><span class=p>,</span> <span class=nx>string</span> <span class=nv>$description</span><span class=p>)</span>
-</code></pre></div><p>And even better with PHP 8 we could use constructor property promotion and further reduce boilerplate:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=k>public</span> <span class=k>function</span> <span class=fm>__construct</span><span class=p>(</span>
-    <span class=k>private</span> <span class=nx>string</span> <span class=nv>$url</span><span class=p>,</span>
-    <span class=k>private</span> <span class=nx>string</span> <span class=nv>$title</span><span class=p>,</span>
-    <span class=k>private</span> <span class=nx>string</span> <span class=nv>$description</span>
-<span class=p>)</span> <span class=p>{}</span>
-</code></pre></div><p>Then we&rsquo;ll run this job from the feature to save links when received:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=o>&lt;?</span><span class=nx>php</span>
-
-<span class=k>namespace</span> <span class=nx>App\Features</span><span class=p>;</span>
-
-<span class=k>use</span> <span class=nx>Lucid\Units\Feature</span><span class=p>;</span>
-<span class=k>use</span> <span class=nx>App\Domains\Link\Requests\AddLink</span><span class=p>;</span>
-<span class=k>use</span> <span class=nx>App\Domains\Link\Jobs\SaveLinkJob</span><span class=p>;</span>
-<span class=k>use</span> <span class=nx>App\Domains\Http\Jobs\RedirectBackJob</span><span class=p>;</span>
-
-<span class=k>class</span> <span class=nc>AddLinkFeature</span> <span class=k>extends</span> <span class=nx>Feature</span>
-<span class=p>{</span>
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>handle</span><span class=p>(</span><span class=nx>AddLink</span> <span class=nv>$request</span><span class=p>)</span>
-    <span class=p>{</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>run</span><span class=p>(</span><span class=nx>SaveLinkJob</span><span class=o>::</span><span class=na>class</span><span class=p>,</span> <span class=p>[</span>
-            <span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=nv>$request</span><span class=o>-&gt;</span><span class=na>input</span><span class=p>(</span><span class=s1>&#39;url&#39;</span><span class=p>),</span>
-            <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=nv>$request</span><span class=o>-&gt;</span><span class=na>input</span><span class=p>(</span><span class=s1>&#39;title&#39;</span><span class=p>),</span>
-            <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=nv>$request</span><span class=o>-&gt;</span><span class=na>input</span><span class=p>(</span><span class=s1>&#39;description&#39;</span><span class=p>),</span>
-        <span class=p>]);</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div><p>Calling <code>$this->run($unit, $params)</code> in a feature causes the underlying dispatcher to run <code>SaveLinkJob</code> syncronously by calling its <code>handle</code> method
-after initializing it with the provided <code>$params</code> which are passed as an associative array where the keys must match the job&rsquo;s
-constructor parameters in naming, but not the order. So this would still work the same:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=nv>$this</span><span class=o>-&gt;</span><span class=na>run</span><span class=p>(</span><span class=nx>SaveLinkJob</span><span class=o>::</span><span class=na>class</span><span class=p>,</span> <span class=p>[</span>
-    <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=nv>$request</span><span class=o>-&gt;</span><span class=na>input</span><span class=p>(</span><span class=s1>&#39;description&#39;</span><span class=p>),</span>
-    <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=nv>$request</span><span class=o>-&gt;</span><span class=na>input</span><span class=p>(</span><span class=s1>&#39;title&#39;</span><span class=p>),</span>
-    <span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=nv>$request</span><span class=o>-&gt;</span><span class=na>input</span><span class=p>(</span><span class=s1>&#39;url&#39;</span><span class=p>),</span>
-<span class=p>]);</span>
-</code></pre></div>
-<div class="notices info">
-<p><i class="fas fa-info-circle"></i> You may call jobs (and other units) from any class by
+and not be restricted by the protocol, in this case HTTP request.</p><p>We use this technique to increase the degree of job isolation and secure the single responsibility principle.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=nx>App\Domains\Link\Jobs</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Lucid\Units\Job</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>App\Data\Models\Link</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>SaveLinkJob</span> <span class=k>extends</span> <span class=nx>Job</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>private</span> <span class=nv>$url</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>private</span> <span class=nv>$title</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>private</span> <span class=nv>$description</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=sd>/**
+</span></span></span><span class=line><span class=cl><span class=sd>     * Create a new job instance.
+</span></span></span><span class=line><span class=cl><span class=sd>     *
+</span></span></span><span class=line><span class=cl><span class=sd>     * @param $url
+</span></span></span><span class=line><span class=cl><span class=sd>     * @param $title
+</span></span></span><span class=line><span class=cl><span class=sd>     * @param $description
+</span></span></span><span class=line><span class=cl><span class=sd>     */</span>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=fm>__construct</span><span class=p>(</span><span class=nv>$url</span><span class=p>,</span> <span class=nv>$title</span><span class=p>,</span> <span class=nv>$description</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>url</span> <span class=o>=</span> <span class=nv>$url</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>title</span> <span class=o>=</span> <span class=nv>$title</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>description</span> <span class=o>=</span> <span class=nv>$description</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=sd>/**
+</span></span></span><span class=line><span class=cl><span class=sd>     * Execute the job.
+</span></span></span><span class=line><span class=cl><span class=sd>     *
+</span></span></span><span class=line><span class=cl><span class=sd>     * @return Link
+</span></span></span><span class=line><span class=cl><span class=sd>     */</span>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>handle</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$attributes</span> <span class=o>=</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>            <span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>url</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>title</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>            <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>description</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nx>tap</span><span class=p>(</span><span class=k>new</span> <span class=nx>Link</span><span class=p>(</span><span class=nv>$attributes</span><span class=p>))</span><span class=o>-&gt;</span><span class=na>save</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>The job&rsquo;s signature is its constructor: <code>__construct($url, $title, $description)</code> telling us what&rsquo;s required to run this job.
+This gets easier to read with PHP 7+ where we could type-hit these parameters:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>public</span> <span class=k>function</span> <span class=fm>__construct</span><span class=p>(</span><span class=nx>string</span> <span class=nv>$url</span><span class=p>,</span> <span class=nx>string</span> <span class=nv>$title</span><span class=p>,</span> <span class=nx>string</span> <span class=nv>$description</span><span class=p>)</span>
+</span></span></code></pre></div><p>And even better with PHP 8 we could use constructor property promotion and further reduce boilerplate:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>public</span> <span class=k>function</span> <span class=fm>__construct</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=k>private</span> <span class=nx>string</span> <span class=nv>$url</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=k>private</span> <span class=nx>string</span> <span class=nv>$title</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=k>private</span> <span class=nx>string</span> <span class=nv>$description</span>
+</span></span><span class=line><span class=cl><span class=p>)</span> <span class=p>{}</span>
+</span></span></code></pre></div><p>Then we&rsquo;ll run this job from the feature to save links when received:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=nx>App\Features</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Lucid\Units\Feature</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>App\Domains\Link\Requests\AddLink</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>App\Domains\Link\Jobs\SaveLinkJob</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>App\Domains\Http\Jobs\RedirectBackJob</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>AddLinkFeature</span> <span class=k>extends</span> <span class=nx>Feature</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>handle</span><span class=p>(</span><span class=nx>AddLink</span> <span class=nv>$request</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>run</span><span class=p>(</span><span class=k>new</span> <span class=nx>SaveLinkJob</span>
+</span></span><span class=line><span class=cl>            <span class=nx>url</span><span class=o>:</span> <span class=nv>$request</span><span class=o>-&gt;</span><span class=na>input</span><span class=p>(</span><span class=s1>&#39;url&#39;</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=nx>title</span><span class=o>:</span> <span class=nv>$request</span><span class=o>-&gt;</span><span class=na>input</span><span class=p>(</span><span class=s1>&#39;title&#39;</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=nx>description</span><span class=o>:</span> <span class=nv>$request</span><span class=o>-&gt;</span><span class=na>input</span><span class=p>(</span><span class=s1>&#39;description&#39;</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>        <span class=p>]);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h4 ref=parameters-as-associative-arrays>Parameters As Associative Arrays</h4><a class=anchor id=parameters-as-associative-arrays></a><p>It is also possible to call <code>$this->run($unit, $params)</code> in a feature, which causes the underlying dispatcher to run <code>SaveLinkJob</code> syncronously by calling its
+<code>handle</code> method after initializing it with the provided <code>$params</code> which can be passed as an associative array where the keys must match the job&rsquo;s
+constructor parameters in naming, but not the order. So this would still work the same:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=nv>$this</span><span class=o>-&gt;</span><span class=na>run</span><span class=p>(</span><span class=nx>SaveLinkJob</span><span class=o>::</span><span class=na>class</span><span class=p>,</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=nv>$request</span><span class=o>-&gt;</span><span class=na>input</span><span class=p>(</span><span class=s1>&#39;description&#39;</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=nv>$request</span><span class=o>-&gt;</span><span class=na>input</span><span class=p>(</span><span class=s1>&#39;title&#39;</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=nv>$request</span><span class=o>-&gt;</span><span class=na>input</span><span class=p>(</span><span class=s1>&#39;url&#39;</span><span class=p>),</span>
+</span></span><span class=line><span class=cl><span class=p>]);</span>
+</span></span></code></pre></div><div class="notices info"><p><i class="fas fa-info-circle"></i> You may call jobs (and other units) from any class by
 supplying <code>Lucid\Bus\UnitDispatcher</code> trait in the class which will equip the <code>run($unit, $params)</code> function to run jobs and operations.
-With this, the class in Lucid terms is now called a <a href=https://docs.lucidarch.dev/jobs/#custom-dispatcher>custom dispatcher</a>.</p>
-</div>
-<p>The last step is to redirect a successful request back to the form. To do that we&rsquo;ll create a <code>RedirectBackJob</code>
+With this, the class in Lucid terms is now called a <a href=https://docs.lucidarch.dev/jobs/#custom-dispatcher>custom dispatcher</a>.</p></div><p>The last step is to redirect a successful request back to the form. To do that we&rsquo;ll create a <code>RedirectBackJob</code>
 which will simply call <code>back()</code>. Even though it might seem like an overhead, but remember that we&rsquo;re setting up for scale,
 and as we scale, the less free-form code we have the better; instead of having plenty of <code>back()</code> and <code>back()->withInput()</code>
 and other calls, we centralize them in a job so that in case we ever wanted to modify that functionality or add to it,
-the change will only need to happen in a one place.</p>
-<p><code>RedirectBackJob</code> will reside in a new <code>Http</code> domain, a place for all our HTTP-related functionality that isn&rsquo;t specific to a
-business entity of our application, fits the abstract type of domains instead of the entity type.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>lucid make:job RedirectBackJob http
-</code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>Job class RedirectBackJob created successfully.
-
-Find it at app/Domains/Http/Jobs/RedirectBackJob.php
-</code></pre></div><p>Our job will provide the option <code>withInput</code> to determine whether input should be included in the redirection.
-This is a simple example of how such a simple job may later provide functionality that can be shared across the application.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=o>&lt;?</span><span class=nx>php</span>
-
-<span class=k>namespace</span> <span class=nx>App\Domains\Http\Jobs</span><span class=p>;</span>
-
-<span class=k>use</span> <span class=nx>Lucid\Units\Job</span><span class=p>;</span>
-
-<span class=k>class</span> <span class=nc>RedirectBackJob</span> <span class=k>extends</span> <span class=nx>Job</span>
-<span class=p>{</span>
-    <span class=sd>/**
-</span><span class=sd>     * @var bool
-</span><span class=sd>     */</span>
-    <span class=k>private</span> <span class=nv>$withInput</span><span class=p>;</span>
-
-    <span class=sd>/**
-</span><span class=sd>     * Create a new job instance.
-</span><span class=sd>     *
-</span><span class=sd>     * @param bool $withInput
-</span><span class=sd>     */</span>
-    <span class=k>public</span> <span class=k>function</span> <span class=fm>__construct</span><span class=p>(</span><span class=nv>$withInput</span> <span class=o>=</span> <span class=k>false</span><span class=p>)</span>
-    <span class=p>{</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>withInput</span> <span class=o>=</span> <span class=nv>$withInput</span><span class=p>;</span>
-    <span class=p>}</span>
-
-    <span class=sd>/**
-</span><span class=sd>     * Execute the job.
-</span><span class=sd>     */</span>
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>handle</span><span class=p>()</span>
-    <span class=p>{</span>
-        <span class=nv>$back</span> <span class=o>=</span> <span class=nx>back</span><span class=p>();</span>
-
-        <span class=k>if</span> <span class=p>(</span><span class=nv>$this</span><span class=o>-&gt;</span><span class=na>withInput</span><span class=p>)</span> <span class=p>{</span>
-            <span class=nv>$back</span><span class=o>-&gt;</span><span class=na>withInput</span><span class=p>();</span>
-        <span class=p>}</span>
-
-        <span class=k>return</span> <span class=nv>$back</span><span class=p>;</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-
-</code></pre></div><h2 ref=testing>Testing</h2><a class=anchor id=testing></a>
-<p>If you visit <code>/submit</code> fill the form it should now add the links, but to be certain about the functionality we just built
-it is necessary that we write some tests to ensure it continues to.</p>
-<h3 ref=configure-phpunit>Configure PHPUnit</h3><a class=anchor id=configure-phpunit></a>
-<p>First we need to configure the database to run in a memory SQLite database instance, in <code>phpunit.xml</code>
-uncomment the following lines:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=nt>&lt;server</span> <span class=na>name=</span><span class=s>&#34;DB_CONNECTION&#34;</span> <span class=na>value=</span><span class=s>&#34;sqlite&#34;</span><span class=nt>/&gt;</span>
-<span class=nt>&lt;server</span> <span class=na>name=</span><span class=s>&#34;DB_DATABASE&#34;</span> <span class=na>value=</span><span class=s>&#34;:memory:&#34;</span><span class=nt>/&gt;</span>
-</code></pre></div><h3 ref=unit-tests>Unit Tests</h3><a class=anchor id=unit-tests></a>
-<p>Jobs in Lucid are units, and their tests are that of a unit test where we verify that all the variations of the data it might
-receive wouldn&rsquo;t misbehave unexpectedly.</p>
-<p>Let&rsquo;s write a test for <code>SaveLinkJob</code> in <code>tests/Unit/Domains/Link/Jobs/SaveLinkJobTest</code> which has already been created by <code>lucid</code>
-when generating the job:</p>
-<div class="notices danger">
-<p><i class="fas fa-exclamation-triangle"></i> Runnig tests prior to configuring <code>phpunit.xml</code> as mentioned in <a href=#configure-phpunit>Configure PHPUnit</a>
-will wipe out the data that is currently in your database.</p>
-</div>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=o>&lt;?</span><span class=nx>php</span>
-
-<span class=k>namespace</span> <span class=nx>Tests\Unit\Domains\Link\Jobs</span><span class=p>;</span>
-
-<span class=k>use</span> <span class=nx>Tests\TestCase</span><span class=p>;</span>
-<span class=k>use</span> <span class=nx>App\Data\Models\Link</span><span class=p>;</span>
-<span class=k>use</span> <span class=nx>Faker\Factory</span> <span class=k>as</span> <span class=nx>Fake</span><span class=p>;</span>
-<span class=k>use</span> <span class=nx>App\Domains\Link\Jobs\SaveLinkJob</span><span class=p>;</span>
-<span class=k>use</span> <span class=nx>Illuminate\Foundation\Testing\RefreshDatabase</span><span class=p>;</span>
-
-<span class=k>class</span> <span class=nc>SaveLinkJobTest</span> <span class=k>extends</span> <span class=nx>TestCase</span>
-<span class=p>{</span>
-    <span class=k>use</span> <span class=nx>RefreshDatabase</span><span class=p>;</span>
-
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>test_save_link_job</span><span class=p>()</span>
-    <span class=p>{</span>
-        <span class=nv>$f</span> <span class=o>=</span> <span class=nx>Fake</span><span class=o>::</span><span class=na>create</span><span class=p>();</span>
-
-        <span class=nv>$url</span> <span class=o>=</span> <span class=nv>$f</span><span class=o>-&gt;</span><span class=na>url</span><span class=p>;</span>
-        <span class=nv>$title</span> <span class=o>=</span> <span class=nv>$f</span><span class=o>-&gt;</span><span class=na>sentence</span><span class=p>;</span>
-        <span class=nv>$description</span> <span class=o>=</span> <span class=nv>$f</span><span class=o>-&gt;</span><span class=na>paragraph</span><span class=p>;</span>
-
-        <span class=nv>$job</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>SaveLinkJob</span><span class=p>(</span><span class=nv>$url</span><span class=p>,</span> <span class=nv>$title</span><span class=p>,</span> <span class=nv>$description</span><span class=p>);</span>
-        <span class=nv>$link</span> <span class=o>=</span> <span class=nv>$job</span><span class=o>-&gt;</span><span class=na>handle</span><span class=p>();</span>
-
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>assertInstanceOf</span><span class=p>(</span><span class=nx>Link</span><span class=o>::</span><span class=na>class</span><span class=p>,</span> <span class=nv>$link</span><span class=p>);</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>assertEquals</span><span class=p>(</span><span class=nv>$url</span><span class=p>,</span> <span class=nv>$link</span><span class=o>-&gt;</span><span class=na>url</span><span class=p>);</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>assertEquals</span><span class=p>(</span><span class=nv>$title</span><span class=p>,</span> <span class=nv>$link</span><span class=o>-&gt;</span><span class=na>title</span><span class=p>);</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>assertEquals</span><span class=p>(</span><span class=nv>$description</span><span class=p>,</span> <span class=nv>$link</span><span class=o>-&gt;</span><span class=na>description</span><span class=p>);</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-
-</code></pre></div><p>For more on testing jobs visit <a href=https://docs.lucidarch.dev/jobs/#testing>jobs#testing</a>.</p>
-<h3 ref=feature-test>Feature Test</h3><a class=anchor id=feature-test></a>
-<p>The last test is the feature&rsquo;s behaviour with different input variations and make sure that all responses are as expected.
-In principle, Lucid&rsquo;s feature tests are about testing the integration between the units that the feature runs (jobs and operations).</p>
-<p>Starting with our test layout as a plan to what we will be examining and prepare the test class by including <code>RefreshDatabase</code> trait:</p>
-<p><code>tests/Feature/AddLinkFeatureTest</code></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=o>&lt;?</span><span class=nx>php</span>
-
-<span class=k>namespace</span> <span class=nx>Tests\Feature</span><span class=p>;</span>
-
-<span class=k>use</span> <span class=nx>Tests\TestCase</span><span class=p>;</span>
-<span class=k>use</span> <span class=nx>Illuminate\Foundation\Testing\RefreshDatabase</span><span class=p>;</span>
-
-<span class=k>class</span> <span class=nc>AddLinkFeatureTest</span> <span class=k>extends</span> <span class=nx>TestCase</span>
-<span class=p>{</span>
-    <span class=k>use</span> <span class=nx>RefreshDatabase</span><span class=p>;</span>
-
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>test_guest_cannot_submit_a_link</span><span class=p>()</span>
-    <span class=p>{</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>markTestIncomplete</span><span class=p>();</span>
-    <span class=p>}</span>
-
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>test_link_is_not_created_if_validation_fails</span><span class=p>()</span>
-    <span class=p>{</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>markTestIncomplete</span><span class=p>();</span>
-    <span class=p>}</span>
-
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>test_link_is_not_created_with_invalid_url</span><span class=p>()</span>
-    <span class=p>{</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>markTestIncomplete</span><span class=p>();</span>
-    <span class=p>}</span>
-
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>test_max_length_fails_when_too_long</span><span class=p>()</span>
-    <span class=p>{</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>markTestIncomplete</span><span class=p>();</span>
-    <span class=p>}</span>
-
-    <span class=k>public</span> <span class=k>function</span> <span class=nf>test_max_length_succeeds_when_under_max</span><span class=p>()</span>
-    <span class=p>{</span>
-        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>markTestIncomplete</span><span class=p>();</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div><p>Now we&rsquo;ll just fill the tests with corresponding calls and assertions:</p>
-<p>We expect a guest to not be able to submit links since in our Request class <code>AddLink::authorize()</code> requires authorization:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=k>public</span> <span class=k>function</span> <span class=nf>test_guest_cannot_submit_a_link</span><span class=p>()</span>
-<span class=p>{</span>
-    <span class=nv>$response</span> <span class=o>=</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>post</span><span class=p>(</span><span class=s1>&#39;/submit&#39;</span><span class=p>,</span> <span class=p>[</span>
-        <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;Example Title&#39;</span><span class=p>,</span>
-        <span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;http://example.com&#39;</span><span class=p>,</span>
-        <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;Example description.&#39;</span><span class=p>,</span>
-    <span class=p>]);</span>
-
-   <span class=nv>$response</span><span class=o>-&gt;</span><span class=na>assertStatus</span><span class=p>(</span><span class=mi>403</span><span class=p>);</span>
-   <span class=nv>$response</span><span class=o>-&gt;</span><span class=na>assertSee</span><span class=p>(</span><span class=s1>&#39;This action is unauthorized.&#39;</span><span class=p>);</span>
-<span class=p>}</span>
-</code></pre></div><p>Ensure input validation is as expected:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=k>public</span> <span class=k>function</span> <span class=nf>test_link_is_not_created_if_validation_fails</span><span class=p>()</span>
-<span class=p>{</span>
-    <span class=nv>$response</span> <span class=o>=</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>actingAs</span><span class=p>(</span><span class=nx>User</span><span class=o>::</span><span class=na>factory</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>create</span><span class=p>())</span><span class=o>-&gt;</span><span class=na>post</span><span class=p>(</span><span class=s1>&#39;/submit&#39;</span><span class=p>);</span>
-
-    <span class=nv>$response</span><span class=o>-&gt;</span><span class=na>assertSessionHasErrors</span><span class=p>([</span><span class=s1>&#39;title&#39;</span><span class=p>,</span> <span class=s1>&#39;url&#39;</span><span class=p>,</span> <span class=s1>&#39;description&#39;</span><span class=p>]);</span>
-<span class=p>}</span>
-</code></pre></div><p>The purpose of the data provider <code>invalidURLs</code> here is to keep the test concise and reduce clutter:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=k>public</span> <span class=k>function</span> <span class=nf>invalidURLs</span><span class=p>()</span>
-<span class=p>{</span>
-    <span class=k>return</span> <span class=p>[</span>
-        <span class=p>[</span><span class=s1>&#39;foo.com&#39;</span><span class=p>],</span>
-        <span class=p>[</span><span class=s1>&#39;/invalid-url&#39;</span><span class=p>],</span>
-        <span class=p>[</span><span class=s1>&#39;//invalid-url.com&#39;</span><span class=p>],</span>
-    <span class=p>];</span>
-<span class=p>}</span>
-
-<span class=sd>/**
-</span><span class=sd> * @dataProvider invalidURLs
-</span><span class=sd> */</span>
-<span class=k>public</span> <span class=k>function</span> <span class=nf>test_link_is_not_created_with_invalid_url</span><span class=p>(</span><span class=nv>$case</span><span class=p>)</span>
-<span class=p>{</span>
-    <span class=nv>$response</span> <span class=o>=</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>actingAs</span><span class=p>(</span><span class=nx>User</span><span class=o>::</span><span class=na>factory</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>create</span><span class=p>())</span>
-                     <span class=o>-&gt;</span><span class=na>post</span><span class=p>(</span><span class=s1>&#39;/submit&#39;</span><span class=p>,</span> <span class=p>[</span>
-                        <span class=s1>&#39;url&#39;</span>  <span class=o>=&gt;</span> <span class=nv>$case</span><span class=p>,</span>
-                        <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;Example Title&#39;</span><span class=p>,</span>
-                        <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;Example description&#39;</span><span class=p>,</span>
-                    <span class=p>]);</span>
-
-    <span class=nv>$response</span><span class=o>-&gt;</span><span class=na>assertSessionHasErrors</span><span class=p>([</span><span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;The url must be a valid URL.&#39;</span><span class=p>]);</span>
-<span class=p>}</span>
-</code></pre></div><p>Finally, test input strings lengths:</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=k>public</span> <span class=k>function</span> <span class=nf>test_max_length_fails_when_too_long</span><span class=p>()</span>
-<span class=p>{</span>
-    <span class=nv>$title</span> <span class=o>=</span> <span class=nx>str_repeat</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>256</span><span class=p>);</span>
-    <span class=nv>$description</span> <span class=o>=</span> <span class=nx>str_repeat</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>256</span><span class=p>);</span>
-    <span class=nv>$url</span> <span class=o>=</span> <span class=s1>&#39;http://&#39;</span><span class=p>;</span>
-    <span class=nv>$url</span> <span class=o>.=</span> <span class=nx>str_repeat</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>256</span> <span class=o>-</span> <span class=nx>strlen</span><span class=p>(</span><span class=nv>$url</span><span class=p>));</span>
-
-    <span class=nv>$user</span> <span class=o>=</span> <span class=nx>User</span><span class=o>::</span><span class=na>factory</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>create</span><span class=p>();</span>
-    <span class=nv>$response</span> <span class=o>=</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>actingAs</span><span class=p>(</span><span class=nv>$user</span><span class=p>)</span>
-                     <span class=o>-&gt;</span><span class=na>post</span><span class=p>(</span><span class=s1>&#39;/submit&#39;</span><span class=p>,</span> <span class=nx>compact</span><span class=p>(</span><span class=s1>&#39;title&#39;</span><span class=p>,</span> <span class=s1>&#39;url&#39;</span><span class=p>,</span> <span class=s1>&#39;description&#39;</span><span class=p>));</span>
-
-    <span class=nv>$response</span><span class=o>-&gt;</span><span class=na>assertSessionHasErrors</span><span class=p>([</span>
-        <span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;The url must not be greater than 255 characters.&#39;</span><span class=p>,</span>
-        <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;The title must not be greater than 255 characters.&#39;</span><span class=p>,</span>
-        <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;The description must not be greater than 255 characters.&#39;</span><span class=p>,</span>
-    <span class=p>]);</span>
-<span class=p>}</span>
-
-<span class=k>public</span> <span class=k>function</span> <span class=nf>test_max_length_succeeds_when_under_max</span><span class=p>()</span>
-<span class=p>{</span>
-    <span class=nv>$url</span> <span class=o>=</span> <span class=s1>&#39;http://&#39;</span><span class=p>;</span>
-    <span class=nv>$url</span> <span class=o>.=</span> <span class=nx>str_repeat</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>255</span> <span class=o>-</span> <span class=nx>strlen</span><span class=p>(</span><span class=nv>$url</span><span class=p>));</span>
-
-    <span class=nv>$data</span> <span class=o>=</span> <span class=p>[</span>
-        <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=nx>str_repeat</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>255</span><span class=p>),</span>
-        <span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=nv>$url</span><span class=p>,</span>
-        <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=nx>str_repeat</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>255</span><span class=p>),</span>
-    <span class=p>];</span>
-
-    <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>actingAs</span><span class=p>(</span><span class=nx>User</span><span class=o>::</span><span class=na>factory</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>create</span><span class=p>())</span><span class=o>-&gt;</span><span class=na>post</span><span class=p>(</span><span class=s1>&#39;/submit&#39;</span><span class=p>,</span> <span class=nv>$data</span><span class=p>);</span>
-
-    <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>assertDatabaseHas</span><span class=p>(</span><span class=s1>&#39;links&#39;</span><span class=p>,</span> <span class=nv>$data</span><span class=p>);</span>
-<span class=p>}</span>
-</code></pre></div><h2 ref=conclusion>Conclusion</h2><a class=anchor id=conclusion></a>
-<p>As far as this example goes, Lucid may seem like just an overhead on top of simple one-liners or two.
+the change will only need to happen in a one place.</p><p><code>RedirectBackJob</code> will reside in a new <code>Http</code> domain, a place for all our HTTP-related functionality that isn&rsquo;t specific to a
+business entity of our application, fits the abstract type of domains instead of the entity type.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>lucid make:job RedirectBackJob http
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>Job class RedirectBackJob created successfully.
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>Find it at app/Domains/Http/Jobs/RedirectBackJob.php
+</span></span></code></pre></div><p>Our job will provide the option <code>withInput</code> to determine whether input should be included in the redirection.
+This is a simple example of how such a simple job may later provide functionality that can be shared across the application.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=nx>App\Domains\Http\Jobs</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Lucid\Units\Job</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>RedirectBackJob</span> <span class=k>extends</span> <span class=nx>Job</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=sd>/**
+</span></span></span><span class=line><span class=cl><span class=sd>     * @var bool
+</span></span></span><span class=line><span class=cl><span class=sd>     */</span>
+</span></span><span class=line><span class=cl>    <span class=k>private</span> <span class=nv>$withInput</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=sd>/**
+</span></span></span><span class=line><span class=cl><span class=sd>     * Create a new job instance.
+</span></span></span><span class=line><span class=cl><span class=sd>     *
+</span></span></span><span class=line><span class=cl><span class=sd>     * @param bool $withInput
+</span></span></span><span class=line><span class=cl><span class=sd>     */</span>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=fm>__construct</span><span class=p>(</span><span class=nv>$withInput</span> <span class=o>=</span> <span class=k>false</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>withInput</span> <span class=o>=</span> <span class=nv>$withInput</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=sd>/**
+</span></span></span><span class=line><span class=cl><span class=sd>     * Execute the job.
+</span></span></span><span class=line><span class=cl><span class=sd>     */</span>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>handle</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$back</span> <span class=o>=</span> <span class=nx>back</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=nv>$this</span><span class=o>-&gt;</span><span class=na>withInput</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=nv>$back</span><span class=o>-&gt;</span><span class=na>withInput</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nv>$back</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h2 ref=testing>Testing</h2><a class=anchor id=testing></a><p>If you visit <code>/submit</code> fill the form it should now add the links, but to be certain about the functionality we just built
+it is necessary that we write some tests to ensure it continues to.</p><h3 ref=configure-phpunit>Configure PHPUnit</h3><a class=anchor id=configure-phpunit></a><p>First we need to configure the database to run in a memory SQLite database instance, in <code>phpunit.xml</code>
+uncomment the following lines:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=nt>&lt;server</span> <span class=na>name=</span><span class=s>&#34;DB_CONNECTION&#34;</span> <span class=na>value=</span><span class=s>&#34;sqlite&#34;</span><span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl><span class=nt>&lt;server</span> <span class=na>name=</span><span class=s>&#34;DB_DATABASE&#34;</span> <span class=na>value=</span><span class=s>&#34;:memory:&#34;</span><span class=nt>/&gt;</span>
+</span></span></code></pre></div><h3 ref=unit-tests>Unit Tests</h3><a class=anchor id=unit-tests></a><p>Jobs in Lucid are units, and their tests are that of a unit test where we verify that all the variations of the data it might
+receive wouldn&rsquo;t misbehave unexpectedly.</p><p>Let&rsquo;s write a test for <code>SaveLinkJob</code> in <code>tests/Unit/Domains/Link/Jobs/SaveLinkJobTest</code> which has already been created by <code>lucid</code>
+when generating the job:</p><div class="notices danger"><p><i class="fas fa-exclamation-triangle"></i> Runnig tests prior to configuring <code>phpunit.xml</code> as mentioned in <a href=#configure-phpunit>Configure PHPUnit</a>
+will wipe out the data that is currently in your database.</p></div><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=nx>Tests\Unit\Domains\Link\Jobs</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Tests\TestCase</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>App\Data\Models\Link</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Faker\Factory</span> <span class=k>as</span> <span class=nx>Fake</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>App\Domains\Link\Jobs\SaveLinkJob</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Foundation\Testing\RefreshDatabase</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>SaveLinkJobTest</span> <span class=k>extends</span> <span class=nx>TestCase</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>use</span> <span class=nx>RefreshDatabase</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>test_save_link_job</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$f</span> <span class=o>=</span> <span class=nx>Fake</span><span class=o>::</span><span class=na>create</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=nv>$url</span> <span class=o>=</span> <span class=nv>$f</span><span class=o>-&gt;</span><span class=na>url</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$title</span> <span class=o>=</span> <span class=nv>$f</span><span class=o>-&gt;</span><span class=na>sentence</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$description</span> <span class=o>=</span> <span class=nv>$f</span><span class=o>-&gt;</span><span class=na>paragraph</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=nv>$job</span> <span class=o>=</span> <span class=k>new</span> <span class=nx>SaveLinkJob</span><span class=p>(</span><span class=nv>$url</span><span class=p>,</span> <span class=nv>$title</span><span class=p>,</span> <span class=nv>$description</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$link</span> <span class=o>=</span> <span class=nv>$job</span><span class=o>-&gt;</span><span class=na>handle</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>assertInstanceOf</span><span class=p>(</span><span class=nx>Link</span><span class=o>::</span><span class=na>class</span><span class=p>,</span> <span class=nv>$link</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>assertEquals</span><span class=p>(</span><span class=nv>$url</span><span class=p>,</span> <span class=nv>$link</span><span class=o>-&gt;</span><span class=na>url</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>assertEquals</span><span class=p>(</span><span class=nv>$title</span><span class=p>,</span> <span class=nv>$link</span><span class=o>-&gt;</span><span class=na>title</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>assertEquals</span><span class=p>(</span><span class=nv>$description</span><span class=p>,</span> <span class=nv>$link</span><span class=o>-&gt;</span><span class=na>description</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>For more on testing jobs visit <a href=https://docs.lucidarch.dev/jobs/#testing>jobs#testing</a>.</p><h3 ref=feature-test>Feature Test</h3><a class=anchor id=feature-test></a><p>The last test is the feature&rsquo;s behaviour with different input variations and make sure that all responses are as expected.
+In principle, Lucid&rsquo;s feature tests are about testing the integration between the units that the feature runs (jobs and operations).</p><p>Starting with our test layout as a plan to what we will be examining and prepare the test class by including <code>RefreshDatabase</code> trait:</p><p><code>tests/Feature/AddLinkFeatureTest</code></p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=o>&lt;?</span><span class=nx>php</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=nx>Tests\Feature</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Tests\TestCase</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>use</span> <span class=nx>Illuminate\Foundation\Testing\RefreshDatabase</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>AddLinkFeatureTest</span> <span class=k>extends</span> <span class=nx>TestCase</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>use</span> <span class=nx>RefreshDatabase</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>test_guest_cannot_submit_a_link</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>markTestIncomplete</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>test_link_is_not_created_if_validation_fails</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>markTestIncomplete</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>test_link_is_not_created_with_invalid_url</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>markTestIncomplete</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>test_max_length_fails_when_too_long</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>markTestIncomplete</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>public</span> <span class=k>function</span> <span class=nf>test_max_length_succeeds_when_under_max</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>markTestIncomplete</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>Now we&rsquo;ll just fill the tests with corresponding calls and assertions:</p><p>We expect a guest to not be able to submit links since in our Request class <code>AddLink::authorize()</code> requires authorization:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>public</span> <span class=k>function</span> <span class=nf>test_guest_cannot_submit_a_link</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$response</span> <span class=o>=</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>post</span><span class=p>(</span><span class=s1>&#39;/submit&#39;</span><span class=p>,</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;Example Title&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;http://example.com&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;Example description.&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=p>]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>   <span class=nv>$response</span><span class=o>-&gt;</span><span class=na>assertStatus</span><span class=p>(</span><span class=mi>403</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>   <span class=nv>$response</span><span class=o>-&gt;</span><span class=na>assertSee</span><span class=p>(</span><span class=s1>&#39;This action is unauthorized.&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>Ensure input validation is as expected:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>public</span> <span class=k>function</span> <span class=nf>test_link_is_not_created_if_validation_fails</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$response</span> <span class=o>=</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>actingAs</span><span class=p>(</span><span class=nx>User</span><span class=o>::</span><span class=na>factory</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>create</span><span class=p>())</span><span class=o>-&gt;</span><span class=na>post</span><span class=p>(</span><span class=s1>&#39;/submit&#39;</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nv>$response</span><span class=o>-&gt;</span><span class=na>assertSessionHasErrors</span><span class=p>([</span><span class=s1>&#39;title&#39;</span><span class=p>,</span> <span class=s1>&#39;url&#39;</span><span class=p>,</span> <span class=s1>&#39;description&#39;</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>The purpose of the data provider <code>invalidURLs</code> here is to keep the test concise and reduce clutter:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>public</span> <span class=k>function</span> <span class=nf>invalidURLs</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=p>[</span><span class=s1>&#39;foo.com&#39;</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>        <span class=p>[</span><span class=s1>&#39;/invalid-url&#39;</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>        <span class=p>[</span><span class=s1>&#39;//invalid-url.com&#39;</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>    <span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=sd>/**
+</span></span></span><span class=line><span class=cl><span class=sd> * @dataProvider invalidURLs
+</span></span></span><span class=line><span class=cl><span class=sd> */</span>
+</span></span><span class=line><span class=cl><span class=k>public</span> <span class=k>function</span> <span class=nf>test_link_is_not_created_with_invalid_url</span><span class=p>(</span><span class=nv>$case</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$response</span> <span class=o>=</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>actingAs</span><span class=p>(</span><span class=nx>User</span><span class=o>::</span><span class=na>factory</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>create</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>                     <span class=o>-&gt;</span><span class=na>post</span><span class=p>(</span><span class=s1>&#39;/submit&#39;</span><span class=p>,</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>                        <span class=s1>&#39;url&#39;</span>  <span class=o>=&gt;</span> <span class=nv>$case</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                        <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;Example Title&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                        <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;Example description&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                    <span class=p>]);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nv>$response</span><span class=o>-&gt;</span><span class=na>assertSessionHasErrors</span><span class=p>([</span><span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;The url must be a valid URL.&#39;</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p>Finally, test input strings lengths:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-php data-lang=php><span class=line><span class=cl><span class=k>public</span> <span class=k>function</span> <span class=nf>test_max_length_fails_when_too_long</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$title</span> <span class=o>=</span> <span class=nx>str_repeat</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>256</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$description</span> <span class=o>=</span> <span class=nx>str_repeat</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>256</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$url</span> <span class=o>=</span> <span class=s1>&#39;http://&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$url</span> <span class=o>.=</span> <span class=nx>str_repeat</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>256</span> <span class=o>-</span> <span class=nx>strlen</span><span class=p>(</span><span class=nv>$url</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nv>$user</span> <span class=o>=</span> <span class=nx>User</span><span class=o>::</span><span class=na>factory</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>create</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$response</span> <span class=o>=</span> <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>actingAs</span><span class=p>(</span><span class=nv>$user</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                     <span class=o>-&gt;</span><span class=na>post</span><span class=p>(</span><span class=s1>&#39;/submit&#39;</span><span class=p>,</span> <span class=nx>compact</span><span class=p>(</span><span class=s1>&#39;title&#39;</span><span class=p>,</span> <span class=s1>&#39;url&#39;</span><span class=p>,</span> <span class=s1>&#39;description&#39;</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nv>$response</span><span class=o>-&gt;</span><span class=na>assertSessionHasErrors</span><span class=p>([</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;The url must not be greater than 255 characters.&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;The title must not be greater than 255 characters.&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=s1>&#39;The description must not be greater than 255 characters.&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=p>]);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>public</span> <span class=k>function</span> <span class=nf>test_max_length_succeeds_when_under_max</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$url</span> <span class=o>=</span> <span class=s1>&#39;http://&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=nv>$url</span> <span class=o>.=</span> <span class=nx>str_repeat</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>255</span> <span class=o>-</span> <span class=nx>strlen</span><span class=p>(</span><span class=nv>$url</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nv>$data</span> <span class=o>=</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;title&#39;</span> <span class=o>=&gt;</span> <span class=nx>str_repeat</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>255</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;url&#39;</span> <span class=o>=&gt;</span> <span class=nv>$url</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=s1>&#39;description&#39;</span> <span class=o>=&gt;</span> <span class=nx>str_repeat</span><span class=p>(</span><span class=s1>&#39;a&#39;</span><span class=p>,</span> <span class=mi>255</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=p>];</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>actingAs</span><span class=p>(</span><span class=nx>User</span><span class=o>::</span><span class=na>factory</span><span class=p>()</span><span class=o>-&gt;</span><span class=na>create</span><span class=p>())</span><span class=o>-&gt;</span><span class=na>post</span><span class=p>(</span><span class=s1>&#39;/submit&#39;</span><span class=p>,</span> <span class=nv>$data</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nv>$this</span><span class=o>-&gt;</span><span class=na>assertDatabaseHas</span><span class=p>(</span><span class=s1>&#39;links&#39;</span><span class=p>,</span> <span class=nv>$data</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h2 ref=conclusion>Conclusion</h2><a class=anchor id=conclusion></a><p>As far as this example goes, Lucid may seem like just an overhead on top of simple one-liners or two.
 Pragmatically speaking, this is almost never the case; no project begins as simple remains so simple in a few weeks later
-and this is where this architecture&rsquo;s role becomes crucial. It is just like wine - gets better with the project&rsquo;s age.</p>
-<h3 ref=highlights>Highlights</h3><a class=anchor id=highlights></a>
-<p>Here are a few points that are worth mentioning to showcase where the architecture came in and how it would help forward:</p>
-<ul>
-<li>
-<p>We are still using Laravel&rsquo;s internals and <code>artisan</code> for most of the things we did. This is intended to show how Lucid preserves
+and this is where this architecture&rsquo;s role becomes crucial. It is just like wine - gets better with the project&rsquo;s age.</p><h3 ref=highlights>Highlights</h3><a class=anchor id=highlights></a><p>Here are a few points that are worth mentioning to showcase where the architecture came in and how it would help forward:</p><ul><li><p>We are still using Laravel&rsquo;s internals and <code>artisan</code> for most of the things we did. This is intended to show how Lucid preserves
 Laravel&rsquo;s defaults and avoids replicating or replacing them; in fact it complements them by elevating
-their presence and fitting them within a defined structure.</p>
-</li>
-<li>
-<p>Navigating features couldn&rsquo;t get any easier, by looking at the <code>app/Features</code> directory you&rsquo;d be able to have a summary of what
-this application does at a glance.</p>
-</li>
-<li>
-<p>Visiting a feature&rsquo;s class would also provide an overview of the steps required with the least
+their presence and fitting them within a defined structure.</p></li><li><p>Navigating features couldn&rsquo;t get any easier, by looking at the <code>app/Features</code> directory you&rsquo;d be able to have a summary of what
+this application does at a glance.</p></li><li><p>Visiting a feature&rsquo;s class would also provide an overview of the steps required with the least
 details possible, yet details are available when wanting to dig deeper.
-In addition to the presence of tests that mirror these classes which makes it easy to update functionality with reduced unintentional negative impact.</p>
-</li>
-<li>
-<p>Expanding on functionality such as <code>SaveArticleJob</code> makes it easy to achieve a high degree of reusable code.
+In addition to the presence of tests that mirror these classes which makes it easy to update functionality with reduced unintentional negative impact.</p></li><li><p>Expanding on functionality such as <code>SaveArticleJob</code> makes it easy to achieve a high degree of reusable code.
 Consider updating a link, we&rsquo;d still use this job to save an existing link by supplying an optional <code>id</code> parameter and have the
-job create or update accordingly.</p>
-</li>
-</ul>
-</div>
-<div class=chevrons>
-<a class=next href=/micro-vs-monolith/ title="Micro • Monolith" style=margin-right:0>
-<div>
-<p>Next page</p>
-<label>Micro • Monolith</label>
-</div>
-<i class="fas fa-arrow-right" style=font-size:1.7em></i></a>
-</div>
-</section>
-<section class=right-menu>
-<div class=TableOfContents>
-<label><i class="fas fa-align-right"></i>&nbsp;&nbsp;What's on this page</label>
-<nav>
-<ul>
-<li><a href=/getting-started/micro/>Micro</a></li>
-</ul>
-</nav>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#setup>Setup</a>
-<ul>
-<li><a href=#install-laravel>Install Laravel</a></li>
-<li><a href=#install-lucid>Install Lucid</a></li>
-<li><a href=#database-configuration>Database Configuration</a></li>
-</ul>
-</li>
-<li><a href=#implementation>Implementation</a></li>
-<li><a href=#authentication>Authentication</a></li>
-<li><a href=#link-submission>Link Submission</a>
-<ul>
-<li><a href=#view>View</a></li>
-<li><a href=#controller>Controller</a></li>
-<li><a href=#feature>Feature</a></li>
-<li><a href=#database--model>Database & Model</a></li>
-<li><a href=#request-validation>Request Validation</a></li>
-<li><a href=#save-links>Save Links</a></li>
-</ul>
-</li>
-<li><a href=#testing>Testing</a>
-<ul>
-<li><a href=#configure-phpunit>Configure PHPUnit</a></li>
-<li><a href=#unit-tests>Unit Tests</a></li>
-<li><a href=#feature-test>Feature Test</a></li>
-</ul>
-</li>
-<li><a href=#conclusion>Conclusion</a>
-<ul>
-<li><a href=#highlights>Highlights</a></li>
-</ul>
-</li>
-</ul>
-</nav>
-</div>
-<div class=Actions>
-<nav>
-<ul>
-<li>
-<i class="fas fa-calendar"></i>
-Last update on 07 March 2022
-</li>
-<li title>
-<i class="fas fa-user"></i>
-Last update by Abed Halawi
-</li>
-</ul>
-</nav>
-</div>
-</section>
-</article>
-<footer>
-<div class=columns>
-<div class=column>
-<div style=font-family:Raleway!important>
-<h3 style=color:#fdfdfd!important>lucid architecture</h3>
-for a scalable future software
-</div>
-</div>
-<div class=column>
-<div style=display:flex;justify-content:flex-end;align-items:center>
-<div style=align-items:center;display:flex>
-<a href=https://lucidarch.dev target=_blank><img src=/icon/lucid-coloured.png alt="Lucid website link" width=28px style=margin-top:4px></a>
+job create or update accordingly.</p></li></ul></div><div class=chevrons><a class=next href=/micro-vs-monolith/ title="Micro • Monolith" style=margin-right:0><div><p>Next page</p><label>Micro • Monolith</label></div><i class="fas fa-arrow-right" style=font-size:1.7em></i></a></div></section><section class=right-menu><div class=TableOfContents><label><i class="fas fa-align-right"></i>&nbsp;&nbsp;What's on this page</label><nav><ul><li><a href=/getting-started/micro/>Micro</a></li></ul></nav><nav id=TableOfContents><ul><li><a href=#setup>Setup</a><ul><li><a href=#install-laravel>Install Laravel</a></li><li><a href=#install-lucid>Install Lucid</a></li><li><a href=#database-configuration>Database Configuration</a></li></ul></li><li><a href=#implementation>Implementation</a></li><li><a href=#authentication>Authentication</a></li><li><a href=#link-submission>Link Submission</a><ul><li><a href=#view>View</a></li><li><a href=#controller>Controller</a></li><li><a href=#feature>Feature</a></li><li><a href=#database--model>Database & Model</a></li><li><a href=#request-validation>Request Validation</a></li><li><a href=#save-links>Save Links</a></li></ul></li><li><a href=#testing>Testing</a><ul><li><a href=#configure-phpunit>Configure PHPUnit</a></li><li><a href=#unit-tests>Unit Tests</a></li><li><a href=#feature-test>Feature Test</a></li></ul></li><li><a href=#conclusion>Conclusion</a><ul><li><a href=#highlights>Highlights</a></li></ul></li></ul></nav></div><div class=Actions><nav><ul><li><i class="fas fa-calendar"></i>
+Last update on 13 April 2022</li><li title><i class="fas fa-user"></i>
+Last update by Mulkave</li></ul></nav></div></section></article><footer><div class=columns><div class=column><div style=font-family:Raleway!important><h3 style=color:#fdfdfd!important>lucid architecture</h3>for a scalable future software</div></div><div class=column><div style=display:flex;justify-content:flex-end;align-items:center><div style=align-items:center;display:flex><a href=https://lucidarch.dev target=_blank><img src=/icon/lucid-coloured.png alt="Lucid website link" width=28px style=margin-top:4px></a>
 <a href=https://github.com/lucidarch target=_blank style=margin-left:10px><i class="fab fa-github fa-lg"></i></a>
 <a href=https://lucid-slack.herokuapp.com target=_blank style=margin-left:10px><i class="fab fa-slack fa-lg"></i></a>
-<a href=https://www.reddit.com/r/lucidarch target=_blank style=margin-left:10px><i class="fab fa-reddit-alien fa-lg"></i></a>
-</div>
-<div style=margin-left:50px;margin-top:6px>
-<a class=github-button href=https://github.com/sponsors/lucidarch data-icon=octicon-heart aria-label="Sponsor @lucidarch on GitHub">Sponsor</a>
-<a class=github-button href=https://github.com/lucidarch/lucid data-icon=octicon-star data-show-count=true aria-label="Star lucidarch/lucid on GitHub">Star</a>
-</div>
-</div>
-</div>
-</div>
-</footer>
-</body>
-</html>
+<a href=https://www.reddit.com/r/lucidarch target=_blank style=margin-left:10px><i class="fab fa-reddit-alien fa-lg"></i></a></div><div style=margin-left:50px;margin-top:6px><a class=github-button href=https://github.com/sponsors/lucidarch data-icon=octicon-heart aria-label="Sponsor @lucidarch on GitHub">Sponsor</a>
+<a class=github-button href=https://github.com/lucidarch/lucid data-icon=octicon-star data-show-count=true aria-label="Star lucidarch/lucid on GitHub">Star</a></div></div></div></div></footer></body></html>
