@@ -434,7 +434,7 @@ of an HTML page leading to unexpected behaviours. We would create a job to be ru
 the response structure. Lucid ships with one that can be used as default, available in the built-in `Http` domain `App\Domains\Http\Jobs\RespondWithJsonErrorJob` which has a simple signature:
 
 ```php
-$this->run(new RespondWithJsonJobErrorJob(
+$this->run(new RespondWithJsonErrorJob(
     options: 0, // will be passed to ResponseFactory::json()
     code: 2900, // custom error code, optional, default: 400
     status: 400, // HTTP response status code, optional, default: 400
