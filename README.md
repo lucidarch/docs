@@ -14,7 +14,8 @@ The repository of [docs.lucidarch.dev](https://docs.lucidarch.dev).
 
 ### Run Docs Locally
 - Clone this repository
-- In the root of the project, use `docker-compose up -d` to run the server
+- Clone theme: `git submodule init && git submodule update`
+- Run server container with `docker-compose up -d` and changes will take effect on save
 - Visit `http://localhost:1313` to see it
 
 ### Contribute
@@ -22,8 +23,8 @@ The docs are built using [Hugo](https://gohugo.io) with a customised version of 
 
 - Fork this repository
 - Create a branch for your contribution `git checkout fix/issue-32`
-- Run containers uring `docker-compose up -d`
-- Generate a new `section/_index.md` file using `docker-compose exec hugo hugo new {section}/_index.md` (yes two hugos) or edit an existing one
+- Run build container using `docker-compose up -d` and from here on changes will take effect on save
+- Generate a new `section/_index.md` file using `docker-compose exec hugo hugo new {section}/_index.md` (yes two hugos), or edit an existing section
 - Commit your changes with a meaningful short message
 - Push the code to your repository `git push origin fix/issue-32`
 - Open a [pull request](https://github.com/lucidarch/docs/compare) in this repository to the `main` branch

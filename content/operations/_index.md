@@ -42,23 +42,23 @@ class NotifySubscribersOperation extends Operation
      */
     public function handle(): int
     {
-        $author = $this->run(GetAuthorByIDJob::class, [
-            'id' => $this->authorId,
-        ]);
+        $author = $this->run(new GetAuthorByIDJob(
+            id: $this->authorId,
+        ));
 
         do {
 
-            $result = $this->run(PaginateSubscribersJob::class, [
-                'authorId' => $this->authorId,
-            ]);
+            $result = $this->run(new PaginateSubscribersJob(
+                authorId: $this->authorId,
+            ));
 
             if ($result->subscribers->isNotEmpty()) {
                 // it's a queueable job so it will be enqueued, no waiting time
-                $this->run(SendNotificationJob::class, [
-                    'from' => $author,
-                    'to' => $result->subscribers,
-                    'notification' => 'article.published',
-                ]);
+                $this->run(new SendNotificationJob(
+                    from: $author,
+                    to: $result->subscribers,
+                    notification: 'article.published',
+                ));
             }
 
         } while ($result->hasMorePages());
@@ -88,9 +88,9 @@ some of these jobs would've been implemented already by the time we reached this
 Now we have that functionality bundled at our disposal to be called whenever needed:
 
 ```php
-$this->run(NotifySubscribersOperation::class, [
-    'authorId' => $authorId,
-]);
+$this->run(new NotifySubscribersOperation(
+    authorId: $authorId,
+));
 ```
 
 ## Generate Operation Class
@@ -141,23 +141,23 @@ class PublishArticleFeature extends Feature
 {
    $this->run(new ValidateArticlePublishingInputJob($request->input()));
 
-   $this->run(SetArticlePublishingRulesOperation::class, [
-        'id' => $request->input('id'),
-        'schedule' => $request->input('datetime'),
-        'platforms' => $request->input('platforms'),
-        'visibility' => $request->input('visibility'),
-   ]);
+   $this->run(new SetArticlePublishingRulesOperation(
+        id: $request->input('id'),
+        schedule: $request->input('datetime'),
+        platforms: $request->input('platforms'),
+        visibility: $request->input('visibility'),
+   ));
 
-   $this->run(NotifySubscribersOperation::class, [
-        'authorId' => Auth::id(),
-   ]);
+   $this->run(new NotifySubscribersOperation(
+        authorId: Auth::id(),
+   ));
 
    $article = $this->run(new GetArticleByIDJob($request->input('id')));
 
-   return $this->run(RespondWithViewJob::class, [
-        'data' => compact('article'),
-        'template' => 'articles.publish.success',
-   ]);
+   return $this->run(new RespondWithViewJob(
+        data: compact('article'),
+        template: 'articles.publish.success',
+   ));
 }
 ```
 

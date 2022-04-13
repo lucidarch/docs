@@ -73,7 +73,7 @@ class ArticleController extends Controller
 {
     public function articles()
     {
-        return $this->serve(ListArticlesFeature::class);
+        return $this->serve(new ListArticlesFeature());
     }
 }
 ```
@@ -109,6 +109,10 @@ class ArticleController extends Controller
     public function update($id)
     {
         return $this->serve(UpdateArticleFeature::class, ['id' => $id]);
+        // OR
+        return $this->serve(new UpdateArticleFeature(id: $id));
+        // OR
+        return $this->serve(new UpdateArticleFeature($id));
     }
 }
 ```
@@ -120,8 +124,8 @@ The `id` key will be mapped to `$id` constructor param `UpdateArticleFeature::co
 {{% /notice %}}
 
 
-Using associative arrays as properties has the advantage of disregarding the order in which the parameters are defined
-in the class we're calling. However, they should be only what the feature needs to operate.
+When using PHP < 8.0, associative arrays as properties has the advantage of disregarding the order in which the parameters are defined
+which helps maintain a healthy codebase when unit signatures evolve.
 
 ```php
 class UpdateArticleFeature extends Feature
@@ -144,4 +148,22 @@ class UpdateArticleFeature extends Feature
 }
 ```
 
-For more on writing features see the [Features section](/features).
+As of PHP 8.0 we use named parameters for better readability and IDE signature recognition:
+
+```php
+class UpdateArticleFeature extends Feature
+{
+    public function __construct(private string $id) {}
+
+    public function handle(Request $request)
+    {
+        $this->run(new UpdateArticleDataJob(
+            id: $this->id,
+            title: $request->input('title'),
+            content: $request->input('content');
+        ));
+    }
+}
+```
+
+For more on working with features see the [Features section](/features).

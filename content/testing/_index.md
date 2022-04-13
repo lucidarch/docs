@@ -21,13 +21,13 @@ This will replace any call to `GetUserByIDJob` with the corresponding parameters
 as long as the passed arguments matches the unit's constructor signature, as well as the calling method
 
 ```php
-$this->run(GetUserByIDJob::class, ['id' => $id]);
+$this->run(new GetUserByIDJob(id: $id));
 ```
 
  otherwise an exception will be thrown for not finding a perfect match. For example, the following will certainly not pass the tests:
 
 ```php
-$this->run(GetUserByIDJob::class, ['notid' => $id]);
+$this->run(new GetUserByIDJob(notid: $id));
 ```
 
 The purpose of testing units is to make sure that whoever calls them is passing the right parameters
@@ -67,7 +67,7 @@ This method is used when we expect the unit to be dispatched but we're not waiti
 **Example**
 
 ```php
-$this->run(InviteMemberJob::class, ['memberId' => $memberId]);
+$this->run(new InviteMemberJob(memberId: $memberId));
 ```
 
 ```php
@@ -86,7 +86,7 @@ This method is used to return any value that will be expected upon the unit's ex
 **Example**
 
 ```php
-$repos = $this->run(FetchGitHubReposOperation::class, ['username' => $username]);
+$repos = $this->run(new FetchGitHubReposOperation(username: $username));
 ```
 
 ```php
@@ -107,7 +107,7 @@ This method simulates a unit throwing an exception.
 **Example**
 
 ```php
-$this->run(AddPostJob::class, ['title' => $title, 'content' => $content]);
+$this->run(new AddPostJob(title: $title, content: $content));
 ```
 
 ```php
@@ -127,7 +127,7 @@ The use of these methods is as obvious, to return the corresponding boolean.
 **Example**
 
 ```php
-$authorized = $this->run(CheckUserAuthorizationJob::class, ['user' => $user]);
+$authorized = $this->run(new CheckUserAuthorizationJob(user: $user));
 ```
 
 ```php
@@ -164,27 +164,27 @@ class CreateChannelFeature extends Feature
 {
     public function handle(CreateChannelRequest $request)
     {
-        $member = $this->run(GetMemberByIdJob::class, ['id' => $request->input('id')]);
+        $member = $this->run(new GetMemberByIdJob($request->input('id')));
 
-        $authorized = $this->run(AuthorizeMemberActionJob::class, [
-            'action' => Action::CREATE_CHANNEL,
-        ]);
+        $authorized = $this->run(new AuthorizeMemberActionJob(
+            action: Action::CREATE_CHANNEL,
+        ));
 
         if (!$authorized) {
             throw new UnauthorizedActionException();
         }
 
-        $channel = $this->run(CreateChannelJob::class, ['title' => $request->input('title')]);
+        $channel = $this->run(new CreateChannelJob($request->input('title')));
 
-        $this->run(AddMemberToChannelJob::class, [
-            'member'  => $member,
-            'channel' => $channel,
-        ]);
+        $this->run(new AddMemberToChannelJob(
+            member: $member,
+            channel: $channel,
+        ));
 
-        $this->run(InviteMembersToChannelOperation::class, [
-            'channel' => $channel,
-            'members' => $request->input('invited'),
-        ]);
+        $this->run(new InviteMembersToChannelOperation(
+            channel: $channel,
+            members: $request->input('invited'),
+        ));
     }
 }
 ```

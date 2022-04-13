@@ -41,7 +41,7 @@ through the `handle` method when calling `run`.
 
 **Example**
 
-In a Feature or Operation we can use `$this->run(ValidateProductDetailsJob::class)` to run the job's `handle` method.
+In a Feature or Operation we can use `$this->run(ValidateProductDetailsJob::class)` or `$this->run(new ValidateProductDetailsJob())` to run the job's `handle` method.
 
 `app/Domains/Product/ValidateProductDetailsJob`
 
@@ -81,15 +81,15 @@ class AddProductFeature extends Feature
 {
     public function handle(Request $request)
     {
-        $this->run(ValidateProductDetailsJob::class, [
-            'input' => $request->input(),
-        ]);
+        $this->run(new ValidateProductDetailsJob(
+            input: $request->input(),
+        ));
 
-        $product = $this->run(SaveProductDetailsJob::class, [
-            'title' => $request->input('title'),
-            'price' => $request->input('price'),
-            'description' => $request->input('description'),
-        ]);
+        $product = $this->run(new SaveProductDetailsJob(
+            title: $request->input('title'),
+            price: $request->input('price'),
+            description: $request->input('description'),
+        ));
 
         return $this->run(new RespondWithJsonJob($product));
     }
@@ -210,12 +210,12 @@ class UpdateProductDetailsJob extends Job
 Calling this job from a feature or an operation is straight forward using `run()`:
 
 ```php
-$this->run(UpdateProductDetailsJob::class, [
-    'id' => $request->input('id'),
-    'title' => $request->input('title'),
-    'price' => $request->input('price'),
-    'description' => $request->input('description'),
-]);
+$this->run(new UpdateProductDetailsJob(
+    id: $request->input('id'),
+    title: $request->input('title'),
+    price: $request->input('price'),
+    description: $request->input('description'),
+));
 ```
 
 `$arguments` are sent as an associative array where the key should match parameters' names exactly, but not their order.
@@ -225,12 +225,12 @@ or additional optional ones.
 This would still work:
 
 ```php
-$this->run(UpdateProductDetailsJob::class, [
-    'title' => $request->input('title'),
-    'description' => $request->input('description'),
-    'price' => $request->input('price'),
-    'id' => $request->input('id'),
-]);
+$this->run(new UpdateProductDetailsJob(
+    title: $request->input('title'),
+    description: $request->input('description'),
+    price: $request->input('price'),
+    id: $request->input('id'),
+));
 ```
 
 Also, aesthetically allows to organize parameters by length which is nicer to look at!
@@ -283,7 +283,7 @@ This is familiar with jobs that are known to (almost) never need to evolve beyon
 **not recommended when the job requires two or more parameters** because of the extra effort required to figure out the parameters
 when reading run statements.
 
-Take for the example the case of a job with more parameters:
+Take for example the case of a job with more parameters:
 
 ```php
 $this->run(new UpdateProductDetailsJob($id, $title, $description, $price))
@@ -292,18 +292,18 @@ $this->run(new UpdateProductDetailsJob($id, $title, $description, $price))
 instead of this:
 
 ```php
-$this->run(UpdateProductDetailsJob::class, [
-    'id' => $id,
-    'title' => $title,
-    'description' => $description,
-    'price' => $price,
-])
+$this->run(new UpdateProductDetailsJob(
+    id: $id,
+    price: $price,
+    title: $title,
+    description: $description,
+));
 ```
 
 **Choosing Between Initialization & Separate Arguments**
 
-As mentioned above, it is recommended to always call with arguments separately instead of initializing jobs externally,
-because it makes code easier to read when there are multiple jobs in a sequence.
+As mentioned above, it is recommended to always use named parameters
+for it makes code easier to read when there are multiple jobs in a sequence.
 
 Here's a comparison of the two approaches in the following `handle` method, could be for a feature or an operation:
 
@@ -312,38 +312,38 @@ Here's a comparison of the two approaches in the following `handle` method, coul
 ```php
 public function handle(Request $request)
 {
-    $this->run(ValidateProductInputJob::class, [
-        'input' => $request->input(),
-    ]);
+    $this->run(new ValidateProductInputJob(
+        input: $request->input(),
+    ));
 
-    $photos = $this->run(UploadProductPicturesJob::class, [
-        'cover' => $request->input('pictures.cover'),
-        'showcase' => $request->input('pictures.showcase'),
-    ]);
+    $photos = $this->run(new UploadProductPicturesJob(
+        cover: $request->input('pictures.cover'),
+        showcase: $request->input('pictures.showcase'),
+    ));
 
-    $product = $this->run(CreateProductJob::class, [
-        'title' => $request->input('title'),
-        'price' => $request->input('price'),
-        'description' => $request->input('description'),
-        'provider' => $request->input('provider'),
-        'photos' => $photos
-    ]);
+    $product = $this->run(new CreateProductJob(
+        title: $request->input('title'),
+        price: $request->input('price'),
+        description: $request->input('description'),
+        provider: $request->input('provider'),
+        photos: $photos
+    ));
 
-    $isStockUpdated = $this->run(UpdateProductStockAvailabilityJob::class, [
-        'id' => $product->id,
-        'available_count' => $request->input('available_count'),
-    ]);
+    $isStockUpdated = $this->run(new UpdateProductStockAvailabilityJob(
+        id: $product->id,
+        availableCount: $request->input('available_count'),
+    ));
 
-    return $this->run(RespondWithViewJob::class, [
-        'data' => $product,
-        'template' => 'product.update',
-    ]);
+    return $this->run(new RespondWithViewJob(
+        data: $product,
+        template: 'product.update',
+    ));
 }
 ```
 
 **Initialized:** Fast to write but harder to read.
 
-```bash
+```php
 public function handle(Request $request)
 {
     $this->run(new ValidateProductInputJob($request->input));
@@ -419,7 +419,7 @@ class Handler extends ExceptionHandler
 
     public function custom()
     {
-        return $this->run(TheJob::class);
+        return $this->run(new TheJob());
     }
 }
 ```
@@ -434,13 +434,13 @@ of an HTML page leading to unexpected behaviours. We would create a job to be ru
 the response structure. Lucid ships with one that can be used as default, available in the built-in `Http` domain `App\Domains\Http\Jobs\RespondWithJsonErrorJob` which has a simple signature:
 
 ```php
-$this->run(RespondWithJobErrorJob::class, [
-    'message' => $e->getMessage(),
-    'code' => 2900, // custom error code, optional, default: 400
-    'status' => 400, // HTTP response status code, optional, default: 400
-    'headers' => [], // customize headers
-    'options' => 0, // will be passed to ResponseFactory::json()
-]);
+$this->run(new RespondWithJsonJobErrorJob(
+    options: 0, // will be passed to ResponseFactory::json()
+    code: 2900, // custom error code, optional, default: 400
+    status: 400, // HTTP response status code, optional, default: 400
+    headers: [], // customize headers
+    message: $e->getMessage(),
+));
 ```
 
 Running this job in response to our exceptions will guarantee that the consumer always receives a consistent JSON structure:
@@ -470,10 +470,10 @@ use App\Exceptions\CustomException;
 public function register()
 {
     $this->renderable(function (CustomException $e, $request) {
-        return $this->run(RespondWithJsonErrorJob::class, [
-            'status' => 500,
-            'message' => $e->getMessage(),
-        ]);
+        return $this->run(new RespondWithJsonErrorJob(
+            status: 500,
+            message: $e->getMessage(),
+        ));
     });
 }
 ```
@@ -491,10 +491,10 @@ use App\Exceptions\CustomException;
 public function register()
 {
     $this->renderable(function (CustomException $e, $request) {
-        return $this->run(RespondWithViewJob::class, [
-            'status' => 500,
-            'template' => 'errors.custom',
-        ]);
+        return $this->run(new RespondWithViewJob(
+            status: 500,
+            template: 'errors.custom',
+        ));
     });
 }
 ```
@@ -521,10 +521,10 @@ class RenderException extends Exception
      */
     public function render($request)
     {
-        return $this->run(RespondWithJsonErrorJob::class, [
-            'status' => 500,
-            'message' => $this->getMessage(),
-        ]);
+        return $this->run(new RespondWithJsonErrorJob(
+            status: 500,
+            message: $this->getMessage(),
+        ));
     }
 }
 

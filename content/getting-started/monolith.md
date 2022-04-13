@@ -452,7 +452,7 @@ use App\Services\Kitchen\Features\AddRecipeFeature;
 
 public function add()
 {
-    return $this->serve(AddRecipeFeature::class);
+    return $this->serve(new AddRecipeFeature());
 }
 ```
 
@@ -894,9 +894,9 @@ Now in `AddRecipeFeature` we run the jobs:
 ```php
 public function handle(AddRecipe $request)
 {
-    $ingredients = $this->run(ParseIngredientsJob::class, [
-        'ingredients' => $request->input('ingredients'),
-    ]);
+    $ingredients = $this->run(new ParseIngredientsJob(
+        ingredients: $request->input('ingredients'),
+    ));
 
     $price = $this->run(new CalculateIngredientsTotalJob($ingredients));
 }
@@ -940,9 +940,9 @@ class CalculateRecipePriceOperation extends Operation
 
     public function handle(): float
     {
-        $ingredients = $this->run(ParseIngredientsJob::class, [
-            'ingredients' => $this->ingredients,
-        ]);
+        $ingredients = $this->run(new ParseIngredientsJob(
+            ingredients: $this->ingredients,
+        ));
 
         return $this->run(new CalculateIngredientsTotalJob($ingredients));
     }
@@ -954,9 +954,9 @@ Then in the feature we'd replace the two jobs with just one call:
 ```php
 public function handle(AddRecipe $request)
 {
-    $price = $this->run(CalculateRecipePriceOperation::class, [
-        'ingredients' => $request->input('ingredients'),
-    ]);
+    $price = $this->run(new CalculateRecipePriceOperation(
+        ingredients: $request->input('ingredients'),
+    ));
 }
 ```
 
@@ -1078,17 +1078,17 @@ Then we'll run this job from the feature to save recipes when served:
 ```php
 public function handle(AddRecipe $request)
 {
-    $price = $this->run(CalculateRecipePriceOperation::class, [
-        'ingredients' => $request->input('ingredients'),
-    ]);
+    $price = $this->run(new CalculateRecipePriceOperation(
+        ingredients: $request->input('ingredients'),
+    ));
 
-    $this->run(SaveRecipeJob::class, [
-        'title' => $request->input('title'),
-        'ingredients' => $request->input('ingredients'),
-        'instructions' => $request->input('instructions'),
-        'price' => $price,
-        'user' => Auth::user(),
-    ]);
+    $this->run(new SaveRecipeJob(
+        title: $request->input('title'),
+        ingredients: $request->input('ingredients'),
+        instructions: $request->input('instructions'),
+        price: $price,
+        user: Auth::user(),
+    ));
 }
 ```
 
@@ -1097,12 +1097,12 @@ after initializing it with the provided `$params` which are passed as an associa
 constructor parameters in naming, but not the order. So this would still work the same:
 
 ```php
-$this->run(SaveRecipeJob::class, [
-    'instructions' => $request->input('instructions'),
-    'ingredients' => $request->input('ingredients'),
-    'price' => $price,
-    'title' => $request->input('title'),
-]);
+$this->run(new SaveRecipeJob(
+    instructions: $request->input('instructions'),
+    ingredients: $request->input('ingredients'),
+    price: $price,
+    title: $request->input('title'),
+));
 ```
 
 {{% notice info %}}
@@ -1178,19 +1178,19 @@ Finally, conclude the feature by responding:
 ```php
 public function handle(AddRecipe $request)
 {
-    $price = $this->run(CalculateRecipePriceOperation::class, [
-        'ingredients' => $request->input('ingredients'),
+    $price = $this->run(new CalculateRecipePriceOperation(
+        ingredients: $request->input('ingredients'),
     ]);
 
-    $this->run(SaveRecipeJob::class, [
-        'title' => $request->input('title'),
-        'ingredients' => $request->input('ingredients'),
-        'instructions' => $request->input('instructions'),
-        'price' => $price,
-        'user' => Auth::user(),
+    $this->run(new SaveRecipeJob(
+        user: Auth::user(),
+        price: $price,
+        title: $request->input('title'),
+        ingredients: $request->input('ingredients'),
+        instructions: $request->input('instructions'),
     ]);
 
-    return $this->run(RedirectBackJob::class);
+    return $this->run(new RedirectBackJob());
 }
 ```
 

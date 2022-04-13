@@ -270,7 +270,7 @@ use App\Features\AddLinkFeature;
 
 public function add()
 {
-    return $this->serve(AddLinkFeature::class);
+    return $this->serve(new AddLinkFeature());
 }
 ```
 
@@ -518,17 +518,19 @@ class AddLinkFeature extends Feature
 {
     public function handle(AddLink $request)
     {
-        $this->run(SaveLinkJob::class, [
-            'url' => $request->input('url'),
-            'title' => $request->input('title'),
-            'description' => $request->input('description'),
+        $this->run(new SaveLinkJob
+            url: $request->input('url'),
+            title: $request->input('title'),
+            description: $request->input('description'),
         ]);
     }
 }
 ```
 
-Calling `$this->run($unit, $params)` in a feature causes the underlying dispatcher to run `SaveLinkJob` syncronously by calling its `handle` method
-after initializing it with the provided `$params` which are passed as an associative array where the keys must match the job's
+#### Parameters As Associative Arrays
+
+It is also possible to call `$this->run($unit, $params)` in a feature, which causes the underlying dispatcher to run `SaveLinkJob` syncronously by calling its
+`handle` method after initializing it with the provided `$params` which can be passed as an associative array where the keys must match the job's
 constructor parameters in naming, but not the order. So this would still work the same:
 
 ```php

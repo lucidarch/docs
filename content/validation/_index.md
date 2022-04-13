@@ -191,7 +191,7 @@ class UpdatePost extends FormRequest
 
     public function authorize()
     {
-        return $this->run(AuthorizeUserOperation::class);
+        return $this->run(new AuthorizeUserOperation());
     }
 
     public function rules()

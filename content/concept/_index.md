@@ -129,19 +129,19 @@ class AddRecipeFeature extends Feature
 {
     public function handle(AddRecipe $request)
     {
-        $price = $this->run(CalculateRecipePriceOperation::class, [
-            'ingredients' => $request->input('ingredients'),
+        $price = $this->run(new CalculateRecipePriceOperation(
+            ingredients: $request->input('ingredients'),
         ]);
 
-        $this->run(SaveRecipeJob::class, [
-            'price' => $price,
-            'user' => Auth::user(),
-            'title' => $request->input('title'),
-            'ingredients' => $request->input('ingredients'),
-            'instructions' => $request->input('instructions'),
-        ]);
+        $this->run(new SaveRecipeJob(
+            price: $price,
+            user: Auth::user(),
+            title: $request->input('title'),
+            ingredients: $request->input('ingredients'),
+            instructions: $request->input('instructions'),
+        ));
 
-        return $this->run(RedirectBackJob::class);
+        return $this->run(new RedirectBackJob());
     }
 }
 ```
@@ -169,23 +169,23 @@ class NotifySubscribersOperation extends Operation
      */
     public function handle(): int
     {
-        $author = $this->run(GetAuthorByIDJob::class, [
-            'id' => $this->authorId,
-        ]);
+        $author = $this->run(GetAuthorByIDJob(
+            id: $this->authorId,
+        ));
 
         do {
 
-            $result = $this->run(PaginateSubscribersJob::class, [
-                'authorId' => $this->authorId,
-            ]);
+            $result = $this->run(PaginateSubscribersJob(
+                authorId: $this->authorId,
+            ));
 
             if ($result->subscribers->isNotEmpty()) {
                 // it's a queueable job so it will be enqueued, no waiting time
-                $this->run(SendNotificationJob::class, [
-                    'from' => $author,
-                    'to' => $result->subscribers,
-                    'notification' => 'article.published',
-                ]);
+                $this->run(SendNotificationJob(
+                    from: $author,
+                    to: $result->subscribers,
+                    notification: 'article.published',
+                ));
             }
 
         } while ($result->hasMorePages());

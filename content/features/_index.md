@@ -22,22 +22,17 @@ It runs Lucid Units: *Jobs* and *Operations* to perform its tasks. They are thou
 ```php
 class UpdateProductFeature extends Feature
 {
-    private string $id;
-
-    public function __construct(string $id)
-    {
-        $this->id = $id;
-    }
+    public function __construct(private string $id) {}
 
     public function handle(Request $request)
     {
-        $this->run(ValidateProductInputJob::class, $request->input());
+        $this->run(new ValidateProductInputJob($request->input()));
 
-        $product = $this->run(SaveProductJob::class, [
-            'id' => $this->id,
-            'title' => $request->input('title'),
-            'price' => $request->input('price'),
-        ]);
+        $product = $this->run(new SaveProductJob(
+            id: $this->id,
+            title: $request->input('title'),
+            price: $request->input('price'),
+        ));
 
         return $this->run(new RespondWithJsonJob($product));
     }
@@ -58,7 +53,7 @@ class UserController extends Controller
 {
     public function login()
     {
-        return $this->serve(LoginUserFeature::class);
+        return $this->serve(new LoginUserFeature());
     }
 }
 ```
@@ -127,17 +122,15 @@ class CreateArticleFeature extends Feature
     {
         $this->run(new ValidateArticleInputJob($request->input()));
 
-        $this->run(UploadFilesToCDNJob::class, ['files' => $request->input('files')]);
+        $this->run(new UploadFilesToCDNJob($request->input('files')));
 
         $slug = $this->run(new GenerateSlugJob($request->input('title')));
 
-        $article = $this->run(SaveArticleJob::class,
-            [
-                'title' => $request->input('title'),
-                'body' => $request->input('body'),
-                'slug' => $slug,
-            ]
-        );
+        $article = $this->run(new SaveArticleJob(
+                title: $request->input('title'),
+                body: $request->input('body'),
+                slug: $slug,
+        ));
 
         return $this->run(new RespondWithJsonJob($article));
     }
@@ -159,7 +152,7 @@ Lucid units (Feature, Job, Operation) are simply classes extending Laravel's bas
 public function handle(Request $request)
 ```
 
-This method is called automatically when running `$this->serve(Feature::class)` and it goes through Laravel's IoC to resolve dependencies. In this example we included the `Request` class to be resolved so that we can access it and pass input to *Jobs*. `Request` could've been any other class in the application that can be resolved using IoC.
+This method is called automatically when running `$this->serve(Feature::class)` or `$this->serve(new Feature())` and it goes through Laravel's IoC to resolve dependencies. In this example we included the `Request` class to be resolved so that we can access it and pass input to *Jobs*. `Request` could've been any other class in the application that can be resolved using IoC.
 
 ```php
 public function handle(MyCustomClass $mcc)
@@ -188,7 +181,7 @@ class ProductController extends Controller
 {
     public function products()
     {
-        return $this->serve(ListProductsFeature::class);
+        return $this->serve(new ListProductsFeature());
     }
 }
 ```
@@ -212,7 +205,7 @@ class CleanStaleCarts extends Command
 
     public function handle()
     {
-        return $this->serve(CleanStaleCartsFeature::class);
+        return $this->serve(new CleanStaleCartsFeature());
     }
 }
 
@@ -233,7 +226,7 @@ class ToServeFeaturesHere
 
     public function give()
     {
-        return $this->serve(GiveHighFiveFeature::class);
+        return $this->serve(new GiveHighFiveFeature());
     }
 }
 ```
@@ -351,11 +344,11 @@ class UpdateFacebookPostsFeature extends Feature
 {
     public function handle()
     {
-        $posts = $this->run(FetchFacebookPostsJob::class);
+        $posts = $this->run(new FetchFacebookPostsJob());
 
-        $this->run(StoreFacebookPostsJob::class, [
-            'posts' => $posts,
-        ]);
+        $this->run(new StoreFacebookPostsJob(
+            posts: $posts,
+        ));
     }
 }
 ```
@@ -447,24 +440,24 @@ class UpdateProductDetailsFeature
 
     public function handle(Request $request)
     {
-        $this->run(ValidateProductDeatilsInputJob::class, [
-            'input' => $request->input()
-        ]);
+        $this->run(new ValidateProductDeatilsInputJob(
+            input: $request->input()
+        ));
 
-        $product = $this->run(UpdateProductDetailsJob::class, [
-            'title' => $request->input('title'),
-            'description' => $request->input('description'),
-            'price' => $request->input('price'),
-        ]);
+        $product = $this->run(new UpdateProductDetailsJob(
+            title: $request->input('title'),
+            description: $request->input('description'),
+            price: $request->input('price'),
+        ));
 
         if ($this->isApi) {
             return $this->run(new RespondWithJsonJob($product));
         }
 
-        return $this->run(RespondWithViewJob::class, [
-            'view' => 'product',
-            'data' => compact('product'),
-        ]);
+        return $this->run(new RespondWithViewJob(
+            view: 'product',
+            data: compact('product'),
+        ));
     }
 }
 ```
@@ -479,33 +472,33 @@ from the Web is an ID retrieved from the session. Here's how it would look like:
 ```php
 public function handle(Request $request)
 {
-    $this->run(ValidateProductDeatilsInputJob::class, [
-        'input' => $request->input()
-    ]);
+    $this->run(new ValidateProductDeatilsInputJob(
+        input: $request->input()
+    ));
 
     if ($this->isApi) {
-        $user = $this->run(GetUserByApiTokenJob::class, [
-            'token' => $request->input('token'),
-        ]);
+        $user = $this->run(new GetUserByApiTokenJob(
+            token: $request->input('token'),
+        ));
     } else {
-        $user = $this->run(GetUserFromSessionJob::class);
+        $user = $this->run(new GetUserFromSessionJob());
     }
 
-    $product = $this->run(UpdateProductDetailsJob::class, [
-        'title' => $request->input('title'),
-        'description' => $request->input('description'),
-        'price' => $request->input('price'),
-        'user' => $user,
-    ]);
+    $product = $this->run(new UpdateProductDetailsJob(
+        title: $request->input('title'),
+        description: $request->input('description'),
+        price: $request->input('price'),
+        user: $user,
+    ));
 
     if ($this->isApi) {
         return $this->run(new RespondWithJsonJob($product));
     }
 
-    return $this->run(RespondWithViewJob::class, [
-        'view' => 'product',
-        'data' => compact('product'),
-    ]);
+    return $this->run(new RespondWithViewJob(
+        view: 'product',
+        data: compact('product'),
+    ));
 }
 ```
 
@@ -526,25 +519,25 @@ class UpdateProductDetailsFeature
 {
     public function handle(Request $request)
     {
-        $this->run(ValidateProductDeatilsInputJob::class, [
-            'input' => $request->input()
-        ]);
+        $this->run(new ValidateProductDeatilsInputJob(
+            input: $request->input()
+        ));
 
-        $user = $this->run(GetUserByApiTokenJob::class, [
-            'token' => $request->input('token'),
-        ]);
+        $user = $this->run(new GetUserByApiTokenJob(
+            token: $request->input('token'),
+        ));
 
-        $product = $this->run(UpdateProductDetailsJob::class, [
-            'title' => $request->input('title'),
-            'description' => $request->input('description'),
-            'price' => $request->input('price'),
-            'user' => $user,
-        ]);
+        $product = $this->run(new UpdateProductDetailsJob(
+            title: $request->input('title'),
+            description: $request->input('description'),
+            price: $request->input('price'),
+            user: $user,
+        ));
 
-        return $this->run(RespondWithViewJob::class, [
-            'data' => compact('product'),
-            'view' => 'web.product.update',
-        ]);
+        return $this->run(new RespondWithViewJob(
+            data: compact('product'),
+            view: 'web.product.update',
+        ));
     }
 }
 ```
@@ -562,23 +555,23 @@ class UpdateProductDetailsFeature
 {
     public function handle(Request $request)
     {
-        $this->run(ValidateProductDeatilsInputJob::class, [
-            'input' => $request->input()
-        ]);
+        $this->run(new ValidateProductDeatilsInputJob(
+            input: $request->input()
+        ));
         
-        $user = $this->run(GetUserFromSessionJob::class);
+        $user = $this->run(new GetUserFromSessionJob());
 
-        $product = $this->run(UpdateProductDetailsJob::class, [
-            'title' => $request->input('title'),
-            'description' => $request->input('description'),
-            'price' => $request->input('price'),
-            'user' => $user,
-        ]);
+        $product = $this->run(new UpdateProductDetailsJob(
+            title: $request->input('title'),
+            description: $request->input('description'),
+            price: $request->input('price'),
+            user: $user,
+        ));
 
-        return $this->run(RespondWithViewJob::class, [
-            'view' => 'product',
-            'data' => compact('product'),
-        ]);
+        return $this->run(new RespondWithViewJob(
+            view: 'product',
+            data: compact('product'),
+        ));
     }
 }
 ```
