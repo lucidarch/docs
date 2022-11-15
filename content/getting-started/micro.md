@@ -518,7 +518,7 @@ class AddLinkFeature extends Feature
 {
     public function handle(AddLink $request)
     {
-        $this->run(new SaveLinkJob
+        $this->run(new SaveLinkJob([
             url: $request->input('url'),
             title: $request->input('title'),
             description: $request->input('description'),
