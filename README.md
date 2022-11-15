@@ -22,7 +22,7 @@ The repository of [docs.lucidarch.dev](https://docs.lucidarch.dev).
 The docs are built using [Hugo](https://gohugo.io) with a customised version of [docport theme](https://docport.netlify.app).
 
 - Fork this repository
-- Create a branch for your contribution `git checkout fix/issue-32`
+- Create a branch for your contribution `git checkout -b fix/issue-32`
 - Run build container using `docker-compose up -d` and from here on changes will take effect on save
 - Generate a new `section/_index.md` file using `docker-compose exec hugo hugo new {section}/_index.md` (yes two hugos), or edit an existing section
 - Commit your changes with a meaningful short message

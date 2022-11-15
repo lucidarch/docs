@@ -132,32 +132,35 @@ The generated Operation class will automatically be suffixed with `Operation`, s
 
 ## Calling Operations
 
-Similar to jobs, and Operation can also be called using the `run` method that's provided by extending one Lucid's `Feature` or a [custom dispatcher](/jobs/#custom-dispatcher),
+Similar to jobs, an Operation can also be called using the `run` method that's provided by extending one Lucid's `Feature` or a [custom dispatcher](/jobs/#custom-dispatcher),
 
 See [here]({{% ref "/jobs/#calling-jobs"%}}) for more on the `run` method.
 
 ```php
 class PublishArticleFeature extends Feature
 {
-   $this->run(new ValidateArticlePublishingInputJob($request->input()));
+    public function handle(Request $request)
+    {
+        $this->run(new ValidateArticlePublishingInputJob($request->input()));
 
-   $this->run(new SetArticlePublishingRulesOperation(
-        id: $request->input('id'),
-        schedule: $request->input('datetime'),
-        platforms: $request->input('platforms'),
-        visibility: $request->input('visibility'),
-   ));
+        $this->run(new SetArticlePublishingRulesOperation(
+                id: $request->input('id'),
+                schedule: $request->input('datetime'),
+                platforms: $request->input('platforms'),
+                visibility: $request->input('visibility'),
+        ));
 
-   $this->run(new NotifySubscribersOperation(
-        authorId: Auth::id(),
-   ));
+        $this->run(new NotifySubscribersOperation(
+                authorId: Auth::id(),
+        ));
 
-   $article = $this->run(new GetArticleByIDJob($request->input('id')));
+        $article = $this->run(new GetArticleByIDJob($request->input('id')));
 
-   return $this->run(new RespondWithViewJob(
-        data: compact('article'),
-        template: 'articles.publish.success',
-   ));
+        return $this->run(new RespondWithViewJob(
+                data: compact('article'),
+                template: 'articles.publish.success',
+        ));
+    }
 }
 ```
 
