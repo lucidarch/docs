@@ -1,4 +1,4 @@
-baseURL = "https://docs.lucidarch.dev"
+baseURL = "https://docs.lucidarch.site"
 title = "Lucid"
 theme = "docport"
 googleAnalytics = "UA-96232175-1"
