@@ -1,7 +1,7 @@
-<p align="center"><a href="https://lucidarch.dev" target="_blank"><img src="https://raw.githubusercontent.com/lucidarch/artwork/main/logo.jpg" width="400"></a></p>
+<p align="center"><a href="https://lucidarch.site" target="_blank"><img src="https://raw.githubusercontent.com/lucidarch/artwork/main/logo.jpg" width="400"></a></p>
 
 <p align="center" style="margin-left: -20px">
-    <a href="https://docs.lucidarch.dev"><img src="http://img.shields.io/badge/read_the-docs-2196f3.svg" alt="Documentation"></a>
+    <a href="https://docs.lucidarch.site"><img src="http://img.shields.io/badge/read_the-docs-2196f3.svg" alt="Documentation"></a>
     <a href="https://lucid-slack.herokuapp.com"><img src="https://lucid-slack.herokuapp.com/badge.svg" alt="Slack Chat"/></a>
     <a href="https://github.com/lucidarch/lucid/actions?query=workflow%3Atests"><img src="https://github.com/lucidarch/lucid/workflows/tests/badge.svg" alt="Build Status"></a>
     <a href="https://packagist.org/packages/lucidarch/lucid"><img src="https://img.shields.io/packagist/v/lucidarch/lucid" alt="Latest Stable Version"></a>
@@ -10,7 +10,7 @@
 
 
 # Documentation
-The repository of [docs.lucidarch.dev](https://docs.lucidarch.dev).
+The repository of [docs.lucidarch.site](https://docs.lucidarch.site).
 
 ### Run Docs Locally
 - Clone this repository
