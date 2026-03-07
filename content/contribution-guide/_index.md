@@ -22,7 +22,7 @@ The Lucid Architecture source code is on GitHub as [lucidarch/lucid](https://git
 Lucid Architecture's GitHub issue trackers are not intended to provide help or support. Instead, use one of the following channels:
 
 - [Discussions](https://github.com/lucidarch/lucid/discussions) is where most conversations takes place
-- For a chat hit us on our official [Slack workspace](https://lucid-slack.herokuapp.com/) in the `#support` channel
+- For a chat hit us on our official [Discord](https://discord.gg/j5xBhTa7) in the `#support` channel
 - If you prefer StackOverflow to post your questions you may use [#lucidarch](https://stackoverflow.com/questions/tagged/lucidarch) to tag them
 
 ## Core Development Discussion
@@ -30,7 +30,7 @@ Lucid Architecture's GitHub issue trackers are not intended to provide help or s
 You may propose new features or improvements of existing Lucid Architecture behaviour in the [Lucid Discussins](https://github.com/lucidarch/lucid/discussions).
 If you propose a new feature, please be willing to implement at least some of the code that would be needed to complete the feature, or collaborate on active ideation in the meantime.
 
-Informal discussion regarding bugs, new features, and implementation of existing features takes place in the `#internals` channel of the [Lucid Slack workspace](https://lucid-slack.herokuapp.com/).
+Informal discussion regarding bugs, new features, and implementation of existing features takes place in the `#internals` channel of the [Lucid Discord](https://discord.gg/j5xBhTa7).
 Abed Halawi, the maintainer of Lucid, is typically present in the channel on weekdays from 8am-5pm EEST (Eastern European Summer Time), and sporadically present in the channel at other times.
 
 ## Which Branch? And How To Contribute

@@ -54,7 +54,7 @@ has Chat, Product Management, Forum, Api and Admin listed with their features be
     - CRUD products
     - CRUD projects
 - Api
-    - CRUD application (like Slack & Facebook apps etc.)
+    - CRUD application (like Slack bots & Facebook apps etc.)
     - Send message
     - Subscribe to product updates
     - Subscribe to question updates

@@ -28,7 +28,7 @@ We wanted something **simple** [[KISS](https://en.wikipedia.org/wiki/KISS_princi
 ## Emblem
 {{% columns %}}
 
-![Lucid Icon](/media/images/icon-simple-coloured.png)
+![Lucid Icon](/icon/lucid-icon.svg)
 <--->
 ![Lucid Compass Rose](/media/images/compass-rose.png)
 

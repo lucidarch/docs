@@ -18,7 +18,7 @@ disableLatLong = true
 
 [params]
 color_main = "gray"
-color_second = "#17a3b8"
+color_second = "#7C3AED"
 ordersectionsby = "weight"
 
 [markup.goldmark.renderer]
