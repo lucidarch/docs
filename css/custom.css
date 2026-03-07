@@ -1,3 +1,17 @@
+/* Lucid brand design tokens */
+:root {
+    --lucid-violet-light: #F49AC2;
+    --lucid-violet-mid: #B84DFF;
+    --lucid-violet-primary: #7C3AED;
+    --lucid-violet-dark: #4C1D95;
+    --lucid-violet-deep: #2E1065;
+    --lucid-text-dark: #1F1637;
+    --lucid-bg-light: #F8F8FC;
+    --lucid-bg-dark: #0B0B12;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap');
+
 @font-face {
     font-family: 'JetBrains Mono';
     src: url('/font/JetBrainsMono-Regular.woff2') format('woff2'),
@@ -17,13 +31,16 @@
 }
 
 header {
-    background: rgb(23, 162, 184) !important;
+    background: var(--lucid-violet-deep) !important;
     border: none !important;
     padding-bottom: 2px;
 }
 
 header a {
     color: white !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.04rem;
 }
 
 body {
@@ -91,7 +108,7 @@ article > aside .menu .dd-item a {
     color: rgb(43, 48, 59, .9);
 }
 article > aside .menu .dd-item a:hover {
-    color: #17a3b8;
+    color: var(--lucid-violet-primary);
 }
 
 article > aside .menu .dd-item.active {
@@ -99,7 +116,7 @@ article > aside .menu .dd-item.active {
 }
 
 article > aside .menu .dd-item.active > a {
-    color: #17a3b8;
+    color: var(--lucid-violet-primary);
 }
 
 @media (max-width: 1160px) {
@@ -138,7 +155,7 @@ div.Actions {
 code {
     font-family: 'JetBrains Mono';
     font-size: 90% !important;
-    color: #ca473f; /* applies to inline code only */
+    color: var(--lucid-violet-primary);
 }
 
 .highlight pre {
@@ -154,13 +171,39 @@ code {
 /* tabs */
 
 .tabs > input[type=radio]:checked + label {
-    border-bottom: 2px solid #17a3b8;
+    border-bottom: 2px solid var(--lucid-violet-primary);
 }
 
 
+/* badges — override Bootstrap 4 teal */
+.badge-info {
+    background-color: var(--lucid-violet-primary) !important;
+    color: #fff !important;
+}
+
+/* link highlights — override theme teal with correct selectors */
+article section.page div.content a {
+    color: var(--lucid-violet-primary) !important;
+}
+article section.page div.content a:hover {
+    color: var(--lucid-violet-dark) !important;
+}
+
+/* breadcrumb link dotted underline */
+article section.page #ariane ol li a {
+    color: var(--lucid-violet-primary) !important;
+    border-bottom-color: var(--lucid-violet-primary) !important;
+}
+
+/* subpages / jump-to-section links */
+article section.page div.jump-to-section ul li a,
+article section.page nav.subpages a {
+    color: var(--lucid-violet-primary) !important;
+}
+
 /* custom */
 .lucid-code-expand {
-    color: #ca473f;
+    color: var(--lucid-violet-primary);
     font-size: 90%;
     font-family: 'JetBrains Mono';
 }
