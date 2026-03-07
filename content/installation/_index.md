@@ -25,7 +25,7 @@ Or head over to [Laravel's Installation docs](https://laravel.com/docs/installat
 composer require lucidarch/lucid
 ```
 
-Make sure to place Composer's project vendor bin direcotry in your `$PATH` so the `lucid` executable can be located by your system.
+Make sure to place Composer's project vendor bin directory in your `$PATH` so the `lucid` executable can be located by your system.
 Usually it's done by running `export PATH="$PATH:./vendor/bin"` to have it available in your current Terminal session,
 or add it to your corresponding Terminal profile (e.g. `~/.bashrc`, `~/.bash_profile`, `~/.zshrc`) to have it permanently loaded
 with every session.
@@ -36,18 +36,19 @@ Lucid's versioning system follows the [semantic versioning scheme](https://semve
 The latest Lucid version is tested against the following matrix, hence providing support to any combination of them:
 
 - **Laravel**
-{{<badge info>}} 8 {{</badge>}}
+{{<badge info>}} 11 {{</badge>}}
+{{<badge info>}} 10 {{</badge>}}
+{{<badge info>}} 9 {{</badge>}}
+{{<badge secondary>}} 8 {{</badge>}}
 {{<badge secondary>}} 7 {{</badge>}}
 {{<badge secondary>}} 6 {{</badge>}}
-{{<badge secondary>}} 5.5 (LTS) {{</badge>}}
 
 - **PHP**:
-{{<badge info>}} 8.0 {{</badge>}}
-{{<badge secondary>}} 7.4 {{</badge>}}
-{{<badge secondary>}} 7.3 {{</badge>}}
-{{<badge secondary>}} 7.2 {{</badge>}}
-{{<badge secondary>}} 7.1 {{</badge>}}
-{{<badge secondary>}} 7.0.21 {{</badge>}}
+{{<badge info>}} 8.4 {{</badge>}}
+{{<badge info>}} 8.3 {{</badge>}}
+{{<badge info>}} 8.2 {{</badge>}}
+{{<badge info>}} 8.1 {{</badge>}}
+{{<badge secondary>}} 8.0 {{</badge>}}
 
 ## Initialization
 
@@ -124,10 +125,9 @@ app
 ├── public
 ├── resources
 ├── routes
-├── server.php
 ├── storage
 ├── tests
-└── webpack.mix.js
+└── vite.config.js
 </pre>
 
 <--->

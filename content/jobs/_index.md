@@ -51,12 +51,9 @@ use App\Domains\Product\ProductValidator;
 
 class ValidateProductDetailsJob extends Job
 {
-    private array $input;
-
-    public function __constructor(array $input)
-    {
-        $this->input = $input;
-    }
+    public function __construct(
+        private readonly array $input,
+    ) {}
 
     /**
      * @param  ProductValidator $validator
@@ -184,17 +181,16 @@ namespace App\Domains\Product\Jobs;
 
 class UpdateProductDetailsJob extends Job
 {
-    public function __construct(int $id, string $title, string $price, string $description)
-    {
-        $this->id = $id
-        $this->title = $title
-        $this->price = $price
-        $this->description = $description
-    }
+    public function __construct(
+        private readonly int $id,
+        private readonly string $title,
+        private readonly string $price,
+        private readonly string $description,
+    ) {}
 
     public function handle(): bool
     {
-        $product = Product::find($this->id);
+        $product = Product::findOrFail($this->id);
 
         $product->fill([
             'title' => $this->title,
@@ -247,16 +243,13 @@ Given this simple job that retrieves a user from the DB by their identifier:
 ```php
 namespace App\Domains\User\Jobs;
 
-class GetUserJobID extends Job
+class GetUserByIDJob extends Job
 {
-    private int $id;
+    public function __construct(
+        private readonly int $id,
+    ) {}
 
-    public function __construct(int $id)
-    {
-        $this->id = $id;
-    }
-
-    public function handle()
+    public function handle(): ?User
     {
         return User::find($this->id);
     }
@@ -270,7 +263,7 @@ We can simply initialize an instance and run it:
 $this->run(new GetUserByIDJob($userId));
 ```
 
-and it works exactly the same as if we did `run(GetUserByIDJob::class, ['id' => $userId])`.
+and it works exactly the same as `run(GetUserByIDJob::class, ['id' => $userId])`.
 
 {{% notice info %}}
 {{% icon name="fa-exclamation-triangle" %}}&nbsp;`$arguments` won't apply when an initialized job is run.

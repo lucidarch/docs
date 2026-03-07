@@ -6,6 +6,44 @@ weight: 1
 hide: ["header", "toc"]
 ---
 
+## Upgrading to 2.0
+
+**Requires Laravel 9+ and PHP 8.1+.**
+
+### Update RouteServiceProvider in each service
+
+The `$namespace` parameter has been removed from `loadRoutesFiles()`. Open every
+`app/Services/<Service>/Providers/RouteServiceProvider.php` and remove the namespace argument:
+
+```php
+// Before
+public function map(Router $router)
+{
+    $this->loadRoutesFiles($router, 'App\Services\MyService\Http\Controllers', $pathApi, $pathWeb);
+}
+
+// After
+public function map(Router $router)
+{
+    $this->loadRoutesFiles($router, $pathApi, $pathWeb);
+}
+```
+
+### Update route files to use fully-qualified controller class names
+
+```php
+// Before
+Route::get('/', 'MyController@index');
+
+// After
+use App\Services\MyService\Http\Controllers\MyController;
+Route::get('/', [MyController::class, 'index']);
+```
+
+---
+
+## Upgrading from lucid-arch/* to lucidarch/lucid
+
 Ensure that your tests are passing at the initial state of the upgrade to be able to compare with by the end that you've received the expected result.
 
 - remove deprecated Lucid packages

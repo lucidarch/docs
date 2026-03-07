@@ -60,16 +60,16 @@ we will utilise SQLite as it requires the least steps to get going. This is sure
 but will make very little difference since you can change the configuration and use your favourite database
 without affecting the code.
 
-1. Create database file `storage/app/database/database.sql`
+1. Create database file `storage/app/database/database.sqlite`
     ```bash
-    mkdir -p storage/app/database && touch storage/app/database/database.sql
+    mkdir -p storage/app/database && touch storage/app/database/database.sqlite
     ```
 
 2. Configure database
     `.env`
     ```ini
     DB_CONNECTION=sqlite
-    DB_DATABASE={ABSOLUTE PATH}/storage/app/database/database.sql
+    DB_DATABASE={ABSOLUTE PATH}/storage/app/database/database.sqlite
     ```
 
 3. Create tables
@@ -78,13 +78,16 @@ without affecting the code.
     ```
     And the output should match this:
     ```
-    Migration table created successfully.
-    Migrating: 2014_10_12_000000_create_users_table
-    Migrated:  2014_10_12_000000_create_users_table (4.11ms)
-    Migrating: 2014_10_12_100000_create_password_resets_table
-    Migrated:  2014_10_12_100000_create_password_resets_table (2.14ms)
-    Migrating: 2019_08_19_000000_create_failed_jobs_table
-    Migrated:  2019_08_19_000000_create_failed_jobs_table (2.54ms)
+    INFO  Preparing database.
+
+    Creating migration table .................................. 9ms DONE
+
+    INFO  Running migrations.
+
+    2014_10_12_000000_create_users_table ..................... 10ms DONE
+    2014_10_12_100000_create_password_reset_tokens_table ..... 12ms DONE
+    2019_08_19_000000_create_failed_jobs_table ............... 13ms DONE
+    2019_12_14_000001_create_personal_access_tokens_table .... 15ms DONE
     ```
 
 ---
@@ -106,12 +109,16 @@ to scaffold configuration and Auth routes, views and controllers styled with Tai
 ```bash
 composer require laravel/breeze --dev
 
-php artisan breeze:install
+php artisan breeze:install blade
 
 npm install && npm run dev
 ```
 
-Now to watch assets and build on change we may run `npm run watch`.
+Now to watch assets and rebuild on change we may run `npm run dev` again, or use `npm run build` for a production build.
+
+{{% notice info %}}
+{{<icon name="fa-info-circle">}}&nbsp;In Laravel Breeze v2+ (Laravel 11), `php artisan breeze:install` will prompt you to choose a stack. Select `blade` for this tutorial.
+{{% /notice %}}
 
 The resulting files are under `resources/views/auth` and the `welcome` page has been updated to look as follows:
 
@@ -331,6 +338,11 @@ use Illuminate\Database\Eloquent\Model;
 class Link extends Model
 {
     protected $fillable = ['url', 'title', 'description'];
+
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
 }
 ```
 
@@ -368,22 +380,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class AddLink extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
+    public function authorize(): bool
     {
         return Auth::check();
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
             'title' => ['required', 'max:255'],
@@ -449,58 +451,33 @@ use App\Data\Models\Link;
 
 class SaveLinkJob extends Job
 {
-    private $url;
-    private $title;
-    private $description;
-
     /**
      * Create a new job instance.
-     *
-     * @param $url
-     * @param $title
-     * @param $description
+     * The constructor is the job's signature — it defines what is required to run this job.
      */
-    public function __construct($url, $title, $description)
-    {
-        $this->url = $url;
-        $this->title = $title;
-        $this->description = $description;
-    }
+    public function __construct(
+        private readonly string $url,
+        private readonly string $title,
+        private readonly string $description,
+    ) {}
 
     /**
      * Execute the job.
-     *
-     * @return Link
      */
-    public function handle()
+    public function handle(): Link
     {
-        $attributes = [
+        return tap(new Link([
             'url' => $this->url,
             'title' => $this->title,
             'description' => $this->description,
-        ];
-
-        return tap(new Link($attributes))->save();
+        ]))->save();
     }
 }
 ```
 
-The job's signature is its constructor: `__construct($url, $title, $description)` telling us what's required to run this job.
-This gets easier to read with PHP 7+ where we could type-hit these parameters:
-
-```php
-public function __construct(string $url, string $title, string $description)
-```
-
-And even better with PHP 8 we could use constructor property promotion and further reduce boilerplate:
-
-```php
-public function __construct(
-    private string $url,
-    private string $title,
-    private string $description
-) {}
-```
+The job's signature is its constructor: `__construct(string $url, string $title, string $description)` — it tells us
+exactly what's required to run this job. Using PHP 8.1's **constructor property promotion** and `readonly` properties
+eliminates boilerplate while making the immutability intent explicit.
 
 Then we'll run this job from the feature to save links when received:
 
@@ -579,24 +556,10 @@ use Lucid\Units\Job;
 
 class RedirectBackJob extends Job
 {
-    /**
-     * @var bool
-     */
-    private $withInput;
+    public function __construct(
+        private readonly bool $withInput = false,
+    ) {}
 
-    /**
-     * Create a new job instance.
-     *
-     * @param bool $withInput
-     */
-    public function __construct($withInput = false)
-    {
-        $this->withInput = $withInput;
-    }
-
-    /**
-     * Execute the job.
-     */
     public function handle()
     {
         $back = back();
@@ -608,7 +571,6 @@ class RedirectBackJob extends Job
         return $back;
     }
 }
-
 ```
 
 ## Testing
@@ -646,7 +608,6 @@ namespace Tests\Unit\Domains\Link\Jobs;
 
 use Tests\TestCase;
 use App\Data\Models\Link;
-use Faker\Factory as Fake;
 use App\Domains\Link\Jobs\SaveLinkJob;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -654,15 +615,17 @@ class SaveLinkJobTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_save_link_job()
+    public function test_save_link_job(): void
     {
-        $f = Fake::create();
+        $url = fake()->url();
+        $title = fake()->sentence();
+        $description = fake()->paragraph();
 
-        $url = $f->url;
-        $title = $f->sentence;
-        $description = $f->paragraph;
-
-        $job = new SaveLinkJob($url, $title, $description);
+        $job = new SaveLinkJob(
+            url: $url,
+            title: $title,
+            description: $description,
+        );
         $link = $job->handle();
 
         $this->assertInstanceOf(Link::class, $link);
@@ -671,7 +634,6 @@ class SaveLinkJobTest extends TestCase
         $this->assertEquals($description, $link->description);
     }
 }
-
 ```
 
 For more on testing jobs visit [jobs#testing]({{<ref "/jobs#testing">}}).
@@ -752,7 +714,7 @@ public function test_link_is_not_created_if_validation_fails()
 
 The purpose of the data provider `invalidURLs` here is to keep the test concise and reduce clutter:
 ```php
-public function invalidURLs()
+public static function invalidURLs(): array
 {
     return [
         ['foo.com'],
@@ -761,10 +723,8 @@ public function invalidURLs()
     ];
 }
 
-/**
- * @dataProvider invalidURLs
- */
-public function test_link_is_not_created_with_invalid_url($case)
+#[\PHPUnit\Framework\Attributes\DataProvider('invalidURLs')]
+public function test_link_is_not_created_with_invalid_url(string $case): void
 {
     $response = $this->actingAs(User::factory()->create())
                      ->post('/submit', [
@@ -773,7 +733,7 @@ public function test_link_is_not_created_with_invalid_url($case)
                         'description' => 'Example description',
                     ]);
 
-    $response->assertSessionHasErrors(['url' => 'The url must be a valid URL.']);
+    $response->assertSessionHasErrors(['url' => 'The url field must be a valid URL.']);
 }
 ```
 
@@ -792,9 +752,9 @@ public function test_max_length_fails_when_too_long()
                      ->post('/submit', compact('title', 'url', 'description'));
 
     $response->assertSessionHasErrors([
-        'url' => 'The url must not be greater than 255 characters.',
-        'title' => 'The title must not be greater than 255 characters.',
-        'description' => 'The description must not be greater than 255 characters.',
+        'url' => 'The url field must not be greater than 255 characters.',
+        'title' => 'The title field must not be greater than 255 characters.',
+        'description' => 'The description field must not be greater than 255 characters.',
     ]);
 }
 
