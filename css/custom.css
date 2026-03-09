@@ -158,13 +158,51 @@ code {
     color: var(--lucid-violet-primary);
 }
 
+/* fenced/highlight code blocks */
+.highlight {
+    margin: 1.25rem 0 1.25rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
 .highlight pre {
-    width: 95%;
-    margin-left: 20px;
+    margin: 0;
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    background-color: rgb(245, 247, 249) !important;
+    overflow-x: auto;
 }
 
 .highlight code {
-    background-color: rgb(245, 247, 249) !important;
+    background-color: transparent !important;
+    font-size: 88% !important;
+    line-height: 1.6;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* All fenced code — padding lives on pre only, never on code */
+pre > code[class*="language-"] {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* standalone pre blocks (directory trees etc.) */
+pre {
+    margin: 1.25rem 0;
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    background-color: rgb(245, 247, 249);
+    overflow-x: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 88%;
+    line-height: 1.6;
+}
+
+/* strong / bold — add a touch of brand colour to stand out */
+strong {
+    color: var(--lucid-violet-dark);
+    font-weight: 700;
 }
 
 
@@ -206,4 +244,475 @@ article section.page nav.subpages a {
     color: var(--lucid-violet-primary);
     font-size: 90%;
     font-family: 'JetBrains Mono';
+}
+
+
+/* ============================================================
+   Dark mode toggle button
+   ============================================================ */
+
+#theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0 0.75rem;
+    display: none; /* hidden on desktop; shown on mobile where right-menu is not visible */
+    align-items: center;
+    color: rgba(255, 255, 255, 0.75);
+    flex-shrink: 0;
+}
+
+#theme-toggle:hover {
+    color: white;
+}
+
+/* Show header toggle only on mobile */
+@media (max-width: 767px) {
+    #theme-toggle {
+        display: flex;
+    }
+}
+
+/* Show moon in light mode, sun in dark mode */
+html[data-theme="light"] #theme-icon-moon,
+html:not([data-theme="dark"]) #theme-icon-moon { display: block !important; }
+html[data-theme="light"] #theme-icon-sun,
+html:not([data-theme="dark"]) #theme-icon-sun  { display: none !important; }
+
+html[data-theme="dark"] #theme-icon-moon { display: none !important; }
+html[data-theme="dark"] #theme-icon-sun  { display: block !important; }
+
+/* Right-side toggle button (top of right-menu column) */
+#theme-toggle-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid rgba(100, 80, 160, 0.25);
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--lucid-violet-primary);
+    padding: 6px;
+    width: 34px;
+    height: 34px;
+    margin: 0 auto 30px auto;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+#theme-toggle-right:hover {
+    background: rgba(124, 58, 237, 0.1);
+    border-color: var(--lucid-violet-primary);
+}
+
+html[data-theme="dark"] #theme-toggle-right {
+    color: rgba(226, 224, 238, 0.8);
+    border-color: rgba(180, 160, 220, 0.2);
+}
+
+html[data-theme="dark"] #theme-toggle-right:hover {
+    background: rgba(124, 58, 237, 0.2);
+    border-color: rgba(180, 160, 220, 0.5);
+}
+
+/* Right-side icon visibility */
+html[data-theme="light"] #theme-icon-right-moon,
+html:not([data-theme="dark"]) #theme-icon-right-moon { display: block !important; }
+html[data-theme="light"] #theme-icon-right-sun,
+html:not([data-theme="dark"]) #theme-icon-right-sun  { display: none !important; }
+
+html[data-theme="dark"] #theme-icon-right-moon { display: none !important; }
+html[data-theme="dark"] #theme-icon-right-sun  { display: block !important; }
+
+
+/* ============================================================
+   Dark mode
+   Brand dark background: #0B0B12
+   ============================================================ */
+
+html[data-theme="dark"] body {
+    background-color: #0B0B12;
+    color: rgba(226, 224, 238, 0.85);
+}
+
+html[data-theme="dark"] body a {
+    color: rgba(226, 224, 238, 0.75);
+}
+
+/* headings */
+html[data-theme="dark"] h1 {
+    color: rgba(226, 224, 238, 0.95) !important;
+}
+html[data-theme="dark"] h2 {
+    color: rgba(226, 224, 238, 0.9) !important;
+}
+html[data-theme="dark"] h3 {
+    color: rgba(226, 224, 238, 0.8) !important;
+}
+html[data-theme="dark"] h4 {
+    color: rgba(226, 224, 238, 0.7) !important;
+}
+
+/* article & page area */
+html[data-theme="dark"] article {
+    background-color: #0B0B12;
+}
+
+/* sidebar */
+html[data-theme="dark"] article > aside {
+    background-color: #0f0f1a !important;
+    border-color: rgba(124, 58, 237, 0.18) !important;
+}
+
+html[data-theme="dark"] article > aside .menu .dd-item a {
+    color: rgba(226, 224, 238, 0.7) !important;
+}
+
+html[data-theme="dark"] article > aside .menu .dd-item a:hover {
+    color: var(--lucid-violet-mid) !important;
+}
+
+html[data-theme="dark"] article > aside .menu .dd-item.active > a {
+    color: #B84DFF !important;
+}
+
+html[data-theme="dark"] article > aside div.search input {
+    background-color: #1a1a2e !important;
+    color: rgba(226, 224, 238, 0.8) !important;
+    border-color: rgba(124, 58, 237, 0.2) !important;
+}
+
+html[data-theme="dark"] .searchbox input {
+    background-color: #1a1a2e !important;
+    color: rgba(226, 224, 238, 0.8) !important;
+    border-color: rgba(124, 58, 237, 0.2) !important;
+}
+
+html[data-theme="dark"] .autocomplete-suggestions {
+    background-color: #0f0f1a !important;
+    color: rgba(226, 224, 238, 0.85) !important;
+    border-color: rgba(124, 58, 237, 0.2) !important;
+}
+
+/* right ToC */
+html[data-theme="dark"] .right-menu {
+    border-color: rgba(124, 58, 237, 0.15) !important;
+}
+
+html[data-theme="dark"] div.TableOfContents a {
+    color: rgba(226, 224, 238, 0.5) !important;
+}
+
+html[data-theme="dark"] div.TableOfContents a:hover {
+    color: rgba(226, 224, 238, 0.85) !important;
+}
+
+/* content links */
+html[data-theme="dark"] article section.page div.content a {
+    color: #B84DFF !important;
+}
+
+html[data-theme="dark"] article section.page div.content a:hover {
+    color: #F49AC2 !important;
+}
+
+/* breadcrumb */
+html[data-theme="dark"] article section.page #ariane ol li a {
+    color: #B84DFF !important;
+    border-bottom-color: #B84DFF !important;
+}
+
+html[data-theme="dark"] article section.page #ariane ol li:after {
+    color: rgba(226, 224, 238, 0.4);
+}
+
+/* subpages nav */
+html[data-theme="dark"] article section.page nav.subpages a,
+html[data-theme="dark"] article section.page div.jump-to-section ul li a {
+    color: #B84DFF !important;
+}
+
+/* prev/next chevrons */
+html[data-theme="dark"] article section.page div.chevrons {
+    border-top-color: rgba(124, 58, 237, 0.2) !important;
+    border-bottom-color: rgba(124, 58, 237, 0.2) !important;
+}
+
+/* tables */
+html[data-theme="dark"] article section.page div.content table {
+    border-color: rgba(124, 58, 237, 0.15) !important;
+}
+
+html[data-theme="dark"] article section.page div.content table th {
+    background: #1a1a2e !important;
+    color: rgba(226, 224, 238, 0.9) !important;
+    border-color: rgba(124, 58, 237, 0.2) !important;
+}
+
+html[data-theme="dark"] article section.page div.content table td {
+    color: rgba(226, 224, 238, 0.8) !important;
+    border-color: rgba(124, 58, 237, 0.1) !important;
+}
+
+/* inline code */
+html[data-theme="dark"] code {
+    color: #B84DFF !important;
+}
+
+/* code blocks */
+html[data-theme="dark"] .highlight code {
+    background-color: #131320 !important;
+}
+
+html[data-theme="dark"] .highlight pre {
+    background-color: #131320 !important;
+}
+
+/* syntax highlighting class overrides for dark mode */
+html[data-theme="dark"] .chroma { background-color: #131320 !important; color: rgba(226, 224, 238, 0.85) !important; }
+html[data-theme="dark"] .chroma .k  { color: #c792ea !important; font-weight: bold !important; }
+html[data-theme="dark"] .chroma .kc,
+html[data-theme="dark"] .chroma .kd,
+html[data-theme="dark"] .chroma .kn,
+html[data-theme="dark"] .chroma .kp,
+html[data-theme="dark"] .chroma .kr { color: #89ddff !important; font-weight: normal !important; }
+html[data-theme="dark"] .chroma .kt { color: #82aaff !important; }
+html[data-theme="dark"] .chroma .na { color: #ffcb6b !important; }
+html[data-theme="dark"] .chroma .nb { color: #82aaff !important; }
+html[data-theme="dark"] .chroma .nc { color: #ffcb6b !important; font-weight: normal !important; }
+html[data-theme="dark"] .chroma .nf { color: #82aaff !important; font-weight: normal !important; }
+html[data-theme="dark"] .chroma .nx { color: rgba(226, 224, 238, 0.85) !important; }
+html[data-theme="dark"] .chroma .nt { color: #f07178 !important; }
+html[data-theme="dark"] .chroma .nv,
+html[data-theme="dark"] .chroma .vc,
+html[data-theme="dark"] .chroma .vg,
+html[data-theme="dark"] .chroma .vi { color: #eeffff !important; }
+html[data-theme="dark"] .chroma .s,
+html[data-theme="dark"] .chroma .sa,
+html[data-theme="dark"] .chroma .sb,
+html[data-theme="dark"] .chroma .sc,
+html[data-theme="dark"] .chroma .dl,
+html[data-theme="dark"] .chroma .s1,
+html[data-theme="dark"] .chroma .s2,
+html[data-theme="dark"] .chroma .se,
+html[data-theme="dark"] .chroma .sh,
+html[data-theme="dark"] .chroma .si,
+html[data-theme="dark"] .chroma .sx { color: #c3e88d !important; }
+html[data-theme="dark"] .chroma .sr { color: #89ddff !important; }
+html[data-theme="dark"] .chroma .ss { color: #f49ac2 !important; }
+html[data-theme="dark"] .chroma .m,
+html[data-theme="dark"] .chroma .mb,
+html[data-theme="dark"] .chroma .mf,
+html[data-theme="dark"] .chroma .mh,
+html[data-theme="dark"] .chroma .mi,
+html[data-theme="dark"] .chroma .il,
+html[data-theme="dark"] .chroma .mo { color: #f78c6c !important; }
+html[data-theme="dark"] .chroma .o,
+html[data-theme="dark"] .chroma .ow { color: #89ddff !important; font-weight: normal !important; }
+html[data-theme="dark"] .chroma .c,
+html[data-theme="dark"] .chroma .c1,
+html[data-theme="dark"] .chroma .cm,
+html[data-theme="dark"] .chroma .ch,
+html[data-theme="dark"] .chroma .cs,
+html[data-theme="dark"] .chroma .cp,
+html[data-theme="dark"] .chroma .cpf { color: #546e7a !important; font-style: italic !important; }
+html[data-theme="dark"] .chroma .gd  { color: #f07178 !important; background-color: rgba(240, 113, 120, 0.1) !important; }
+html[data-theme="dark"] .chroma .gi  { color: #c3e88d !important; background-color: rgba(195, 232, 141, 0.1) !important; }
+html[data-theme="dark"] .chroma .gu  { color: #82aaff !important; }
+html[data-theme="dark"] .chroma .gp  { color: #546e7a !important; }
+html[data-theme="dark"] .chroma .w   { color: rgba(226, 224, 238, 0.2) !important; }
+html[data-theme="dark"] .chroma .err { color: #f07178 !important; background-color: transparent !important; }
+html[data-theme="dark"] .chroma .lnt,
+html[data-theme="dark"] .chroma .ln  { color: #546e7a !important; }
+
+/* gist embeds */
+html[data-theme="dark"] body .gist .gist-data {
+    background: #1a1a2e !important;
+    color: rgba(226, 224, 238, 0.8) !important;
+}
+
+html[data-theme="dark"] body .gist .highlight {
+    background: #1a1a2e !important;
+}
+
+/* jump-to-section popup */
+html[data-theme="dark"] article section.page div.jump-to-section nav {
+    background-color: #0f0f1a !important;
+    border-color: rgba(124, 58, 237, 0.2) !important;
+}
+
+/* notices shortcode */
+html[data-theme="dark"] div.notices > :not(label) {
+    background: #0f0f1c !important;
+}
+
+html[data-theme="dark"] div.notices.note p,
+html[data-theme="dark"] div.notices.primary p {
+    color: #93c5fd !important;
+    background: rgba(0, 123, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] div.notices.secondary p {
+    color: rgba(226, 224, 238, 0.75) !important;
+    background: rgba(108, 117, 125, 0.1) !important;
+}
+
+html[data-theme="dark"] div.notices.success p,
+html[data-theme="dark"] div.notices.tip p {
+    color: #86efac !important;
+    background: rgba(40, 167, 69, 0.1) !important;
+}
+
+html[data-theme="dark"] div.notices.danger p {
+    color: #fca5a5 !important;
+    background: rgba(220, 53, 69, 0.1) !important;
+}
+
+html[data-theme="dark"] div.notices.warning > * {
+    color: #fde68a !important;
+    background: rgba(255, 193, 7, 0.08) !important;
+}
+
+html[data-theme="dark"] div.notices.info p {
+    color: #67e8f9 !important;
+    background: rgba(23, 162, 184, 0.1) !important;
+}
+
+html[data-theme="dark"] div.notices.dark p {
+    color: rgba(226, 224, 238, 0.75) !important;
+    background: rgba(52, 58, 64, 0.2) !important;
+}
+
+/* panel / card shortcode */
+html[data-theme="dark"] div.card {
+    border-color: rgba(124, 58, 237, 0.2) !important;
+    background-color: #0f0f1a !important;
+}
+
+html[data-theme="dark"] .card-header {
+    background-color: #1a1a2e !important;
+    border-bottom-color: rgba(124, 58, 237, 0.2) !important;
+    color: rgba(226, 224, 238, 0.9) !important;
+}
+
+html[data-theme="dark"] .card-header a {
+    color: rgba(226, 224, 238, 0.9) !important;
+}
+
+html[data-theme="dark"] .card-body {
+    color: rgba(226, 224, 238, 0.85) !important;
+}
+
+html[data-theme="dark"] .card-footer {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-top-color: rgba(124, 58, 237, 0.2) !important;
+    color: rgba(226, 224, 238, 0.55) !important;
+}
+
+/* plain <pre> blocks (directory trees) */
+html[data-theme="dark"] pre {
+    background-color: #131320 !important;
+    color: rgba(226, 224, 238, 0.85) !important;
+    border-color: rgba(124, 58, 237, 0.15) !important;
+}
+
+html[data-theme="dark"] .highlight pre {
+    background-color: #131320 !important;
+}
+
+/* strong in dark mode */
+html[data-theme="dark"] strong {
+    color: #d4aaff;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   Sidebar logo
+   ============================================================ */
+
+.sidebar-logo-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    font-size: 1.3rem;
+    color: #1F1637;
+    letter-spacing: 0.01rem;
+    line-height: 1;
+}
+
+html[data-theme="dark"] .sidebar-logo-text {
+    color: rgba(226, 224, 238, 0.9) !important;
+}
+
+.sidebar-logo-sub {
+    font-size: 0.7rem;
+    letter-spacing: 0.12rem;
+    text-transform: lowercase;
+    color: #4C1D95;
+}
+
+html[data-theme="dark"] .sidebar-logo-sub {
+    color: #B84DFF !important;
+}
+
+
+/* ============================================================
+   Sidebar theme toggle button
+   ============================================================ */
+
+.sidebar-theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: calc(100% - 20px);
+    margin: 24px 10px 16px;
+    padding: 8px 12px;
+    background: transparent;
+    border: 1px solid rgba(124, 58, 237, 0.25);
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.03rem;
+    color: rgba(43, 48, 59, 0.65);
+    transition: border-color 0.15s, color 0.15s;
+}
+
+.sidebar-theme-toggle:hover {
+    border-color: #7C3AED;
+    color: #7C3AED;
+}
+
+html[data-theme="dark"] .sidebar-theme-toggle {
+    border-color: rgba(184, 77, 255, 0.3);
+    color: rgba(226, 224, 238, 0.6);
+}
+
+html[data-theme="dark"] .sidebar-theme-toggle:hover {
+    border-color: #B84DFF;
+    color: #B84DFF;
+}
+
+/* Show moon + "Dark mode" label in light mode */
+html:not([data-theme="dark"]) .sidebar-theme-icon-moon { display: block; }
+html:not([data-theme="dark"]) .sidebar-theme-icon-sun  { display: none; }
+html:not([data-theme="dark"]) .sidebar-theme-label-dark  { display: inline; }
+html:not([data-theme="dark"]) .sidebar-theme-label-light { display: none; }
+
+/* Show sun + "Light mode" label in dark mode */
+html[data-theme="dark"] .sidebar-theme-icon-moon { display: none; }
+html[data-theme="dark"] .sidebar-theme-icon-sun  { display: block; }
+html[data-theme="dark"] .sidebar-theme-label-dark  { display: none; }
+html[data-theme="dark"] .sidebar-theme-label-light { display: inline; }
+
+
+/* ============================================================
+   Images in dark mode — give transparent-bg PNGs a light backing
+   ============================================================ */
+
+html[data-theme="dark"] article section.page div.content img {
+    background-color: #ddd8f0;
+    border-radius: 8px;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    padding: 6px;
 }
