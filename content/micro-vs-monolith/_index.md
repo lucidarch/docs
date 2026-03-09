@@ -23,15 +23,15 @@ A single-purpose project that contains a moderate amount of functionalities that
 
 It contains the fundamental units of the Lucid stack: Domains, Features, Operations and Data, complementing the Laravel framework:
 
-<pre>
+```text
 app
 ├── Console
 │   └── Kernel.php
-├── <strong>Data</strong>
+├── Data
     └── Models
-├── <strong>Domains</strong>
-├── <strong>Features</strong>
-├── <strong>Operations</strong>
+├── Domains
+├── Features
+├── Operations
 ├── Exceptions
 │   └── Handler.php
 ├── Http
@@ -45,7 +45,7 @@ app
     ├── BroadcastServiceProvider.php
     ├── EventServiceProvider.php
     └── RouteServiceProvider.php
-</pre>
+```
 
 ### When To Use Micro?
 
@@ -75,21 +75,21 @@ of authenticating users, authorizing requests and responding to them in correspo
 
 {{<columns>}}
 
-<pre>
+```text
 app
 ├── Console
-├── <strong>Data</strong>
+├── Data
     └── Models
-├── <strong>Domains</strong>
+├── Domains
 ├── Exceptions
-├── <strong>Foundation</strong>
+├── Foundation
 ├── Http
 ├── Policies
 ├── Providers
-└── <strong>Services</strong>
-    ├── <strong>Admin</strong>
-    ├── <strong>Api</strong>
-    └── <strong>Web</strong>
+└── Services
+    ├── Admin
+    ├── Api
+    └── Web
 ├── artisan
 ├── bootstrap
 ├── composer.json
@@ -105,16 +105,16 @@ app
 ├── storage
 ├── tests
 └── webpack.mix.js
-</pre>
+```
 
 <--->
 
-<pre>
-app/Services/<i>{Admin,Api,Web}</i>
+```text
+app/Services/{Admin,Api,Web}
 ├── Console
 │   └── Commands
-├── <strong>Features</strong>
-├── <strong>Operations</strong>
+├── Features
+├── Operations
 ├── Http
 │   ├── Controllers
 │   └── Middleware
@@ -137,7 +137,7 @@ app/Services/<i>{Admin,Api,Web}</i>
     ├── channels.php
     ├── console.php
     └── web.php
-</pre>
+```
 
 {{</columns>}}
 
@@ -153,22 +153,22 @@ are exactly the same. What matters is to choose whichever approach works best fo
 
 {{<columns>}}
 
-<pre>
+```text
 app
 ├── Console
-├── <strong>Data</strong>
+├── Data
     └── Models
-├── <strong>Domains</strong>
+├── Domains
 ├── Exceptions
-├── <strong>Foundation</strong>
+├── Foundation
 ├── Http
 ├── Policies
 ├── Providers
-└── <strong>Services</strong>
-    ├── <strong>Chat</strong>
-    ├── <strong>Ecommerce</strong>
-    ├── <strong>ProductManagement</strong>
-    └── <strong>Api</strong>
+└── Services
+    ├── Chat
+    ├── Ecommerce
+    ├── ProductManagement
+    └── Api
 ├── artisan
 ├── bootstrap
 ├── composer.json
@@ -184,21 +184,21 @@ app
 ├── storage
 ├── tests
 └── webpack.mix.js
-</pre>
+```
 
 <--->
 
-<pre>
-app/Services/<i>{Chat,Api,Ecommerce,ProductManagement}</i>
+```text
+app/Services/{Chat,Api,Ecommerce,ProductManagement}
 ├── Console
 │   └── Commands
-├── <strong>Features</strong>
-├── <strong>Operations</strong>
+├── Features
+├── Operations
 ├── Http
 │   ├── Controllers
 │   └── Middleware
 ├── Providers
-│   ├── <i>{Chat,Api,Ecommerce,ProductManagement}</i>ServiceProvider.php
+│   ├── {Chat,Api,Ecommerce,ProductManagement}ServiceProvider.php
 │   ├── BroadcastServiceProvider.php
 │   └── RouteServiceProvider.php
 ├── Tests
@@ -216,7 +216,7 @@ app/Services/<i>{Chat,Api,Ecommerce,ProductManagement}</i>
     ├── channels.php
     ├── console.php
     └── web.php
-</pre>
+```
 
 {{</columns>}}
 

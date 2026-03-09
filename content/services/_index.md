@@ -65,12 +65,12 @@ An application this large will easily grow in files and directories to unmaintai
 for each to hold all their needs to function, which is exactly what's initially in Laravel's `/app` directory, in addition to tests.
 
 {{%excerpt%}}
-<pre>
+```text
 app/Services/Chat
 ├── Console
 │   └── Commands
-├── <strong>Features</strong>
-├── <strong>Operations</strong>
+├── Features
+├── Operations
 ├── Http
 │   ├── Controllers
 │   └── Middleware
@@ -78,9 +78,9 @@ app/Services/Chat
 │   ├── ChatServiceProvider.php
 │   ├── BroadcastServiceProvider.php
 │   └── RouteServiceProvider.php
-├── <strong>Tests</strong>
-│   └── <strong>Features</strong>
-│   └── <strong>Operations</strong>
+├── Tests
+│   └── Features
+│   └── Operations
 ├── database
 │   ├── factories
 │   ├── migrations
@@ -93,7 +93,7 @@ app/Services/Chat
     ├── channels.php
     ├── console.php
     └── web.php
-</pre>
+```
 {{%/excerpt%}}
 
 {{% notice info %}}
@@ -238,7 +238,7 @@ have to go digging for code in foreign directories.
 
 **Traditional**
 
-<pre>
+```text
 app/Http/Controllers
 ├── Admin
 │   ├── ProductController.php
@@ -257,13 +257,13 @@ app/Http/Controllers
     ├── QuestionController.php
     ├── CategoryController.php
     └── MemberController.php
-</pre>
+```
 
 <--->
 
 **Lucid Service Controllers**
 
-<pre>
+```text
 app/Services/Admin/Http/Controllers
    ├── ProductController.php
    ├── ForumController.php
@@ -285,7 +285,7 @@ app/Services/Forum/Http/Controllers
     ├── QuestionController.php
     ├── MemberController.php
     └── CategoryController.php
-</pre>
+```
 
 {{</columns>}}
 

@@ -24,32 +24,3 @@ We wanted something **simple** [[KISS](https://en.wikipedia.org/wiki/KISS_princi
 ## Name
 "Expressed clearly; easy to understand" marks the ultimate objective that the architecture intends to achieve in code.
 {{% figure alt="Lucid Name Definition" width="900px" src="/media/images/name-definition.png" %}}
-
-## Emblem
-{{% columns %}}
-
-![Lucid Icon](/icon/lucid-icon.svg)
-<--->
-![Lucid Compass Rose](/media/images/compass-rose.png)
-
-{{% /columns %}}
-
-### Foundation
-
-The more you look at it, the more different shapes you will see. Some of these shapes may seem like a building or a block and they go in different directions. However, they are all starting from the same center - *The Foundation*.
-
-### Resilience
-
-From it emerges lines that have equal height, though go in different directions but have similar characteristics - representing the malleability of Lucid. Though, without guidelines and principles the outcome will not be desirable. Hence the straight lines that go in one and only one direction, representing the responsibility of each component in our code regardless of its destination.
-
-### Direction
-
-The compass was an inspiration to the logo - without it we will surely get lost. Not knowing where we are, in which direction to go and how to go there is even worse. However, if we've been down the same road before it will be easier to know what should  happen next.
-
-Like a compass, Lucid provides the guidance and acts as a reliable companion to your code navigation journey.
-
-Also, a compass has no final destination and is only there to lead us wherever we wish to go, similar to any project that is ever evolving but the compass will never change direction.
-
-### Clarity
-
-From darkness to light. The dark end of the logo represents the chaos that our projects end up having after a long period of work and re-work, the variety of features they contain along with their changes. Going through the foundation (the center) - in this case Lucid - our projects go out of the other side in light - clear, understandable and easy to work with.

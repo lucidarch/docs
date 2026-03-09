@@ -60,7 +60,7 @@ However any other class that belongs to the domain should also be present there 
 Consider the example of an application that integrates with GitHub to login as a GitHub user and
 it allows to fetch a repository's info from GitHub's API:
 
-<pre>
+```text
 app/Domains/GitHub
 ├── GitHubClient.php
 ├── Jobs
@@ -74,7 +74,7 @@ app/Domains/GitHub
     └── Jobs
         ├── FetchGitHubReposJobTest.php
         └── LoginWithGitHubJobTest.php
-</pre>
+```
 
 - `GitHubClient` is the class that the jobs use to communicate with GitHub's API.
 - `FetchGitHubRepoInfoJob` contains all the details required to call the API such as URL and query params,

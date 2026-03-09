@@ -3,6 +3,28 @@
 <link rel="stylesheet" href="/css/custom.css">
 <link rel="stylesheet" href="/css/syntax.css">
 
+<script>
+(function() {
+  var saved = localStorage.getItem('lucid-theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var theme = saved ? saved : (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    if (!localStorage.getItem('lucid-theme')) {
+      document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+    }
+  });
+})();
+
+function lucidToggleTheme() {
+  var current = document.documentElement.getAttribute('data-theme') || 'light';
+  var next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('lucid-theme', next);
+}
+</script>
+
 <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
 <link rel="icon" type="image/svg+xml" href="/icon/lucid-icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">

@@ -15,7 +15,7 @@ for a scalable future software
 
 <div style="display: flex; justify-content: flex-end; align-items: center;">
     <div style="display: flex; align-items: center; gap: 10px;">
-        <a href="https://lucidarch.site" target="_blank" style="display: flex; align-items: center;"><img src="/icon/lucid-icon.svg" alt="Lucid website link" width="28px" style="display: block;" /></a>
+        <a href="https://lucidarch.site" target="_blank" style="display: flex; align-items: center;margin-top:5px"><img src="/icon/lucid-icon.svg" alt="Lucid website link" width="28px" style="display: block;" /></a>
         <a href="https://github.com/lucidarch/lucid" target="_blank" style="display: flex; align-items: center;"><i class="fab fa-github fa-lg"></i></a>
         <a href="https://discord.gg/j5xBhTa7" target="_blank" style="display: flex; align-items: center;"><i class="fab fa-discord fa-lg"></i></a>
         <a href="https://www.reddit.com/r/lucidarch" target="_blank" style="display: flex; align-items: center;margin-bottom:4px"><i class="fab fa-reddit-alien fa-lg"></i></a>

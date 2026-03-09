@@ -126,12 +126,12 @@ default structure, intended to provide the same functionality but with a differe
 
 The highlighted directories are those that are proprietary to Lucid as we will learn throughout this guide.
 
-<pre>
+```text
 app/Services/Kitchen
 ├── Console
 │   └── Commands
-├── <strong>Features</strong>
-├── <strong>Operations</strong>
+├── Features
+├── Operations
 ├── Http
 │   ├── Controllers
 │   └── Middleware
@@ -139,9 +139,9 @@ app/Services/Kitchen
 │   ├── ApiServiceProvider.php
 │   ├── BroadcastServiceProvider.php
 │   └── RouteServiceProvider.php
-├── <strong>Tests</strong>
-│   └── <strong>Features</strong>
-│   └── <strong>Operations</strong>
+├── Tests
+│   └── Features
+│   └── Operations
 ├── database
 │   ├── factories
 │   ├── migrations
@@ -154,7 +154,7 @@ app/Services/Kitchen
     ├── channels.php
     ├── console.php
     └── web.php
-</pre>
+```
 
 ### The Service Provider
 

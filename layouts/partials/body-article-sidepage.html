@@ -1,0 +1,69 @@
+<button id="theme-toggle-right" onclick="lucidToggleTheme()" title="Toggle dark mode" aria-label="Toggle dark mode">
+    <svg id="theme-icon-right-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+    <svg id="theme-icon-right-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    </svg>
+</button>
+
+{{- partial "_mdinclude.html" (dict "name" "article-sidebar-before" "context" .) -}}
+<div class="TableOfContents">
+    <label><i class="fas fa-align-right"></i>&nbsp;&nbsp;{{T "table-of-contents"}}</label>
+    <nav>
+        <ul >
+            <li><a href="{{ .RelPermalink }}">{{.Title}}</a></li>
+        </ul>
+    </nav>
+    {{ .TableOfContents }}
+</div>
+{{- partial "_mdinclude.html" (dict "name" "article-sidebar-after" "context" .) -}}
+
+
+<div class="Actions">
+	<nav>
+		<ul>
+			{{ if .Site.Params.editURL }}
+			<li>
+		        <a href="{{ .Site.Params.editURL }}{{with .File}}{{ replace .Dir "\\" "/" | safeURL }}{{ .LogicalName }}{{end}}" target="blank">
+		          <i class="fab fa-github"></i>
+		          {{T "Edit-this-page"}}
+		      	</a>
+		    </li>
+		    {{end}}
+
+		    {{ if .Site.Params.editWithNetlifyCMSURL }}
+		    {{with .Page.File}}
+		    <li>
+		    	{{$dir := (replace .Dir "\\" "/")  }}{{if eq $dir "/" }}{{$dir = ""}}{{end}}
+		        <a href="{{ $.Site.BaseURL }}{{ $.Site.Params.editWithNetlifyCMSURL }}{{ $dir | safeURL }}{{ .BaseFileName }}" target="blank">
+		        <i class="fab fa-github"></i>
+		        {{T "Edit-this-page"}}</a>
+		    </li>
+		    {{end}}
+		    {{end}}
+			{{ if not .Page.Lastmod.IsZero }}
+		      <li>
+		          <i class='fas fa-calendar'></i>
+		          {{T "last-update-on"}} {{ .Page.Lastmod.Format "02 January 2006" }}
+		      </li>
+		    {{end}}
+		    {{with .GitInfo}}
+		      <li title="">
+		          <i class='fas fa-user'></i>
+		          {{T "last-update-by"}} {{ .AuthorName }}
+		      </li>
+		    {{end}}
+
+    	</ul>
+	</nav>
+
+</div>

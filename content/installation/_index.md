@@ -68,15 +68,15 @@ lucid init:micro
 
 This will generate an initial Micro structure:
 
-<pre>
+```text
 app
 ├── Console
 │   └── Kernel.php
-├── <strong>Data</strong>
+├── Data
     └── Models
-├── <strong>Domains</strong>
-├── <strong>Features</strong>
-├── <strong>Operations</strong>
+├── Domains
+├── Features
+├── Operations
 ├── Exceptions
 │   └── Handler.php
 ├── Http
@@ -90,7 +90,7 @@ app
     ├── BroadcastServiceProvider.php
     ├── EventServiceProvider.php
     └── RouteServiceProvider.php
-</pre>
+```
 
 ### Monolith
 
@@ -102,18 +102,18 @@ Initialize a Monolith instance:
 lucid init:monolith
 ```
 
-<pre>
+```text
 app
 ├── Console
-├── <strong>Data</strong>
+├── Data
     └── Models
-├── <strong>Domains</strong>
+├── Domains
 ├── Exceptions
-├── <strong>Foundation</strong>
+├── Foundation
 ├── Http
 ├── Policies
 ├── Providers
-├── <strong>Services</strong>
+├── Services
 ├── artisan
 ├── bootstrap
 ├── composer.json
@@ -128,7 +128,7 @@ app
 ├── storage
 ├── tests
 └── vite.config.js
-</pre>
+```
 
 <--->
 
@@ -140,12 +140,12 @@ lucid init:monolith blog
 
 And the following will be added to the initial structure:
 
-<pre>
-<strong>app/Services/Blog</strong>
+```text
+app/Services/Blog
 ├── Console
 │   └── Commands
-├── <strong>Features</strong>
-├── <strong>Operations</strong>
+├── Features
+├── Operations
 ├── Http
 │   ├── Controllers
 │   └── Middleware
@@ -165,7 +165,7 @@ And the following will be added to the initial structure:
     ├── channels.php
     ├── console.php
     └── web.php
-</pre>
+```
 
 {{</columns>}}
 
